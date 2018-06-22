@@ -1,0 +1,10 @@
+<template name="replayitem">
+    <view class="replayItem">
+        <view class="replayname">
+            <view>{{replyName}}</view>
+            <view>{{org}}</view>
+        </view>
+        <view class="replaycontent">{{content}}</view>
+        <view class="replaytime">回复时间：{{replyTime2}}</view>
+    </view>
+</template>

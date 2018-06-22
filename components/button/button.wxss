@@ -1,0 +1,23 @@
+.loginBtn{
+  width: 100%;
+}
+button{
+ color: #fff;
+ height: 88rpx;
+ line-height: 88rpx;
+}
+.submit_login{
+   background-color: #508cee;
+   font-size: 36rpx;
+}
+.clickBtn{
+  background-color: rgba(80,140,238,.7);
+}
+button[disabled][type="default"], wx-button[disabled]:not([type]).diabledBtn{
+  background-color: rgba(80,140,238,.6);
+  color: #fff;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}

@@ -1,0 +1,879 @@
+@import "/components/button/button.wxss";
+@import "/components/choosemodal/choosemodal.wxss";
+@import "/components/loading/loading.wxss";
+@import "/components/nolimits/nolimits.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page{
+  height: 100%;
+   background: #f3f3f5; 
+   position: relative;
+   width: 100;
+   overflow-x: hidden;
+}
+.bigcontent{
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+.over{
+  overflow: hidden;
+}
+.active{
+  overflow: hidden
+}
+.assest-detail{
+  /* margin-bottom: 230rpx; */
+   height: 100%; 
+}
+.header{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  background: #508cee;
+  color: rgba(255,255,255,0.5);
+  font-size: 32rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100
+}
+.header view{
+  height: 96rpx;
+  width: 50%;
+  text-align: center;
+  line-height: 100rpx; 
+}
+.downline{
+    border-bottom: 4rpx solid #fff;
+    color:#fff;
+}
+/* 操作记录页面的样式
+ */
+ .operate{
+   padding-top: 110rpx;
+ }
+.operate-top{
+  margin-top: 20rpx;
+  background: #fff;
+  border-top:1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  padding-left: 30rpx; 
+
+}
+.operate-top>view{
+  display: flex;
+  flex-direction: row;
+  height: 87rpx;
+  align-items: center;
+  border-bottom:1rpx solid #e5e5e5;
+
+}
+.operate-top > view:last-child{
+  border: 0;
+}
+.operate-top .last{
+  font-size: 32rpx;
+  color: #999;
+  height: 86rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 86rpx;
+}
+.operate-top .first{
+  font-size: 32rpx;
+  color: #333;
+  width: 30%;
+}
+.number{
+  font-size: 32rpx;
+  color: #333;
+  width: 70%;
+}
+.status{
+    width: 30%;
+   text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.status text{
+  margin-top: 5rpx;
+  font-size: 26rpx;
+  color: #f3941d;
+  min-width: 70rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #f3941d;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+  
+}
+.button{
+  height: 154rpx;
+  background: #fff;
+  padding: 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100
+}
+.operate-name{
+  width: 40%;
+  display: inline-block;
+  padding-left: 5%;
+  height: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 5%;
+}
+.button view{
+  border-radius: 8rpx;
+  color: #fff;
+  height: 86rpx;
+  text-align: center;
+  line-height: 88rpx;
+}
+.summit{
+  width: 316rpx;
+  background: #508cee;
+  border: 1rpx solid #508cee;
+  
+}
+.button .storage{
+  width: 152rpx;
+   border: 1rpx solid #508cee;
+  
+   color: #508cee
+}
+.button .repeal{
+  width: 152rpx;
+   border: 1rpx solid #508cee;
+  
+ color: #508cee
+}
+.path{
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.pathLi{
+  display: flex;
+  flex-direction: column;
+  height: 134rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin:  0 30rpx;
+ justify-content: center
+  
+}
+.pathLi image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.path .pathLi:last-child{
+  border-bottom: 0
+}
+.top text{
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+.top image:last-child{
+  width: 16rpx;
+  height: 25rpx;
+  float: right;
+}
+.bottom{
+  padding-left: 52rpx;
+}
+.bottom text{
+  font-size: 28rpx;
+  color: #999;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100;
+  border-top: 1rpx solid #e5e5e5;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+.loginBtn{
+  margin-top: 0
+}
+.basic-msg{
+   padding-top: 65px; 
+  height:calc(100% - 65px)
+}
+/* 待接单的样式 */
+.ordertime{
+  height: 135rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5; 
+}
+.ordertime image{
+  width: 16rpx;
+  height: 25rpx;
+} 
+.label{
+  width: 23%;
+  font-size: 32rpx;
+  color: #333;
+  line-height: 40rpx;
+}
+.content{
+  width: 77%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.content text{
+  width: 90%;
+ margin-left: 20rpx;
+  color: #666;
+  font-size: 32rpx;
+}
+.content picker{
+  display: inline-block;
+  width: 20%;
+  margin-left: 5%;
+}
+.placeClass{
+   color: #bebebe;
+  font-size: 32rpx;
+  
+}
+.write{
+  background: #fff;
+  margin: 20rpx 0;
+  padding: 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+textarea{
+  height: 290rpx;
+}
+/* 添加图片的样式 */
+.assestli{
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx;
+  background: #fff;
+}
+.viewimg{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.viewimg>view{
+  position: relative;
+}
+view image{
+  width: 150rpx;
+  height: 150rpx;
+   margin:30rpx;
+   margin-left:0;
+   margin-bottom: 0;
+}
+view .close{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: -1rpx;
+  top: -1rpx;
+}
+.list>view image:nth-child(4){
+  margin-right: 0
+}
+.phenomenon{
+  background: #fff;
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+ 
+}
+.repairLi{
+  height: 88rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin: 20rpx 0;
+  line-height: 83rpx;
+}
+.phentop{
+  padding: 30rpx 30rpx 30px 0;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.phentop>view{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 30rpx
+}
+.palceClass{
+  font-size: 32rpx;
+  color: #bebebe;
+}
+.decribe text{
+  word-break:break-all;
+  max-width: 100%;
+}
+/* 验收的样式
+ */
+.accept-title{
+   height: 70rpx;
+   line-height: 70rpx;
+   color: #666;
+   font-size: 26rpx;
+   padding: 0 30rpx;
+ }
+ .accept-title view:first-child{
+    float: left;
+  }
+
+.star{
+  background:#fff;
+  padding:0 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.starLi{
+ border-bottom: 1rpx solid #e5e5e5;
+ height: 87rpx;
+ line-height: 87rpx;
+}
+.star .starLi:last-child{
+  border: 0
+}
+.starLi view{
+  float: left;
+}
+.starlabel{
+  font-size: 32rpx;
+  color: #333;
+  width: 25%;
+}
+.starimg{
+  width: 50%;
+}
+.starLi .startxt{
+  font-size: 28rpx;
+  color: #bebebe;
+  float: right;
+}
+.background{
+  margin-right: 25rpx;
+  margin-top: 25rpx;
+  width: 32rpx;
+  height: 32rpx;
+  background-image: url("https://ebey.aek56.com/api/file/mini/images/ystart.png ");
+  background-repeat:no-repeat; 
+  background-size: 32rpx;
+}
+.tap{
+    background-image: url("https://ebey.aek56.com/api/file/mini/images/start.png");
+    background-repeat:no-repeat; 
+    background-size: 32rpx;
+}
+.repairing{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start
+}
+.store{
+  width: 406rpx;
+  height: 86rpx;
+  border: 1rpx solid #508cee;
+  border-radius: 8rpx;
+  color:  #508cee;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left: 30rpx;
+}
+button.allsumit{
+   width: 242rpx;
+  height: 88rpx;
+ background-color: #508cee;
+  border-radius: 8rpx;
+  color:  #fff;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left: 30rpx;
+}
+button{
+ color: #fff;
+ height: 88rpx;
+ line-height: 88rpx;
+}
+.submit_login{
+   background-color: #508cee;
+   font-size: 36rpx;
+}
+.clickBtn{
+  background-color: rgba(80,140,238,.7);
+}
+button[disabled][type="default"], wx-button[disabled]:not([type]).diabledBtn{
+  background-color: rgba(80,140,238,.6);
+  color: #fff;
+}
+/* 填写维修报告的样式 */
+.repaircontent{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+  align-items: flex-start;
+ 
+}
+.repairLeft{
+  width: 186rpx;
+  background: #f3f3f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+.repairLeft>view{
+  width: 100%;
+  line-height: 88rpx;
+  height: 87rpx;
+  font-size: 32rpx;
+  color: #333;
+  border-bottom: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.repairLeft .active{
+  background: #fff;
+}
+.repairRight{
+  width: 564rpx;
+  background: #fff;
+  height: 100%;
+ overflow-x: hidden;
+}
+.repair-rtop{
+  height: 88rpx;
+  background: #f5f8fc;
+  font-size: 26rpx;
+  color: #666;
+  padding-left: 30rpx;
+  line-height: 88rpx;
+}
+.repair-rbot{
+  border-bottom: 1rpx solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
+  padding-left: 30rpx;
+  margin-bottom: 200rpx;
+  background: #fff;
+}
+.repair-rbot>view{
+  height: 87rpx;
+  border-bottom:  1rpx solid #e5e5e5;
+  line-height: 87rpx;
+}
+.repair-rbot view:last-child{
+  border: 0
+}
+.repair-rbot image{
+  width: 32rpx;
+  height: 32rpx;
+  float: right
+}
+.repair-rbot text{
+  font-size: 32rpx;
+  color: #666;
+  float: left
+}
+.repair-rbot .clickcurrent{
+  color: #508cee
+}
+.write-repair-unit{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.write-repair-unit text{
+  width: 40%;
+}
+.write-repair-unit textarea{
+  width: 70%;
+  font-size: 32rpx;
+  height: 87rpx;
+  line-height: 40rpx;
+  margin-top: 40rpx;
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  height: 87rpx;
+  border-bottom:  1rpx solid #e5e5e5;
+  align-items: center;
+}
+.checkbox text{
+  width: 85%;
+  font-size: 32rpx;
+  color: #666;
+  padding-left: 30rpx;
+}
+.checkbox checkbox{
+  width: 15%
+}
+checkbox .wx-checkbox-input {
+  width: 32rpx;
+  height: 32rpx;
+ 
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  background-color: #508cee;
+   border: 1rpx solid #508cee;
+    
+}
+.repair-rtop image{
+   width: 32rpx;
+  height: 32rpx;
+
+  float: right
+}
+/* 添加故障现象弹窗 */
+.add{
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.addcontent{
+  height:532rpx;
+  width: 690rpx; 
+  background: #fff;
+  border-radius: 8rpx;
+
+}
+.addtop{
+  background: #508cee;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 30rpx;
+}
+.addtop text{
+  color: #fff;
+  font-size: 26rpx;
+  float: left
+}
+.addtop image{
+     width: 26rpx;
+  height: 26rpx;
+
+  float: right
+}
+.addbtn{
+  margin: 30rpx;
+}
+.addcontent textarea{
+  border: 1rpx solid #e5e5e5;
+  height:260rpx;
+  font-size: 32rpx;
+  padding: 30rpx;
+  width: 570rpx;
+}
+.btncancle text{
+font-size: 32rpx;
+}
+.btncancle{
+  margin-top: 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.btncancle text:first-child{
+  color: #999
+}
+.btncancle text:last-child{
+  color: #508cee;
+  margin-left: 100rpx;
+}
+ .reason{
+  height: 20rpx ;
+} 
+/* 添加配件弹窗
+ */
+ .part{
+   height: 856rpx;
+ }
+ textarea.parttextarea{
+   height: 68rpx;
+   width: 60%;
+   padding: 0;
+   border: 0;
+  padding-top: 20rpx;
+   line-height: 40rpx;
+ }
+ .partul{
+     border:  1rpx solid #e5e5e5;
+     
+ }
+ .partli{
+   line-height: 87rpx;
+    min-height: 87rpx; 
+  border-bottom:  1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+ }
+  .partli input{
+   width: 60%;
+  }
+  .partul .partli:last-child{
+    border: 0
+  }
+  .partli>text{
+    font-size: 32rpx;
+    color: #333;
+    width: 40%;
+    padding-left: 30rpx;
+  }
+   .partli image{
+     width: 25rpx;
+     height: 16rpx;
+   }
+   .partli>view view{
+     color: #999;
+     font-size: 32rpx;
+   }
+    .partliposition  view.show{
+      color: #333;
+       font-size: 32rpx;
+   }
+   .partliposition{
+     position: relative;
+   }
+   .unitposition{
+     position: absolute;
+     left: 0;
+     right: 0;
+     width: 95%;
+     top: 88rpx;
+     padding-left: 30rpx;
+     color: #333;
+      background: #f3f3f5;
+     border-left: 1rpx solid #e5e5e5;
+       border-right: 1rpx solid #e5e5e5;
+       z-index: 309;
+   }
+   .unitposition view{
+     border-bottom: 1rpx solid #e5e5e5;
+   }
+    .unitposition>view text{
+      width: 89%;
+      display: inline-block;
+      color: #333;
+    }
+    .unitposition>view image{
+     width: 32rpx;
+     height: 32rpx;
+    }
+    .unitposition>view text.clickcurrent{
+       color: #508cee
+    }
+    .partliposition>view{
+      color: #999;
+      font-size: 32rpx;
+     
+    }
+    .partcancle{
+      padding-right: 30rpx;
+    }
+    .nopart{
+      margin: 0 auto;
+      font-size: 32rpx;
+      color: #999;
+      text-align: center;
+      margin-top: 40rpx;
+    }
+.haspartli{
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 0;
+  position: relative;
+}
+.haspartli>view{
+  width: 87%;
+  padding-left: 30rpx;
+}
+.haspartli>image{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.haspartli .delimage image{ 
+  width: 110rpx;
+  height: 70rpx;
+
+}
+.haspartli .delimage{
+  position: absolute;
+  left:calc(50% - 110rpx) ;
+  top: -56rpx;
+   width: 110rpx;
+  height: 70rpx;
+}
+.picker{
+  padding: 0
+}
+checkbox-group{
+  min-height: 800rpx;
+  margin-bottom: 200rpx;
+}
+.partName{
+        font-size: 32rpx;
+      color: #333;
+        width: 87%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.partName>image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.haspartul{
+  min-height:400rpx;
+  margin-bottom: 230rpx;
+}
+.partline{
+  margin-top: 20rpx;
+    font-size: 28rpx;
+      color: #666;
+      display: flex;
+       flex-direction: row;
+  justify-content: flex-start;
+}
+.partline view{
+  width: 33.3%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reasultbtn{
+  height: 87rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+     display: flex;
+       flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30rpx;
+}
+.labal{
+   font-size: 32rpx;
+      color: #666;
+      width: 40%;
+}
+.reasultbtn image{
+   width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.reasultbtn text{
+  font-size: 32rpx;
+  color: #666;
+}
+.palceClass{
+  font-size: 32rpx;
+      color: #999;
+}
+.resulttextarea{
+  padding: 30rpx;
+  padding-bottom: 200rpx;
+  background: #fff;
+  width: 504rpx;
+  color: #333;
+}
+input{
+  width: 80%;
+  color: #333;
+}
+.picker{
+  display: flex
+}
+.mast{
+  width: 12rpx;
+  color: #e00000;
+  position: absolute;
+  right: -20rpx;
+  top: 10rpx;
+}
+.mast-parent{
+  position: relative;
+}
+.fujian{
+  width: 32rpx;
+  height: 36rpx;
+  margin: 0;
+}
+.fujianimg{
+  width: 20rpx;
+  height: 20rpx;
+  margin-top: 28rpx;
+}
+.assestli> view {
+    display: flex;
+    flex-direction: srow;
+    width: 100%;
+    align-items: center;
+}
+
+.assestli>view {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* justify-content: center; */
+}
+.pm-files {
+    margin: 0 0 50rpx 20rpx;
+    overflow: hidden;
+}
+.pm-files-item {
+    position: relative;
+    float: left;
+    width: calc(33.33% - 20rpx);
+    height: 180rpx;
+    padding: 0 20rpx 20rpx 0;
+}
+.pm-files-img {
+    width: 100%;
+    height: 100%;
+}

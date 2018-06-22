@@ -1,0 +1,59 @@
+<import src="/components/mytotast/mytost.wxml" />
+<view class='row first'>
+    <view class='row-txt'>报告编号：</view>
+    <view class='row-con'>{{record.reportNo}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>设备编号：</view>
+    <view class='row-con'>{{record.no || ''}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>设备名称：</view>
+    <view class='row-con'>{{record.name || ''}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>规格型号：</view>
+    <view class='row-con'>{{record.model || ''}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>所在部门：</view>
+    <view class='row-con'>{{record.departmentName || ''}}</view>
+</view>
+<view class='row first'>
+    <view class='row-txt'>周期：</view>
+    <view class='row-con'>{{record.cycle}}个月</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>提交日期：</view>
+    <view class='row-con'>{{record.endDateStr}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>负责人：</view>
+    <view class='row-con'>{{record.checkMan || ''}}</view>
+</view>
+<view class='row first'>
+    <view class='row-txt'>设备现状：</view>
+    <view class='row-con'>{{record.liveStr}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>工时：</view>
+    <view class='row-con'>{{record.workTime}}</view>
+</view>
+<view class='group'>
+    <view class='group-title'>附件</view>
+    <view class='pm-files'>
+        <view class="pm-files-item" wx:for="{{record.files}}" data-files-url="{{item.url}}" wx:key="{{index}}" data-fujian-list="1" data-fujian-index="{{index}}">
+            <image class="pm-files-img" src="{{baseImgUrl + item.url}}" wx:if="{{item.isImg}}" bindtap='lookBig' data-files-url='{{item.url}}'></image>
+            <image class="pm-files-img" src="/static/images/noimg.png" wx:if="{{!item.isImg}}" bindtap='lookFile'></image>
+        </view>
+    </view>
+</view>
+<view class='group'>
+    <view class='group-title'>备注</view>
+    <view class='group-con'>{{record.remarks || ''}}</view>
+</view>
+<view style='height: 140rpx;' wx:if='{{status == 1}}'></view>
+<view class='accept' wx:if='{{status == 1}}'>
+    <view bindtap='accept'>确认验收</view>
+</view>
+<template is="mytost" data='{{show: showMsg, content: msg}}'></template>

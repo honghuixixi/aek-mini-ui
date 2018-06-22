@@ -1,0 +1,11 @@
+<import src="/components/mytotast/mytotast.wxml" />
+<import src="/components/button/button.wxml" />
+<view class="revisename">
+  <view class="inputview"> <input value="{{username}}"bindinput="bindValue" confirm-type="done" disabled="{{!totastHide}}" focus="bindValue" maxlength='40'/></view>
+
+   <!-- totast提示 -->
+  <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+  <view class="btn">
+   <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+  </view>  
+</view>

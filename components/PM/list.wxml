@@ -1,0 +1,19 @@
+<template name="PMlist">
+  <view class="item">
+    <view class="num">{{no}}</view>
+    <view class='title'>
+      <view wx:if='{{attention}}' class="status {{attention=='已过期' && attention?'red':''}}">
+        <view class=''>{{attention}}</view>
+      </view>
+      <view class="name">{{name}}</view>
+    </view>
+    <view class='dept'>
+      <view>所在部门：</view>
+      <view>{{departmentName?departmentName:''}}</view>
+    </view>
+    <view class="bottom">
+      <view class="cycle">周期：{{cycle}}个月</view>
+      <view class="date">下次实施日期：{{nextDate2}}</view>
+    </view>
+  </view>
+</template>

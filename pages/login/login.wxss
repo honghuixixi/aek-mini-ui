@@ -1,0 +1,96 @@
+/**index.wxss**/
+@import "/components/button/button.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page {
+  min-height: 100%;
+  background-color: #f3f3f5;
+}
+.container{
+  padding: 0;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 170rpx;
+}
+
+.logo image {
+  width: 237rpx;
+  height: 88rpx;
+}
+
+.logo>text {
+  font-size: 36rpx;
+  color: #1a1a1a;
+  font-weight: bold;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center
+}
+
+.logo>text text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 160rpx;
+  width: 80%;
+}
+
+.loginWrap {
+  width: 100%;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #bebebe;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.loginWrap image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.loginWrap image.showPass {
+  width: 36rpx;
+  height: 17rpx;
+}
+.showSuccess{
+  width:30rpx;
+  height:30rpx;
+
+}
+.placeClass {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.loginWrap input {
+  margin-left: 30rpx;
+  width: 560rpx;
+  color: #333;
+}
+
+.findpwd {
+  width: 100%;
+  text-align: right;
+  font-size: 32rpx;
+  margin-bottom: 75rpx;
+}
+.messageLogin{
+  color: #508cee;
+  font-size: 32rpx;
+  margin-top: 160rpx;
+  width: 100%;
+  text-align: right;
+}
+

@@ -1,0 +1,103 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/button/button.wxml" />
+<view class="newassest">
+  <view class="list">
+    <view class="assestli" bindtap="choosedepart">
+      <view>
+        <view class="label"  bindtap="choosedepart">
+          <text>所在部门</text>
+        </view>
+        <text data-id="{{deptId}}" class="choose {{dept!='请选择'?'chooseed':'choose'}}">{{deptName}}</text>
+      </view>
+      <image src="/static/images/next.png"></image>
+    </view>
+    <view class="assestli">
+      <view>
+        <view class="label"><text class="mast-parent">设备名称 <text class="mast">*</text></text>
+        </view>
+        <input bindinput="fillField" data-key="devicename" data-check="true" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{devicename}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli">
+      <view>
+        <view class="label"><text class="mast-parent">生产商 <text class="mast">*</text></text>
+        </view>
+        <input bindinput="fillField" data-key="producer" data-check="true" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{producer}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli {{moreList?'spailline':''}}">
+      <view>
+        <view class="label"><text>规格型号</text>
+        </view>
+        <input bindinput="fillField" data-key="size" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{size}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli {{moreList?'more':''}}">
+      <view>
+        <view class="label"><text>注册证号</text>
+        </view>
+        <input bindinput="fillField" data-key="registeruNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{registeruNum}}" maxlength="40" />
+      </view>
+    </view>
+
+    <view class="assestli {{moreList?'more':''}}">
+      <view>
+        <view class="label"><text>出厂编号(SN)</text></view>
+        <input bindinput="fillField" data-key="leavefactoryNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{leavefactoryNum}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli {{moreList?'more':''}}">
+      <view>
+        <view class="label"><text>三级分类代码</text></view>
+        <input bindinput="fillField" data-key="classifyNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{classifyNum}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli {{moreList?'more':''}}" bindtap="chooseaccount">
+      <view>
+        <view class="label"><text>核算类别</text></view><text class="{{account!='请选择'?'chooseed':'choose'}}">{{account}}</text></view>
+      <image src="/static/images/next.png"></image>
+    </view>
+    <view class="assestli {{moreList?'more':''}}" bindtap="choosemanage">
+      <view>
+        <view class="label"><text>管理级别</text></view><text class="{{manage!='请选择'?'chooseed':'choose'}}">{{manage}}</text></view>
+      <image src="/static/images/next.png"></image>
+    </view>
+    <view class="assestli {{moreList?'more':''}}">
+      <view>
+        <view class="label"><text>启用日期</text></view>
+        <picker mode="date" class="pickerDate" value="{{startUseDate}}"       bindchange="bindDateChange">  
+    <view class="picker"> {{startUseDate}} </view></picker></view>
+      <image src="/static/images/next.png"></image>
+    </view>
+        <view class="assestli {{moreList?'more':''}}">
+      <view>
+        <view class="label"><text>供应商</text></view>
+        <input bindinput="fillField" data-key="provider" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{provider}}" maxlength="40" />
+      </view>
+    </view>
+    <view class="assestli {{moreList?'more':''}}" bindtap="choosemoney">
+      <view>
+        <view class="label"><text>资金来源</text></view><text class="{{money!='请选择'?'chooseed':'choose'}}">{{money}}</text></view>
+      <image src="/static/images/next.png"></image>
+    </view>
+  </view>
+  <view class="slide-up" bindtap="more" hidden="{{!moreList}}"><text>更多</text>
+    <image src="/static/images/more.png"></image>
+  </view>
+  <view class="slide-up margin-bottom" bindtap="slidup" hidden="{{moreList}}"><text>收起</text>
+    <image src="/static/images/slideup.png"></image>
+  </view>
+  <view class="footer">
+    <!-- 按钮组件 -->
+    <view class="buttom">
+      <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+    </view>
+   
+    <!-- 核算类别的弹窗 -->
+    <template is="accountList" data="{{hide:accountHide,list:accountList,eq:accounteq}}"></template>
+    <!-- 管理级别的弹窗 -->
+    <template is="accountList" data="{{hide:manageHide,list:manage_level,eq:manageeq}}"></template>
+    <!-- 资金来源的弹窗 -->
+    <template is="accountList" data="{{hide:moneyHide,list:fund_sources,eq:moneyeq}}"></template>
+  </view>
+</view>

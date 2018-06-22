@@ -1,0 +1,23 @@
+<import src="/components/comconitem/comconitem.wxml" />
+<view>
+<!-- 搜索框 -->
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="请输入标题关键字查询" placeholder-class="palce-class" bindfocus="search" value="{{searchName}}"/>
+    </view>
+  </view>
+  <!-- 表格 -->
+  <view style='margin-top:118rpx'>
+  
+    <view wx:for="{{list}}" wx:key="{{index}}" bindtap='goDetail' data-infoId="{{item.id}}">
+     <template is="comconitem" data="{{...item,tag:2}}" ></template>
+    </view>
+  <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image   src="/static/images/pull.gif"></image></view>
+    </view>
+    <!-- 添加按钮 -->
+      <view class="add" bindtap="addcomplaint">
+  <image src="/static/images/add.png"></image>
+  </view>
+</view>

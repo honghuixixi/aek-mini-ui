@@ -1,0 +1,3 @@
+<view class="viewimg" >
+     <image src="{{PIC_URL+uri}}" wx:if='{{uri.length}}'></image>
+</view>

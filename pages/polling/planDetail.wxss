@@ -1,0 +1,159 @@
+/* pages/assestbook/assestdetail.wxss */
+@import "/components/loading/loading.wxss";
+@import "/components/button/button.wxss";
+page {
+    /* height: 100%; */
+    background: #f3f3f5;
+}
+.b-t-sm {
+  border-top: 1rpx solid #BFBFBF;
+}
+.b-r-sm {
+  border-right: 1rpx solid #BFBFBF;
+}
+.b-b-sm {
+  border-bottom: 1rpx solid #BFBFBF;
+} 
+.b-l-sm {
+  border-left: 1rpx solid #BFBFBF;
+}
+.m-t-lg {
+  margin-top: 30rpx;
+}
+.m-b-lg {
+  margin-bottom: 30rpx;
+}
+.planLi {
+  background-color: #fff;
+  font-size: 26rpx;
+  line-height: 49rpx;
+  padding: 20rpx 0rpx;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  border-top: 1rpx solid #BFBFBF;
+}
+.planLi .label {
+  color: #666;
+  padding-left: 30rpx;
+  width: 32%;
+}
+.planLi .content {
+  color: #333;
+  width: 68%;
+}
+.basic-title {
+  height: 60rpx;
+  line-height: 46rpx;
+  padding-top: 14rpx;
+  font-size: 26rpx;
+  color: #888;
+  padding-left: 30rpx;
+}
+.planScope {
+  margin-bottom: 160rpx;
+  font-size: 26rpx;
+  padding: 15rpx 30rpx;
+  line-height: 68rpx;
+  color: #333;
+  border: 1rpx solid #BFBFBF;
+  border-right: none;
+  min-height: 153rpx;
+  background-color: #fff;
+}
+/* .loginBtn {
+  text-align: center;
+  padding-bottom: 88rpx;
+}
+.loginBtn .submit_login {
+  margin: 0rpx 30rpx;
+  font-size: 30rpx;
+  line-height: 88rpx;
+  color: #fff;
+  background-color: #6096EF;
+} */
+/* confirm 弹框 */
+.planConfirmWrap {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 2;
+}
+.planConfirmWrap .planConfirm {
+  background-color: #fff;
+  border-radius: 10rpx;
+  width: 74%;
+  text-align: center;
+  min-height: 350rpx;
+  color: #333;
+  font-size: 30rpx;
+  overflow: hidden;
+  position: absolute;
+  left: 13%;
+  top: 50%;
+  margin-top: -175rpx;
+}
+.planConfirmView image {
+  width: 103rpx;
+  height: 103rpx;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+}
+.planConfirmCon {
+  line-height: 30rpx;
+  margin-bottom: 50rpx;
+}
+.planConfirmBtns {
+  border-top: 1rpx solid #BFBFBF;
+  position: relative;
+}
+.planConfirmBtns .planConfirmBtn {
+  width: 50%;
+  float: left;
+  line-height: 84rpx;
+}
+.planConfirmBtns .planConfirmLine {
+  position: absolute;
+  left: 50%;
+  top: 0rpx;
+  border-left: 1rpx solid #BFBFBF;
+}
+.planConfirmBtn1 {
+  background-color: rgba(96,150,239,.36);
+  border-bottom-right-radius: 10rpx;
+}
+/* toaster */
+.toaster {
+  background-color: rgba(0, 0, 0, 0.7);
+  line-height: 30rpx;
+  color: #fff;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  font-size: 30rpx;
+  line-height: 36rpx;
+  width: 180rpx;
+  padding: 20rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-left: -90rpx;
+  top: 50%;
+  margin-top: -36rpx;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 1;
+  border-top: 1rpx solid #e5e5e5;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}

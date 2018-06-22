@@ -1,0 +1,31 @@
+<!--pages/PM/assetsList.wxml-->
+<import src="/components/loading/loading.wxml" />
+<import src="/components/PM/list.wxml" />
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<!-- 悬浮按钮 -->
+<view class='floatScanWrap'>
+  <view class='floatScan' bindtap='scanAsset'>
+    <image src="/static/images/assetScan.png"></image>
+  </view>
+</view>
+<!-- toast -->
+<view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+<view class='height88'>
+  <view class="search ">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="设备名称/编码" value="{{searchName}}" placeholder-class="palce-class" bindfocus="search" />
+    </view>
+  </view>
+</view>
+<view class='background'>
+  <view wx:for="{{list}}" bindtap="detail" wx:key="{{index}}" data-asset-apply-id="{{item.id}}">
+    <template is="PMlist" data="{{...item}}"></template>
+  </view>
+  <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+  <view class="nomore pull" wx:if="{{!pullDown}}">
+    <image src="/static/images/pull.gif"></image>
+  </view>
+
+</view>

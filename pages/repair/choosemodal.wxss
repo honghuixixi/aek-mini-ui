@@ -1,0 +1,42 @@
+/* \医院机构弹窗 */
+.hospital-modal{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1000000000;
+}
+
+.host-list{
+  width: 80%;
+  background: #fff;
+  max-height: 1056rpx;
+  overflow-y: scroll;
+  border-radius: 8rpx;
+}
+.host-li{
+  padding: 0 30rpx;
+  height: 87rpx;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:  space-between;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.host-li text{
+  font-size: 32rpx;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.host-li image{
+  width: 24rpx;
+  height: 24rpx;
+}

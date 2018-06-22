@@ -1,0 +1,25 @@
+<template name="comconitem">             
+    <view class="listitem">
+          <view class="itemTitle"><view class="hasnew" wx:if="{{!isRead}}"></view><view style='height:20rpx;width:40rpx' wx:if="{{!isRead}}"></view>
+          <view class="tag  {{!isRead?'tagactive':''}}" wx:if="{{type==1 && tag==1}}">售后服务</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==2&& tag==1}}">质量缺陷</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==3&& tag==1}}">操作使用</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==4&& tag==1}}">产品配置</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==5&& tag==1}}">其它</view>
+
+                    <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==1&& tag==2}}">采购计划</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==2&& tag==2}}">验收管理</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==3&& tag==2}}">使用管理</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==4&& tag==2}}">巡检质控</view>
+           <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==5&& tag==2}}">信息化</view>
+          <view class="tag {{!isRead?'tagactive':''}}" wx:if="{{type==6&& tag==2}}">其它</view>
+          {{title2}}
+          <image src='../../static/images/hasreplay.png' wx:if="{{reply==1}}"></image>
+          <image src='../../static/images/noreplay.png'  wx:if="{{reply==2}}"></image>
+          </view>
+          <view class="itemCont">{{content2}} </view>
+          <view class="itemTime"> 
+            <text>{{publishTime2}}</text>
+          </view>
+      </view>
+</template>

@@ -1,0 +1,54 @@
+<import src="/components/waitDoCard/waitDoCard.wxml" />
+<import src="/components/tabbar/tabbar.wxml"/>
+<view class="message">
+  <view class="header-nav">
+    <view class="backlog {{index==0?'downline':''}} " data-nav-index="0" bindtap="change">待办({{total}})</view>
+    <view class="notice {{index==1?'downline':''}} "  data-nav-index="1" bindtap="change">通知</view>
+    <view class="announce {{index==2?'downline':''}} "  data-nav-index="2" bindtap="change">公告</view>
+  </view>
+  <!-- 待办 -->
+  <view class="backlog-show" hidden="{{index!=0}}">
+    <!-- 消息卡片列表 -->
+   <view class="msgList"  wx:for='{{actionList}}' wx:key='index' wx:if="{{item.show}}"> 
+     <template is="waitDoCard" data="{{...item}}"></template>
+   </view>
+</view>
+<!-- 通知 -->
+  <view class="notice-show" hidden="{{index!=1}}">
+    <!-- <view>
+      <image src="/static/images/nomsg.png"></image>
+      <text>暂无通知</text>
+    </view> -->
+   
+    <view wx:for="{{actionList}}" wx:key='index'>
+      <view class="msgli {{item.messageStatus!=0?'read':''}} " bindtap='lookMsg' data-item="{{item}}" wx:if="{{item.show}}">
+          <view class="msgLeft">
+          <view class="top">
+          <view class="icon" wx:if="{{item.messageStatus==0}}"></view>
+          <view class="content">{{item.messageContent}}</view>
+          </view>
+<view class="bottom">
+          <view class='msgContent'>{{item.remarks}}</view>
+          <view>{{item.messageTime2}}</view>
+          </view>
+          </view>
+          
+          <view class="msgRight"><image src="/static/images/next.png"></image></view>
+      </view>
+    </view>
+   <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image src="/static/images/pull.gif"></image></view>
+  </view>
+  <!-- 公告 -->
+  <view class="announce-show" hidden="{{index!=2}}">
+    <view>
+      <image src="/static/images/nomsg.png"></image>
+      <text>暂无公告</text>
+    </view>
+  </view>
+  <!-- toast -->
+  <view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+</view>
+<!-- <view class="footer">
+    <template is="tabbar" data="{{tabbar}}"/>
+</view> -->

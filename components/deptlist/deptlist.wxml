@@ -1,0 +1,5 @@
+<template name="deptlist">             
+  <view class="chooseDeptWrap">
+    <view wx:for="{{deptList}}" wx:key="{{item.id}}" class="chooseDept-item" bindtap="chooseDeptId" data-name="{{item.name}}" data-id="{{item.id}}" style="padding-left:{{item.level * 30}}rpx">{{item.name}}</view>
+</view> 
+</template>

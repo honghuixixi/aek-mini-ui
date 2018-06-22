@@ -1,0 +1,19 @@
+<template name="serverhover">
+    <view class="tag">
+       
+        <view class="small-li">
+            <view class="tagli" hidden="{{!tag}}" bindtap="complat">我要投诉</view>
+            <image src="/static/images/prient.png" class="small" hidden="{{!tag}}" bindtap="repair"></image>
+        </view>
+        <view class="small-li">
+            <view class="tagli" hidden="{{!tag}}" bindtap="consult">我要咨询</view>
+            <image src="/static/images/eadit.png" class="small" hidden="{{!tag}}" bindtap="edit"></image>
+        </view>
+        <view>
+            <image src="/static/images/root.png" class="big" hidden="{{tag}}" bindtap="show"></image>
+        </view>
+        <view>
+            <image src="/static/images/getroot.png" class="big" hidden="{{!tag}}" bindtap="hidden"></image>
+        </view>
+    </view>
+</template>

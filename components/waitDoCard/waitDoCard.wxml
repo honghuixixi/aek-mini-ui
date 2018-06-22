@@ -1,0 +1,18 @@
+<template name="waitDoCard">
+    <view class="msgcard" bindtap="goDetail" data-status="{{status}}">
+    <view class="firstimg">
+    <image src="/static/images/homerepair.png" class="left-image"></image>
+    </view>
+      <view class="more-list">
+        <view class="satatus">{{title}}</view>
+          <view class="describe">您有{{total}}{{des}}</view>
+          <view class="orige">
+            <image src="/static/images/{{src}}" wx:if='{{src}}'></image> 
+            <text>{{module}}</text>
+          </view>
+      </view>
+      <view class="rage">{{total}}</view>
+      <image src="/static/images/next.png" class="right-image"></image>
+    </view>
+  
+</template>

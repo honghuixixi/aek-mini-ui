@@ -1,0 +1,66 @@
+/* pages/service/noticedetail.wxss */
+@import "/components/mytotast/mytotast.wxss";
+
+page {
+    height: 100%;
+    background: #fff;
+}
+
+.detail {
+    padding: 30rpx 35rpx;
+}
+
+.title {
+    font-size: 36rpx;
+    color: #333;
+}
+
+.time {
+    font-size: 24rpx;
+    color: #999;
+    margin-top: 35rpx;
+}
+
+.publishName, .publishOrg {
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.content {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+    white-space: pre-wrap;
+}
+
+.fujian {
+    margin-top: 60rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.fujianli {
+    color: #508cee;
+    font-size: 28rpx;
+    height: 80rpx;
+}
+
+.next {
+    width: 16rpx;
+    height: 25rpx;
+    margin: 0;
+}
+
+.fujianli view {
+    float: left;
+    width: calc(100% - 30rpx);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.fujianli image {
+    float: right;
+    margin-top: 5rpx;
+}

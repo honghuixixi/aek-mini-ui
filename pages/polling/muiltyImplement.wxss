@@ -1,0 +1,61 @@
+/* pages/polling/editdetail.wxss */
+@import "/components/button/button.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5;
+}
+.icon{
+  padding: 35rpx 30rpx;
+  background: #fff;
+  border-top: 1rpx solid #d2d2d2;
+  border-bottom: 1rpx solid #d2d2d2;
+}
+.dept{
+  color: #666;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.name{
+  color: #333;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.title{
+  min-height: 59rpx;
+  font-size: 26rpx;
+  color: #888;
+   border-bottom: 1rpx solid #d2d2d2;
+   padding: 0 30rpx;
+   line-height: 60rpx;
+}
+.option{
+  height: 88rpx;
+  border-bottom: 1rpx solid #d2d2d2;
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  color: #333;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between
+}
+.option image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100;
+  border-top: 1rpx solid #e5e5e5;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}

@@ -1,0 +1,127 @@
+/* 卡片组件样式 */
+.card{
+  /* min-height: 219rpx; */
+  border-bottom: 1rpx solid #e5e5e5;
+  padding: 30rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items:center;
+  margin: 25rpx 0;
+ 
+}
+.name{
+    font-size: 32rpx;
+  color: #333;
+   max-width: 525rpx; 
+  margin-bottom: 15rpx;
+}
+.producter,.size,.depart{
+  font-size: 28rpx;
+  color: #999;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+   margin-bottom: 5rpx; 
+  
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  width: 75%;
+}
+.bottom-left{
+  width: 65%;
+  float: left;
+}
+
+.image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.status{
+  float: right;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+  min-width: 70rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #999;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   color: #999
+}
+
+.use{
+  border: 1rpx solid #14a386;
+  color: #14a386
+}
+.stater{
+  border: 1rpx solid #508cee;
+  color: #508cee
+}
+.repair{
+  border: 1rpx solid #e00000;
+  color: #e00000
+}
+.statusPass{
+  color: #14a386;
+  border: 1px solid #14a386;
+}
+.statusNoPass{
+  color:#e00000;
+  border: 1px solid #e00000; 
+}
+.statusdaiyanshou{
+  color:#f3941d;
+  border: 1px solid #f3941d; 
+}
+
+
+/* 在库 */
+.one{
+   border: 1rpx solid #508cee;
+  color: #508cee
+}
+/* 在用 */
+.two{
+  border: 1rpx solid #14a386;
+  color: #14a386
+}
+/* 预登 */
+.three{
+   border: 1rpx solid #e7a505;
+  color: #e7a505
+}
+/* 待报损 */
+.four{
+  border: 1rpx solid #ec5e00;
+  color: #ec5e00
+}
+/* 报损 */
+.five{
+   border: 1rpx solid #e00000;
+  color: #e00000
+}
+/* 退货 */
+.six{
+  border: 1rpx solid #999999;
+  color: #999999
+}
+.tagsamll{
+  height: 36rpx;
+  width: 62rpx;
+  color: #fff;
+  background: #e00;
+  position: absolute;
+  font-size: 20rpx;
+  padding-left: 7rpx;
+  top: 0rpx;
+  line-height: 36rpx;
+  left: 0rpx;
+}

@@ -1,0 +1,21 @@
+<template name="myModal">
+    <view class="hospital-modal" catchtap="hostModal" hidden="{{hide}}">
+    <view class="host-list">
+    <view class="host-li" wx:for="{{list}}" catchtap="chooseHost" wx:key="index" data-hosp-id="{{index}}" data-status="{{item.statusNum}}" data-statusName="{{item.status}}" data-hosp-choosename="{{item}}">
+      <text class="host-name" >{{item.status}}</text>
+      <image src="/static/images/hostchoose.png" hidden="{{index!=eq}}"></image>
+    </view>
+    </view>
+ </view> 
+</template>
+<template name="accountList">
+  <view class="hospital-modal" catchtap="hostModal" hidden="{{hide}}">
+    <view class="host-list">
+    <view class="host-li" wx:for="{{list}}" catchtap="chooseHost" wx:key="{{item.id}}" data-hosp-id="{{index}}" data-codetext="{{item.codeText}}" data-codeValue="{{item.codeValue}}" data-hosp-choosename="{{item}}">
+      <text class="host-name" >{{item.codeText}}</text>
+      <image src="/static/images/hostchoose.png" hidden="{{item.codeValue!=eq}}"></image>
+    </view>
+    </view>
+ </view> 
+
+</template>

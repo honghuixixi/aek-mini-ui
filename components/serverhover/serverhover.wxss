@@ -1,0 +1,39 @@
+.tag{
+  position:fixed;
+  right: 60rpx;
+  bottom:60rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.tag>view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  
+}
+.tag .big{
+  width: 108rpx;
+  height: 108rpx;
+}
+.small{
+  width: 90rpx;
+  height: 90rpx;
+ 
+}
+.tagli{
+  width: 164rpx;
+  height: 56rpx;
+  color: #fff;
+  font-size: 28rpx;
+  background: rgba(97,151,240,.8);
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 56rpx;
+  margin-right: 30rpx;
+}
+.small-li{
+  padding-right: 7rpx;
+   margin-bottom: 47rpx;
+}

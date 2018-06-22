@@ -1,0 +1,76 @@
+@import "/components/mytotast/mytost.wxss";
+page {
+    height: 100%;
+    background: #f3f3f5;
+}
+.first {
+    margin-top: 20rpx;
+    border-top: 2rpx solid #dcdcdc;
+}
+.row {
+    display: flex;
+    padding: 20rpx;
+    font-size: 28rpx;
+    line-height: 60rpx;
+    background-color: #fff;
+    border-bottom: 2rpx solid #dcdcdc;
+}
+.row-txt {
+    width: 140rpx;
+}
+.row-con {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.group {
+    font-size: 28rpx;
+    line-height: 40rpx;
+    
+}
+.group-title {
+    padding: 20rpx;
+}
+.group-con {
+    padding: 20rpx;
+    word-break: break-all;
+    background-color: #fff;    
+}
+.accept {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    padding: 20rpx 40rpx;
+    background-color: #fff;
+    box-shadow: 0 10rpx 40rpx 0 #999;
+}
+.accept view {
+    flex: 1;
+    height: 80rpx;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background-color: #09c;
+    color: #fff;
+    border-radius: 10rpx;
+}
+.pm-files {
+    padding: 20rpx 0 0 20rpx;
+    background-color: #fff;
+    overflow: hidden;
+}
+.pm-files-item {
+    position: relative;
+    float: left;
+    width: calc(25% - 20rpx);
+    height: 180rpx;
+    padding: 0 20rpx 20rpx 0;    
+}
+.pm-files-img {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,726 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/button/button.wxml" />
+<import src="/components/loading/loading.wxml" />
+<import src="/components/nolimits/nolimits.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<template is="myModalnew" data="{{hide:peopleHide,list:peopleList,eq:peopleeq}}"></template>
+<template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<template is="myTotast" data="{{totastHide:totastHide1,totastContent:totastContent1}}"></template>
+<template is="myTotast" data="{{totastHide:totastHide3,totastContent:totastContent3}}"></template>
+<!-- 新建故障现象弹窗 -->
+<view class="add" wx:if="{{add}}" bindtap='cancel'>
+    <view class="addcontent" catchtap='nocancel'>
+        <view class="addtop">
+            <text>新建故障现象</text>
+            <image src="/static/images/addcount.png" catchtap='cancel'></image>
+        </view>
+        <view class="addbtn">
+            <textarea placeholder='请输入故障现象' placeholder-style="color:#bebebe" bindinput='phonecontent'></textarea>
+            <view class="btncancle">
+                <text catchtap='cancel'>取消</text>
+                <text catchtap='addPhone'>确定</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 新建故障原因弹窗 -->
+<view class="add" wx:if="{{reason}}" bindtap='reasoncancel'>
+    <view class="addcontent" catchtap='reasonnocancel'>
+        <view class="addtop">
+            <text>新建故障原因</text>
+            <image src="/static/images/addcount.png" catchtap='reasoncancel'></image>
+        </view>
+        <view class="addbtn">
+            <textarea placeholder='请输入故障原因' placeholder-style="color:#bebebe" bindinput='reasoncontent'></textarea>
+            <view class="btncancle">
+                <text catchtap='reasoncancel'>取消</text>
+                <text catchtap='reasonaddPhone'>确定</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 新建工作内容弹窗 -->
+<view class="add" wx:if="{{work}}" bindtap='workcancel'>
+    <view class="addcontent" catchtap='worknocancel'>
+        <view class="addtop">
+            <text>新建工作内容</text>
+            <image src="/static/images/addcount.png" catchtap='workcancel'></image>
+        </view>
+        <view class="addbtn">
+            <textarea placeholder='请输入工作内容' placeholder-style="color:#bebebe" bindinput='workcontent'></textarea>
+            <view class="btncancle">
+                <text catchtap='workcancel'>取消</text>
+                <text catchtap='workaddPhone'>确定</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 添加配件弹窗 -->
+<view class="add " bindtap='partcancel' wx:if="{{part}}">
+    <view class="addcontent part" catchtap='partnocancel'>
+        <view class="addtop">
+            <text>{{parttxt}}</text>
+            <image src="/static/images/addcount.png" catchtap='partcancel'></image>
+        </view>
+        <view class="addbtn">
+            <view class="partul">
+                <view class="partli">
+                    <text>配件名称  <text style='color:red'>*</text></text>
+                    <textarea placeholder='请输入' maxlength='40' placeholder-style="color:#bebebe" class="parttextarea" bindinput='partname' value='{{partName}}'></textarea>
+                </view>
+
+                <view class="partli">
+                    <text>规格型号  </text>
+                    <textarea placeholder='请输入' maxlength='40' placeholder-style="color:#bebebe" class="parttextarea" bindinput='partsize' value='{{partSpec}}'></textarea>
+                </view>
+
+                <view class="partli">
+                    <text>生产商</text>
+                    <textarea placeholder='请输入' maxlength='40' placeholder-style="color:#bebebe" class="parttextarea" bindinput='partcom' value='{{partProduce}}'></textarea>
+                </view>
+
+                <view class="partli partliposition">
+                    <text>来源  <text style='color:red'>*</text></text>
+                    <view style='width:48%' class="{{unit!='请选择'?'show':''}}">{{partStatusName}}</view>
+                    <view style='width:12%;text-align:center' bindtap='partStatusShow'>
+                        <image src="/static/images/xiala.png"></image>
+                    </view>
+                    <view hidden="{{partStatusHidden}}" class="unitposition">
+                        <view wx:for="{{partstatus}}" data-part-status="{{item.statusEq}}" data-part-statusname="{{item.name}}" bindtap='partStatusClick'>
+                            <text class="{{partStatus - 1==index?'clickcurrent':''}}" wx:key="list1_{{index}}">{{item.name}}</text>
+                            <image src="/static/images/hostchoose.png" wx:if="{{partStatus - 1==index}}"></image>
+                        </view>
+                    </view>
+                </view>
+
+
+                <view class="partli">
+                    <text>单价</text>
+                    <input placeholder='0.00' maxlength='40' placeholder-style="color:#bebebe" class="parttextarea" bindinput='peijianunit' value='{{partPrice}}'> </input>
+                </view>
+
+                <view class="partli">
+                    <text>数量  <text style='color:red'>*</text></text>
+                    <input placeholder='请输入' maxlength='40' placeholder-style="color:#bebebe" class="parttextarea" value='{{num}}' bindinput='partnum'></input>
+                </view>
+                <view class="partli partliposition">
+                    <text>单位  <text style='color:red'>*</text></text>
+                    <view style='width:48%' class="{{unit!='请选择'?'show':''}}">{{unitName}}</view>
+                    <view style='width:12%;text-align:center' bindtap='unitShow'>
+                        <image src="/static/images/xiala.png"></image>
+                    </view>
+                    <view hidden="{{unitHidden}}" class="unitposition">
+                        <view wx:for="{{unitList}}" data-unit-index="{{index}}" data-unit-name="{{item.name}}" data-unit-key="{{item.keyId}}" bindtap='unitClick'>
+                            <text class="{{unitIndex==index?'clickcurrent':''}}" wx:key="list2_{{index}}">{{item.name}}</text>
+                            <image src="/static/images/hostchoose.png" wx:if="{{unitIndex==index}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+        </view>
+
+
+
+        <view class="btncancle partcancle">
+            <text catchtap='partcancel'>取消</text>
+            <text catchtap='partaddPhone'>确定</text>
+
+        </view>
+    </view>
+</view>
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<view wx:if="{{!loading}}" class="{{index==0?'bigcontent':''}}  {{!totastHide || !peopleHide?'active':''}} {{over?'over':''}}">
+    <view class="assest-detail">
+        <view class="header">
+            <view class="{{index==0?'downline':''}}" bindtap="changeMsg" data-set-index="0">{{title}}</view>
+            <view class="{{index==1?'downline':''}}" bindtap="changeMsg" data-set-index="1">操作记录</view>
+        </view>
+        <!-- 左边数据 -->
+        <view class="basic-msg" hidden="{{index==1}}">
+            <!-- 接单的左边页面 -->
+            <!-- 没有权限页面 -->
+            <template is="nolimit" wx:if="{{status==1 && !orderLimit }}"></template>
+            <!-- 没有权限页面 -->
+            <template is="nolimit" wx:if="{{status==3 && !acceptLimit }}"></template>
+            <!-- 填写维修报告的权限 -->
+            <template is="nolimit" wx:if="{{status==2 && !writeRepaotLimit }}"></template>
+
+            <!--已完成的权限 -->
+            <template is="nolimit" wx:if="{{status==4 && !allPathLimit }}"></template>
+            <view wx:if="{{status==1 && orderLimit }}">
+                <!-- 底部按钮 -->
+                <view class="footer" wx:if="{{isAccept}}">
+                    <!-- 按钮组件 -->
+                    <view class="buttom">
+                        <template is="myBtn" data="{{disabled:disabled1,content:content}}"></template>
+                    </view>
+                </view>
+                <view class="ordertime">
+                    <view class="label">选择维修人</view>
+                    <view class="content" bindtap='choosePeople'>
+                        <text>{{people}}</text>
+                        <image src="/static/images/next.png" style='float:right'></image>
+                    </view>
+                </view>
+                <view class="ordertime">
+                    <view class="label">预计到达科室日期</view>
+                    <view class="content">
+                        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                            <view class="picker">
+                                {{date}}
+                            </view>
+                        </picker>
+
+                    </view>
+
+
+
+                </view>
+                <view class="ordertime">
+                    <view class="label">预计到达科室时间</view>
+                    <view class="content">
+
+                        <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+                            <view class="picker" style=''>
+                                {{time}}
+                            </view>
+                        </picker>
+                    </view>
+
+
+
+                </view>
+                <view class="write">
+                    <!-- <textarea placeholder="请输入备注内容（非必填）" placeholder-class="placeClass"  bindblur="orderRemark"/> -->
+                    <input placeholder="请输入备注内容（非必填）" placeholder-class="placeClass" bindblur="orderRemark" />
+                </view>
+                <view class="repairLi" bindtap='chooseType'>
+
+                    <text>接单类型</text>
+                    <text style='display:inline-block;margin-left:20rpx;'>{{msgData.reportStatus==2?'现场维修':'送修'}}</text>
+
+                </view>
+                <!-- 图片 -->
+
+                <view class="upload">
+                    <view class="assestli picture">
+                        <view class=" device-img">
+                            <text style="font-size:32rpx;color:#333;">故障图片</text>
+                        </view>
+                        <view class="viewimg">
+                            <view wx:for="{{msgData.assetsImg}}" wx:key="list4_{{index}}" bindtap='lookbigImg' data-current-index="{{index}}">
+                                <image src="{{PIC_URL+item}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+
+
+
+                <!-- 故障现象 -->
+                <view class="phenomenon">
+                    <view class="phentop">
+                        <view>故障现象</view>
+                        <view class="iconlist">
+                        </view>
+                        <view class="decribe" wx:for="{{faultDesc}}" wx:key="list5_{{index}}">
+                            <text wx:if="{{item}}">{{item}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view style='padding-bottom:200rpx;'>
+                    <!-- 附件 -->
+                    <view class="assestli">
+                        <view style='height:40rpx'>
+                            <view>
+                                <image src="../../static/images/fujian.png" class="fujianimg" style='margin:0'></image>
+                            </view>
+                            <view class=" font28" style='padding-left:2%;width:73%;font-size:32rpx;color:#333;'>附件
+                                <text style="color:#999;font-size:26rpx;">*仅支持图片(jpg、jpeg、png)查看</text>
+                            </view>
+                        </view>
+
+                    </view>
+                    <!-- 附件循环 -->
+                    <!-- <view class="assestli content line" bindtap="lookBignew" wx:for="{{newFiles}}" data-files-url="{{item.uploadUrl}}" wx:key="{{index}}" data-fujian-list="1" data-fujian-index="{{index}}" style='width:100%;margin:0;border-top:1rpx solid #dedede'>
+                        <view>
+                            <view class="label" style='width:97%;color:#508cee;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;'>
+                                <text>{{item.fileName}}</text>
+                            </view>
+                            <image src="/static/images/next.png" class="next fujianimg" style='margin-right:60rpx'></image>
+                        </view>
+                    </view> -->
+                    <view class='pm-files'>
+                        <view class="pm-files-item" wx:for="{{newFiles}}" wx:key="{{index}}" bindtap="lookBignew" data-files-url="{{item.uploadUrl}}">
+                            <image src="{{baseImgUrl + item.uploadUrl}}" class="pm-files-img" wx:if="{{item.isImg}}"></image>
+                            <image src="/static/images/noimg.png" class="pm-files-img" wx:if="{{!item.isImg}}"></image>
+                        </view>
+                    </view>
+                </view>
+
+
+            </view>
+
+            <view wx:if="{{status==2 && writeRepaotLimit}}" style='margin-top:-30rpx;'>
+                <!-- 底部按钮 -->
+                <view class="footer">
+                    <!-- 按钮组件 -->
+                    <view class=" repairing">
+                        <view class="store" bindtap='zancun'>暂存</view>
+                        <button class=" allsumit {{disabledrepair?'diabledBtn':'submit_login'}}" hover-class="clickBtn" disabled="{{disabledrepair}}" bindtap='complate'>完修提交</button>
+                    </view>
+                </view>
+                <!-- 待维修 待维修 待维修 待维修 待维修 待维修 待维修 待维修 待维修 待维修 待维修 待维修 -->
+                <view class="repaircontent">
+                    <view class="repairLeft">
+                        <view wx:for="{{leftList}}" data-repair-index="{{index}}" bindtap='repairChange' class="{{repairIndex==index?'active':''}}" wx:if="{{methodsIndex==2?(index==0?true:false):true}}" wx:key="list6_{{index}}">{{item}}</view>
+                    </view>
+                    <view class="repairRight">
+                        <!-- 工作方式对应的右边 -->
+                        <view hidden="{{repairIndex!=0}}">
+                            <view class="repair-rtop">选择维修方式</view>
+                            <view class="repair-rbot" style='margin-bottom:0'>
+                                <view wx:for="{{workmethods}}" data-methods-index="{{index}}" bindtap='work' wx:key="list7_{{index}}">
+                                    <text class="{{methodsIndex==index?'clickcurrent':''}}">{{item}}</text>
+                                    <image src="/static/images/hostchoose.png" wx:if="{{methodsIndex==index}}"></image>
+                                </view>
+                            </view>
+                            <!-- 选择自主维修的下边 -->
+                            <view>
+                                <view class="repair-rtop" hidden="{{methodsIndex==2}}">选择故障类型</view>
+                                <view class="repair-rbot" hidden="{{methodsIndex!=0}}">
+                                    <view wx:for="{{myfaulttype}}" data-myfaulttype-index="{{index}}" bindtap='myfaulttypeClick' data-myfaulttype-key="{{item.key}}" wx:key="list8_{{index}}">
+                                        <text class="{{myfaulttypeIndex==index?'clickcurrent':''}}">{{item.name}}</text>
+                                        <image src="/static/images/hostchoose.png" wx:if="{{myfaulttypeIndex==index}}"></image>
+                                    </view>
+                                </view>
+                                <view class="repair-rbot" wx:if="{{methodsIndex==2}}">
+                                    <textarea placeholder='请输入备注内容(非必填)' placeholder-class='palceClass ' class="resulttextarea" bindinput='textremark1' value="{{repairremarks1}}"></textarea>
+                                </view>
+                                <view class="repair-rbot" wx:if="{{methodsIndex==1}}">
+                                    <view wx:for="{{faulttype}}" wx:key="list9_{{index}}" data-faulttype-index="{{index}}" bindtap='faulttypeClick' data-faulttype-key="{{item.key}}">
+                                        <text class="{{faulttypeIndex==index?'clickcurrent':''}}">{{item.name}}</text>
+                                        <image src="/static/images/hostchoose.png" wx:if="{{faulttypeIndex==index}}"></image>
+                                    </view>
+                                    <view class="write-repair-unit">
+                                        <text>外修单位</text>
+                                        <!-- <textarea placeholder='请输入'  bindinput='company' value="{{outsideCompany}}"></textarea> -->
+                                        <input placeholder='请输入' bindinput='company' value="{{outsideCompany}}" />
+                                    </view>
+                                    <view class="write-repair-unit">
+                                        <text>联系电话</text>
+                                        <!-- <textarea placeholder='请输入' bindinput='phone' value="{{outsidePhone}}"></textarea> -->
+                                        <input placeholder='请输入' bindinput='phone' value="{{outsidePhone}}" />
+
+                                    </view>
+                                    <view class="write-repair-unit">
+                                        <text>工程师姓名</text>
+
+                                        <input placeholder='请输入' bindinput='outName' value="{{engineerName}}" />
+
+                                    </view>
+                                    <view class="write-repair-unit">
+                                        <text>工程师工号</text>
+
+                                        <input placeholder='请输入' bindinput='outNum' value="{{engineerNum}}" />
+
+                                    </view>
+
+
+                                </view>
+
+                            </view>
+                        </view>
+                        <!-- 故障现象对应的右边 -->
+                        <view hidden="{{repairIndex!=1}}">
+                            <view class="repair-rtop">选择故障现象
+                                <image src="/static/images/addmodal.png" bindtap='addphonement'></image>
+                            </view>
+                            <checkbox-group bindchange="phonecheckboxChange" style="min-height:800rpx;">
+                                <label class="checkbox" wx:for="{{failurepheno}}" wx:key="list10_{{index}}">
+                                    <text>{{item.name}}</text>
+                                    <checkbox value="{{index}}" color="#fff" checked="{{item.checked}}" />
+                                </label>
+                            </checkbox-group>
+                        </view>
+
+
+                        <!-- 故障原因对应的右边 -->
+                        <view hidden="{{repairIndex!=2}}">
+                            <view class="repair-rtop">选择故障原因
+                                <image src="/static/images/addmodal.png" bindtap='troublereason'></image>
+                            </view>
+                            <view class="repair-rbot" style='margin-bottom:0'>
+                                <view wx:for="{{troublemethods}}" wx:key="list11_{{index}}" data-reason-index="{{index}}" bindtap='reasonclick'>
+                                    <text class="{{reasonIndex==index?'clickcurrent':''}}">{{item}}</text>
+                                    <image src="/static/images/hostchoose.png" wx:if="{{reasonIndex==index}}"></image>
+                                </view>
+                            </view>
+                            <view class="repair-rtop reason"></view>
+                            <!-- 人为因素 -->
+                            <view class="repair-rbot" wx:if="{{reasonIndex==0}}" style="min-height: 500rpx; ">
+
+                                <checkbox-group bindchange="reasoncheckboxChange" style="min-height:320rpx;">
+                                    <label class="checkbox" wx:for="{{peopelereason}}" wx:key="list12_{{index}}">
+                                        <text>{{item.name}}</text>
+                                        <checkbox value="{{index}}" color="#fff" checked="{{item.checked}}" />
+                                    </label>
+                                </checkbox-group>
+                            </view>
+                            <!-- 设备故障 -->
+                            <view class="repair-rbot" wx:if="{{reasonIndex==1}}">
+
+                                <checkbox-group bindchange="reasoncheckboxChange" style="min-height:600rpx;">
+                                    <label class="checkbox" wx:for="{{ assestReason}}" wx:key="list13_{{index}}">
+                                        <text>{{item.name}}</text>
+                                        <checkbox value="{{index}}" color="#fff" checked="{{item.checked}}" />
+                                    </label>
+                                </checkbox-group>
+                            </view>
+                            <!-- 外界环境因素 -->
+                            <view class="repair-rbot" wx:if="{{reasonIndex==2}}">
+                                <checkbox-group bindchange="reasoncheckboxChange" style="min-height:600rpx;">
+                                    <label class="checkbox" wx:for="{{outReason}}" wx:key="list14_{{index}}">
+                                        <text>{{item.name}}</text>
+                                        <checkbox value="{{index}}" color="#fff" checked="{{item.checked}}" />
+                                    </label>
+                                </checkbox-group>
+                            </view>
+
+
+
+
+
+
+                        </view>
+                        <!-- 工作内容对应的右边 -->
+                        <view hidden="{{repairIndex!=3}}">
+                            <view class="repair-rtop">选择工作内容
+                                <image src="/static/images/addmodal.png" bindtap='addwork'></image>
+                            </view>
+                            <checkbox-group bindchange="workcheckboxChange">
+                                <label class="checkbox" wx:for="{{worktxt}}" wx:key="list15_{{index}}">
+                                    <text>{{item.name}}</text>
+                                    <checkbox value="{{index}}" color="#fff" checked="{{item.checked}}" />
+                                </label>
+                            </checkbox-group>
+
+
+
+                        </view>
+                        <!-- 配件信息对应的右边 -->
+                        <view hidden="{{repairIndex!=4}}">
+                            <view class="repair-rtop">添加配件
+                                <image src="/static/images/addmodal.png" bindtap='addpart'></image>
+                            </view>
+                            <view class="haspart">
+                                <view wx:if="{{nopart}}" class="nopart" style='min-height:800rpx;'>您还没有添加配件~</view>
+                                <view class="haspartul" wx:if="{{!nopart}}">
+                                    <view wx:for="{{partList}}" wx:key="list16_{{index}}">
+                                        <view class="haspartli" catchtap='repart' data-addpart-index="{{index}}" bindlongpress="removePart" wx:if="{{!item.delFlag}}">
+                                            <view>
+                                                <view class="partName">
+                                                    <image src="/static/images/gou.png" wx:if="{{item.status ==2}}"></image>
+                                                    <image src="/static/images/ling.png" wx:if="{{item.status ==1}}"></image>
+                                                    {{item.partName}}</view>
+                                                <view class="partline">
+                                                    <view wx:if="{{item.partSpec}}">{{item.partSpec}}</view>
+                                                    <view>{{item.num}}{{item.unitName}}</view>
+                                                    <!-- <view wx:if="{{!item.unitName}}">{{item.num}}个</view> -->
+                                                    <view wx:if="{{item.partPrice}}">{{item.partPrice}}</view>
+                                                </view>
+                                                <view class="delimage" wx:if="{{longtapEq==index}}" bindtap='delPart'>
+                                                    <image src="/static/images/hoverdel.png" catchtap='delPart'></image>
+                                                </view>
+                                            </view>
+                                            <image src="/static/images/next.png"></image>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+
+
+
+                        </view>
+                        <!-- 维修结果对应的右边 -->
+                        <view hidden="{{repairIndex!=5}}">
+                            <view class="repair-rtop">维修结果</view>
+                            <view class="repair-rbot" style='margin-bottom:0'>
+                                <view wx:for="{{repairReasult}}" wx:key="list17_{{index}}" data-reasult-index="{{index}}" bindtap='reasult'>
+                                    <text class="{{reasultIndex==index?'clickcurrent':''}}">{{item}}</text>
+                                    <image src="/static/images/hostchoose.png" wx:if="{{reasultIndex==index}}"></image>
+                                </view>
+                            </view>
+                            <view class="repair-rtop reason"></view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==0}}">
+
+                                <picker mode="date" value="{{datestart}}" bindchange="bindDateChange1">
+                                    <view class="picker">
+                                        <text style='width:30%'>开始日期</text>{{datestart}}
+                                    </view>
+                                </picker>
+                            </view>
+
+                            <view class="reasultbtn" wx:if="{{methodsIndex==0}}">
+
+                                <picker mode="time" value="{{timestart}}" bindchange="bindTimeChange1">
+                                    <view class="picker">
+                                        <text style='width:30%'>开始时间 </text>{{timestart}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==0}}">
+
+                                <picker mode="date" value="{{dateend}}" bindchange="bindDateChange2">
+                                    <view class="picker">
+                                        <text style='width:30%'>结束日期</text>{{dateend}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==0}}">
+
+                                <picker mode="time" value="{{timeend}}" bindchange="bindTimeChange2">
+                                    <view class="picker">
+                                        <text style='width:30%'> 结束时间</text> {{timeend}}
+                                    </view>
+                                </picker>
+                            </view>
+
+                            <!-- 外修的时间 -->
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="date" value="{{callRepair1}}" bindchange="jiaoxiuChange1">
+                                    <view class="picker">
+                                        <text style='width:30%'>叫修日期 </text>{{callRepair1}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="time" value="{{callRepair2}}" bindchange="jiaoxiuChange2">
+                                    <view class="picker">
+                                        <text style='width:30%'>叫修时间</text>{{callRepair2}}
+                                    </view>
+                                </picker>
+                            </view>
+
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="date" value="{{arrival1}}" bindchange="daodaChange1">
+                                    <view class="picker">
+                                        <text style='width:30%'>到达日期 </text>{{arrival1}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="time" value="{{arrival2}}" bindchange="daodaChange2">
+                                    <view class="picker">
+                                        <text style='width:30%'>到达时间</text>{{arrival2}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="date" value="{{leave1}}" bindchange="likaiChange1">
+                                    <view class="picker">
+                                        <text style='width:30%'>离开日期 </text>{{leave1}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+
+                                <picker mode="time" value="{{leave2}}" bindchange="likaiChange2">
+                                    <view class="picker">
+                                        <text style='width:30%'>离开时间</text>{{leave2}}
+                                    </view>
+                                </picker>
+                            </view>
+                            <view class="reasultbtn" wx:if="{{methodsIndex==1}}">
+                                <text class="labal">维修工时</text>
+                                <input placeholder-class='palceClass' bindinput='gongshi' value="{{repairHours}}" placeholder='请输入'></input>
+                            </view>
+
+
+
+
+                            <view class="reasultbtn">
+                                <text class="labal">维修费</text>
+                                <input placeholder='0.00' placeholder-class='palceClass' bindinput='weixiumoney' value="{{repairCost}}"></input>
+                            </view>
+
+                            <view class="reasultbtn">
+                                <text class="labal">材料费</text>
+                                <input placeholder='0.00' placeholder-class='palceClass' bindinput='partmoney' value="{{partsCost}}"></input>
+                            </view>
+                            <view class="reasultbtn">
+                                <text class="labal">发票号码</text>
+                                <input placeholder='多张发票用分号隔开' placeholder-class='palceClass' bindinput='fapiaomoney' value="{{repairInvoice}}"></input>
+                            </view>
+                            <!-- <textarea placeholder='请输入备注内容(非必填)' placeholder-class='palceClass ' class="resulttextarea" bindinput='textremark2' value="{{repairremarks2}}"></textarea> -->
+                            <input placeholder='请输入备注内容(非必填)' placeholder-class='palceClass ' class="resulttextarea" bindinput='textremark2' value="{{repairremarks2}}" style='margin-bottom:220rpx' />
+
+                        </view>
+                    </view>
+                </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </view>
+            <view wx:if="{{status==3 && acceptLimit}}">
+                <!-- 底部按钮 -->
+                <view class="footer">
+                    <!-- 按钮组件 -->
+                    <view class="buttom">
+                        <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+                    </view>
+                </view>
+                <!-- 待验收 -->
+                <view class="accept-title">
+                    <view>服务评价</view>
+                    <view>满意请给五星哦</view>
+                </view>
+                <view class="star">
+                    <view class="starLi">
+                        <view class="starlabel">维修质量</view>
+                        <view class="starimg">
+                            <view class="background {{score1>index?'':'tap'}}" wx:for="{{start}}" wx:key="list18_{{index}}" data-score="{{item}}" bindtap="clickstart" data-list="1"></view>
+                        </view>
+                        <view class="startxt" wx:for="{{text1}}" wx:if="{{score1-1==index}}" wx:key="list19_{{index}}">{{item}}</view>
+                    </view>
+                    <view class="starLi">
+                        <view class="starlabel">响应速度</view>
+                        <view class="starimg">
+                            <view class="background {{score2>index?'':'tap'}}" wx:for="{{start}}" wx:key="list20_{{index}}" data-score="{{item}}" bindtap="clickstart" data-list="2"></view>
+                        </view>
+                        <view class="startxt" wx:for="{{text2}}" wx:if="{{score2-1==index}}" wx:key="list21_{{index}}">{{item}}</view>
+                    </view>
+                    <view class="starLi">
+                        <view class="starlabel">服务态度</view>
+                        <view class="starimg">
+                            <view class="background {{score3>index?'':'tap'}}" wx:for="{{start}}" wx:key="list22_{{index}}" data-score="{{item}}" bindtap="clickstart" data-list="3"></view>
+                        </view>
+                        <view class="startxt" wx:for="{{text3}}" wx:if="{{score3-1==index}}" wx:key="list23_{{index}}">{{item}}</view>
+                    </view>
+                </view>
+                <view class="write">
+                    <textarea placeholder="请输入备注内容（非必填）" placeholder-class="placeClass" bindblur="acceptTxt" />
+                </view>
+            </view>
+            <view wx:if="{{status==4 && allPathLimit}}">
+                <!-- 已完成 -->
+
+                <view class="content-accept" wx:if="{{!loading}}">
+                    <view class="accept-title">
+                        <view>服务评价</view>
+                    </view>
+                    <view class="star">
+                        <view class="starLi">
+                            <view class="starlabel">维修质量</view>
+                            <view class="starimg">
+                                <view class="background {{completeList.repairQuality >index?'':'tap'}}" wx:for="{{start}}" wx:key="list24_{{index}}"></view>
+                            </view>
+                            <view class="startxt" wx:for="{{text1}}" wx:key="list25_{{index}}" wx:if="{{completeList.repairQuality-1==index}}">{{item}}</view>
+                        </view>
+                        <view class="starLi">
+                            <view class="starlabel">响应速度</view>
+                            <view class="starimg">
+                                <view class="background {{completeList.responseSpeed >index?'':'tap'}}" wx:for="{{start}}" wx:key="list26_{{index}}"></view>
+                            </view>
+                            <view class="startxt" wx:for="{{text2}}" wx:key="list27_{{index}}" wx:if="{{completeList.responseSpeed-1==index}}">{{item}}</view>
+                        </view>
+                        <view class="starLi">
+                            <view class="starlabel">服务态度</view>
+                            <view class="starimg">
+                                <view class="background {{completeList.repairAttitude>index?'':'tap'}}" wx:for="{{start}}" wx:key="list28_{{index}}"></view>
+                            </view>
+                            <view class="startxt" wx:for="{{text3}}" wx:key="list29_{{index}}" wx:if="{{completeList.repairAttitude-1==index}}">{{item}}</view>
+                        </view>
+                    </view>
+                    <view class="write">
+                        <textarea placeholder="暂无备注" disabled="true" placeholder-class="placeClass" value="{{completeList.remarks}}" />
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <!-- 操作记录 -->
+    <view class="operate " hidden="{{index==0}}">
+        <view class="operate-top">
+            <view>
+                <view class="first">申请时间</view>
+                <view class="last" wx:if="{{msgData.reportRepairDate }}">{{msgData.reportRepairDate }}</view>
+            </view>
+            <view>
+                <view class="first">申请人</view>
+                <view class="last" wx:if="{{msgData.reportRepairName }}">{{msgData.reportRepairName}}</view>
+            </view>
+            <view>
+                <view class="first">联系电话</view>
+                <view class="last" wx:if="{{msgData.reportRepairPhone }}">{{msgData.reportRepairPhone }}</view>
+            </view>
+        </view>
+        <view class="path">
+            <view class="pathLi" bindtap="apply">
+                <view class="top">
+                    <image src="/static/images/success.png"></image>
+                    <text>提交申请</text>
+                    <image src="/static/images/next.png" wx:if="{{allPathLimit}}"></image>
+                </view>
+                <view class="bottom">
+                    <text class="operate-name" wx:if="{{operateList.reportRepairName }}">{{operateList.reportRepairName}}</text>
+                    <text wx:if="{{operateList.reportRepairDate }}">{{operateList.reportRepairDate}}</text>
+                </view>
+            </view>
+            <view class="pathLi" bindtap="order" wx:if="{{status>1}}">
+                <view class="top">
+                    <image src="/static/images/success.png"></image>
+                    <text>接单</text>
+                    <image src="/static/images/next.png" wx:if="{{allPathLimit}}"></image>
+                </view>
+                <view class="bottom">
+                    <text class="operate-name" wx:if="{{operateList.takeOrderName }}">{{operateList.takeOrderName}}</text>
+                    <text wx:if="{{operateList.takeOrderTime }}">{{operateList.takeOrderTime}}</text>
+                </view>
+            </view>
+            <view class="pathLi" bindtap="report" wx:if="{{status>2}}">
+                <view class="top">
+                    <image src="/static/images/success.png"></image>
+                    <text>维修报告</text>
+                    <image src="/static/images/next.png" wx:if="{{lookreprtLimit}}"></image>
+                </view>
+                <view class="bottom">
+                    <text class="operate-name" wx:if="{{operateList.repairName }}">{{operateList.repairName}}</text>
+                    <text wx:if="{{operateList.repairDate }}">{{operateList.repairDate}}</text>
+                </view>
+            </view>
+            <view class="pathLi" bindtap="accept" wx:if="{{status>3}}">
+                <view class="top">
+                    <image src="/static/images/success.png"></image>
+                    <text>验收</text>
+                    <image src="/static/images/next.png" wx:if="{{allPathLimit}}"></image>
+                </view>
+                <view class="bottom">
+                    <text class="operate-name" wx:if="{{operateList.repairCheckName }}">{{operateList.repairCheckName}}</text>
+                    <text wx:if="{{operateList.repairCheckTime }}">{{operateList.repairCheckTime}}</text>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</view>

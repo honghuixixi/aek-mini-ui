@@ -1,0 +1,102 @@
+<import src="/components/tabbar/tabbar.wxml"/>
+<view class="user">
+  <!-- 第一块 -->
+  <view class="first">
+    <!-- 用户姓名 -->
+    <view class="user-li" bindtap="reviseName">
+      <view class="label">
+        <image src="/static/images/name.png"></image><text>用户姓名</text>
+      </view>
+      <view class="right">
+        <text>{{userMsg.realName}}</text>
+        <image src="/static/images/next.png"></image>
+      </view>
+    </view>
+    <!-- 手机号 -->
+    <view class="user-li ">
+      <view class="label phone">
+        <image src="/static/images/phone.png"></image><text>手机号</text>
+      </view>
+      <view class="right">
+        <text>{{userMsg.mobile}}</text>
+      </view>
+    </view>
+    <!-- 邮箱 -->
+    <view class="user-li ">
+      <view class="label email">
+        <image src="/static/images/email.png"></image><text>邮箱</text>
+      </view>
+      <view class="right" wx:if="{{userMsg.email}}" >
+        <view class="emailLi">{{userMsg.email}}<text wx:if="{{userMsg.emailActivate}}">(已绑定)</text></view>
+      </view>
+    </view>
+    <!-- 修改密码 -->
+    <view class="user-li last-li" bindtap="revisePsd">
+      <view class="label password">
+        <image src="/static/images/xgmm.png"></image><text>修改密码</text>
+      </view>
+      <view class="right">
+        <image src="/static/images/next.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 第二块 -->
+  <view class="first secnd">
+    <!-- 所属机构 -->
+    <view class="user-li jigoulong">
+      <view class="label jigou">
+        <image src="/static/images/jgou.png"></image><text>所属机构</text>
+      </view>
+      <view class="right jigoutext">
+        <text>{{userMsg.tenantName}}</text>
+      </view>
+    </view>
+    <!-- 所属部门 -->
+    <view class="user-li ">
+      <view class="label bumen">
+        <image src="/static/images/bumen.png"></image><text>所属部门</text>
+      </view>
+      <view class="right">
+        <text>{{userMsg.deptName}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 第三块 -->
+  <view class="first secnd">
+    <!-- 接受消息提醒 -->
+    <view class="user-li" wx-if="{{userMsg.bangdingWeChatFlag}}">
+      <view class="label config">
+        <image src="/static/images/xiaoxi.png"></image><text>公众号消息提醒</text>
+      </view>
+      <view class="right" style="width: auto;line-height:78rpx;">
+        <switch wx-if="{{userMsg.receiveWeChatMessageFlag}}" checked bindchange="switch1Change" style="margin-top:-5rpx;" />
+        <switch wx-if="{{!userMsg.receiveWeChatMessageFlag}}" bindchange="switch1Change" style="margin-top:-5rpx;" />
+      </view>
+    </view>
+    <!-- 意见反馈 -->
+    <!-- <view class="user-li " bindtap="suggest" wx:if="false">
+      <view class="label fankui">
+        <image src="/static/images/fankui.png"></image><text>意见反馈</text>
+      </view>
+      <view class="right">
+        <image src="/static/images/next.png"></image>
+      </view>
+    </view> -->
+
+    <!-- 客服电话 -->
+    <view class="user-li last-li" bindtap='call'>
+      <view class="label kefu">
+        <image src="/static/images/kefu.png"></image><text>客服电话</text>
+      </view>
+      <view class="right">
+        <text>400-052-5256</text>
+      </view>
+    </view>
+  </view>
+    <view class="loginBtn">
+       <button bindtap="exit"   hover-class="clickBtn"  hover-stay-time="1000" style='width:100%:'>退出</button> 
+    </view>
+</view>
+<!-- <view class="footer">
+    <template is="tabbar" data="{{tabbar}}"/>
+</view> -->

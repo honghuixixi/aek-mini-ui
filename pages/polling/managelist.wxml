@@ -1,0 +1,39 @@
+<import src="/components/pollitem/pollitem.wxml" />
+<import src="/components/nolimits/nolimits.wxml" />
+
+  <template is="nolimit"  wx:if="{{!pollingLimit}}"></template>
+
+<view  wx:if="{{pollingLimit}}">
+<!-- tabbar -->
+  <view class="tabbar">
+    <view catchtap='changeIndex' data-choose-index="2" class="{{tabIndex==2?'active':''}}">
+      巡检中
+      <view class="btmline" wx:if="{{tabIndex==2}}"></view>
+    </view>
+    <view catchtap='changeIndex' data-choose-index="1" class="{{tabIndex==1?'active':''}}">
+      待巡检
+      <view class="btmline" wx:if="{{tabIndex==1}}"></view>
+    </view>
+  </view>
+  <!-- 搜索框 -->
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="请输入巡检计划名称/编号" placeholder-class="palce-class" bindfocus="search" value="{{searchName}}"/>
+    </view>
+    </view>
+    <!-- 卡片列表 -->
+    <view class="cardlist">
+      <view wx:for="{{list2}}" bindtap='assetList' data-asset='{{item.id}}' wx:if="{{tabIndex==2}}" wx:key=
+        '{{index}}'>
+        <template is="pollitem" data="{{...item}}" ></template>
+      </view>
+    <view wx:for="{{list1}}" bindtap='startImp' data-asset='{{item.id}}' wx:if="{{tabIndex==1}}" wx:key="{{index}}">
+            <template is="pollitem" data="{{...item}}" ></template>
+          </view>
+
+          <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image   src="/static/images/pull.gif"></image></view>
+        </view>
+
+</view>

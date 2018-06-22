@@ -1,0 +1,52 @@
+<import src="/components/serveritem/sitem.wxml" />
+<import src="/components/serverhover/serverhover.wxml" />
+<view class="content">
+<template is="serverhover" data="{{tag}}"></template>
+  <view class="cell">
+    <view bindtap='goNotice'>
+    <image src="../../static/images/notice.png"></image>
+    <view class="new" wx:if="{{noticeHas}}"></view>
+    <text>通知</text>
+    </view>
+     <view bindtap='goNews'>
+    <image src="../../static/images/smessage.png"></image>
+    <view class="new" wx:if="{{newsHas}}"></view>
+    <text>消息</text>
+    </view>
+    <view bindtap='goArticle'>
+    <image src="../../static/images/articel.png"></image>
+    <view class="new" wx:if="{{articleHas}}"></view>
+    <text>文章</text>
+    </view>
+    <view bindtap='gocomplaint'>
+    <image src="../../static/images/complate.png"></image>
+    <view class="new" wx:if="{{complaintHas}}"></view>
+    <text>售后与不良事件</text>
+    </view>
+    <view bindtap='goconsult'>
+    <image src="../../static/images/consault.png"></image>
+    <view class="new" wx:if="{{consultationHas}}"></view>
+    <text>技术咨询</text>
+    </view>
+    <view>
+    
+    </view>
+  </view>
+  <view class="list">
+    <view class="title">
+      最新发布/回复
+    </view>
+    <view class="listcard">
+    <view wx:for="{{list}}" wx:key="{{index}}" bindtap='goDetail' data-info-type="{{item.frontType}}" data-info-id="{{item.id}}">
+     <template is="sitem" data="{{...item}}"></template>
+    </view>
+      <view wx:if="{{list.length==0}}">
+        <view class="announce-show">
+          <image src="../../static/images/nomsg.png"></image>
+          <text>还没有任何数据哦~</text>
+        </view>
+      </view> 
+      <!-- <view style='height:35rpx;backgorund:#EFEFF4;' wx:if="{{list.length!=0}}"></view> -->
+    </view>
+  </view>
+</view>

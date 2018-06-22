@@ -1,0 +1,38 @@
+
+<import src="/components/loading/loading.wxml" />
+<view class="accept">
+ <!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<view class="content-accept" wx:if="{{!loading}}">
+        <view class="accept-title"><view >服务评价</view></view>
+      <view class="star">
+      <view class="starLi">
+      <view class="starlabel">维修质量</view>
+      <view class="starimg">
+        <view class="background {{completeList.repairQuality>index?'':'tap'}}" wx:for="{{start}}"  ></view>
+      </view>
+      <view class="startxt" wx:for="{{text1}}" wx:if="{{completeList.repairQuality-1==index}}">{{item}}</view>
+      </view>
+        <view class="starLi">
+      <view class="starlabel">响应速度</view>
+      <view class="starimg">
+        <view class="background {{completeList.responseSpeed>index?'':'tap'}}" wx:for="{{start}}" ></view>
+      </view>
+      <view class="startxt" wx:for="{{text2}}" wx:if="{{completeList.responseSpeed-1==index}}">{{item}}</view>
+      </view>
+      <view class="starLi">
+      <view class="starlabel">服务态度</view>
+      <view class="starimg">
+        <view class="background {{completeList.repairAttitude>index?'':'tap'}}" wx:for="{{start}}"></view>
+      </view>
+      <view class="startxt" wx:for="{{text3}}" wx:if="{{completeList.repairAttitude-1==index}}">{{item}}</view>
+      </view>
+      </view>
+       <view class="write">
+      <textarea placeholder="暂无备注" disabled="true" placeholder-class="placeClass" value="{{completeList.remarks}}"/>
+      </view>
+  </view>
+
+</view>
+
+

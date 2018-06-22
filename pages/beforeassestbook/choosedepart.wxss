@@ -1,0 +1,19 @@
+/* pages/beforeassestbook/choosedepart.wxss */
+.chooseDeptWrap{
+  font-size:32rpx; 
+  padding:30rpx 0rpx; 
+}
+.chooseDept-item{
+  padding-left:30rpx;
+  height: 60rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+}
+.chooseDept-child{
+  padding-left:60rpx; 
+  height: 60rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -1,0 +1,58 @@
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<view>
+  <view class="nav">联系方式</view>
+  <view class="list">
+    <text>邮箱</text>
+    <input placeholder='请输入(非必填)' placeholder-style="color:#bebebe;font-size:28rpx;" value="{{email}}" bindinput='emailinput'></input>
+  </view>
+    <view class="list">
+    <text>微信号</text>
+    <input placeholder='请输入(非必填)' placeholder-style="color:#bebebe;font-size:28rpx;" maxlength='40' value="{{wx}}" bindinput='wxinput'></input>
+  </view>
+
+  <view class="nav">咨询内容</view>
+  <view class="list">
+    <view class="error">*</view>
+    <text>产品名称</text>
+    <input placeholder='请输入，40字符以内' placeholder-style="color:#bebebe;font-size:28rpx;" value="{{productor}}" bindinput='productorinput' maxlength='40' ></input>
+  </view>
+    <view class="list">
+    <view class="error">*</view>
+    <text>厂商名称</text>
+    <input placeholder='请输入，40字符以内' placeholder-style="color:#bebebe;font-size:28rpx;" value="{{manufacturer}}" bindinput='manufacturerinput' maxlength='40' ></input>
+  </view>
+  <view class="list" bindtap='actionsheet'>
+  <view class="error">*</view>
+    <text>咨询类型</text>
+    <text style='color:#bebebe;' wx:if="{{type==0}}">请选择</text>
+    <text style='color:#333' wx:if="{{type!=0}}">{{typename}}</text>
+    <view  style='width:300rpx;text-align: right;'>
+     <image src="/static/images/next.png"></image>
+    </view>
+   
+  </view>
+
+    <view class="navsmall"></view>
+  <view class="list">
+  <view class="error">*</view>
+    <text>标题</text>
+    <input placeholder='请输入，40字符以内' placeholder-style="color:#bebebe;font-size:28rpx;font-size:28rpx" value='{{title}}' bindinput='titleinput' maxlength='40' ></input>
+  </view>
+   <view style='padding:30rpx;background:#fff;border-bottom:1rpx solid #dedede'>
+  <textarea placeholder="请输入内容，不能为空，10000字以内" placeholder-style="color:#bebebe;font-size:28rpx;" maxlength="10000"  bindinput='contentinput' value="{{content}}">
+  </textarea>
+   
+     </view>
+<view style='height:160rpx;'></view>
+     <view class="footer">
+    <view class="buttom">
+          <template is="myBtn" data="{{content:'提交',disabled:disabled}}"></template>
+      </view>
+    </view>
+    <!-- 弹窗 -->
+    <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+</view>
+
+
+

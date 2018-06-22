@@ -1,0 +1,68 @@
+@import "/components/loading/loading.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5;
+  width: 100%;  
+}
+.accept{
+  height: 100%;
+}
+.star{
+  background:#fff;
+  padding:0 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.starLi{
+ border-bottom: 1rpx solid #e5e5e5;
+ height: 87rpx;
+ line-height: 87rpx;
+}
+.star .starLi:last-child{
+  border: 0
+}
+.starLi view{
+  float: left;
+}
+.starlabel{
+  font-size: 32rpx;
+  color: #333;
+  width: 25%;
+}
+.starimg{
+  width: 50%;
+}
+.starLi .startxt{
+  font-size: 28rpx;
+  color: #bebebe;
+  float: right;
+}
+.background{
+  margin-right: 25rpx;
+  margin-top: 25rpx;
+  width: 32rpx;
+  height: 32rpx;
+  background: url("https://ebey.aek56.com/api/file/mini/images/ystart.png") no-repeat;
+  background-size: 32rpx;
+}
+.tap{
+    background: url("https://ebey.aek56.com/api/file/mini/images/start.png") no-repeat;
+    background-size: 32rpx;
+}
+.write{
+  background: #fff;
+  margin: 20rpx 0;
+  padding: 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+textarea{
+  height: 290rpx;
+}
+.accept-title{
+   height: 70rpx;
+   line-height: 70rpx;
+   color: #666;
+   font-size: 26rpx;
+   padding: 0 30rpx;
+ }

@@ -1,0 +1,25 @@
+<import src="/components/mycard/mycard.wxml" />
+<view class="assestlit">
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="设备名称" bindblur="getAssentName" placeholder-class="palce-class" bindinput="search" focus="true"/>
+    </view>
+    <view class="choose"  bindtap="goAssentsList" ><text>搜索</text>
+    </view>
+  </view>
+  <view class="hository" hidden="{{hasHository}}">
+    <view class="title">历史搜索</view>
+    <view class="list">
+       <view class="li" data-name="{{item}}"  bindtap="goAssentsList"  wx:for="{{beforeAssestSearch}}" wx:key="*this">
+       <image src="/static/images/hository.png"></image>
+        <text data-name="{{item}}">{{item}}</text>
+        <image src="/static/images/next.png"></image>
+     </view>
+    </view>
+    <view class="delect" bindtap="delHository">
+      <image src="/static/images/delect.png"></image>
+      <text>清空历史搜索</text>
+    </view>
+  </view>
+</view>

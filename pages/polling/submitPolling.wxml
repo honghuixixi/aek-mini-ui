@@ -1,0 +1,42 @@
+<!--pages/polling/submitPolling.wxml-->
+<import src="/components/button/button.wxml" />
+<view class='height30rpx'></view>
+<view class='nextDateView'>
+    <view class='nextDateTxt'><text style='color: #f00;'>*</text>下次计划日期</view>
+    <picker style='flex: 1;' mode="date" value="{{nexDate}}" bindchange="bindDateChange">
+        <view style='margin-left: 50rpx; font-size: 32rpx; color: #666;'>
+            {{nexDate}}
+        </view>
+    </picker>
+</view>
+<view class='row' bindtap='bindChooseUser'>
+    <view class='row-txt'>下次实施人</view>
+    <view class='row-con'>{{nextChargeMan.name}}</view>
+    <view class='row-arrow'>></view>
+</view>
+<view class='row'>
+    <view class='row-txt'>报告验收人</view>
+    <view class='row-con'>{{checkManNames}}</view>
+</view>
+<view class='textareaView'>
+    <view class='textareaTxt'>临床使用情况</view>
+    <textarea placeholder='请输入，300字符以内' maxlength='300' bindinput='contentinput' data-key-name='condition' placeholder-class="palce-class" value="{{condition}}" wx:if='{{!readOnly}}'></textarea>
+    <view class='read' wx:if='{{readOnly}}'>{{condition  || ''}}</view>
+</view>
+<view class='textareaView'>
+    <view class='textareaTxt'>存在的问题及分析</view>
+    <textarea placeholder='请输入，300字符以内' maxlength='300' bindinput='contentinput' data-key-name='analysis' placeholder-class="palce-class" value="{{analysis}}" wx:if='{{!readOnly}}'></textarea>
+    <view class='read' wx:if='{{readOnly}}'>{{analysis || ''}}</view>
+</view>
+<view class='textareaView'>
+    <view class='textareaTxt'>改进的问题及建议</view>
+    <textarea placeholder='请输入，300字符以内' maxlength='300' bindinput='contentinput' data-key-name='suggestion' placeholder-class="palce-class" value="{{suggestion}}" wx:if='{{!readOnly}}'></textarea>
+    <view class='read' wx:if='{{readOnly}}'>{{suggestion  || ''}}</view>
+</view>
+<view class="footer">
+    <view class="buttom" bindtap='submitImp'>
+        <template is="myBtn" data="{{disabled:fasle,content:'提交巡检'}}"></template>
+    </view>
+</view>
+<!-- toast -->
+<view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>

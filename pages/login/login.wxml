@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<!-- totast提示 -->
+<template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<view class="container">
+    <view class="logo">
+        <!-- <image src="/static/images/logo.png"></image>
+        <text>爱医康 <text>| -->
+        <text style='font-size:50rpx;color:#f7931e;'> 设备管理服务平台</text>
+    </view>
+    <!--密码登录  -->
+    <view class="userinfo">
+        <view class="loginName loginWrap">
+            <image src="/static/images/my.png"></image>
+            <input type="text" name='username' class="usrname loginInput" bindinput="getuserName" placeholder="绑定的手机号/邮箱/登录名" placeholder-class="placeClass" maxlength='40' />
+            <image src="/static/images/pass.png" class="showSuccess" hidden="{{!phonePass}}"></image>
+        </view>
+        <view class="loginpassword loginWrap">
+            <image src="/static/images/password.png"></image>
+            <input password="{{password}}" name='password' class="password loginInput" bindinput="getPassword" placeholder="密码" placeholder-class="placeClass" />
+            <!-- <view class="resetpwdShow" bindtap="setPwdVisable">
+      <image src="/static/images/hidepwd.png" class="showPass" wx:if="{{password}}"></image>
+      <image src="/static/images/showpwd.png" class="showPass"  wx:if="{{!password}}"></image>
+   </view>    -->
+        </view>
+        <view class="findpwd">
+            <text class="fogetPwd" bindtap="findPwd">忘记密码？</text>
+        </view>
+
+        <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+
+
+        <view class="messageLogin" bindtap="messageLogin">
+            <text>短信登录</text>
+        </view>
+    </view>
+</view>

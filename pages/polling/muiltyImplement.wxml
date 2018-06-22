@@ -1,0 +1,31 @@
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<view>
+    <view style='height:35rpx;'></view>
+    <view class='template'>
+        <view class="list" wx:for="{{detail.model}}" wx:key="{{index}}" wx:for-item="i">
+            <view class="title">{{i.name}}</view>
+            <view class="option" wx:for="{{i.projects}}" wx:for-index="idx" wx:for-item="j" wx:key="{{idx}}" bindtap='choose' data-warp-index="{{index}}" data-inner-id="{{j.id}}" data-template-id="{{i.id}}" data-answers-name="{{j.name}}">
+                <text>{{j.name}}</text>
+                <view>
+                    <image src='../../static/images/choosed.png' wx:if="{{j.id==detail.answers[i.id].id}}"></image>
+                    <image src='../../static/images/choose.png' wx:if="{{j.id!=detail.answers[i.id].id }}"></image>
+                </view>
+            </view>
+        </view>
+        <view>
+            <view class="title">备注</view>
+            <view style='padding:30rpx;background:#fff'>
+                <input placeholder='请输入，40个字符以内' value="{{detail.remarks}}" bindinput='textinput' placeholder-style="color:#bebebe;font-size:28rpx;" maxlength='40'></input>
+            </view>
+            <view style='padding:100rpx;'> </view>
+        </view>
+    </view>
+    <view class="footer">
+        <view class="buttom">
+            <template is="myBtn" data="{{content:'提交',disabled:disabled}}"></template>
+        </view>
+    </view>
+    <!-- 弹窗 -->
+    <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+</view>

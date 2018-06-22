@@ -1,0 +1,29 @@
+/* 自定义totsat */
+.mytotast{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:row;
+  z-index:1000;
+
+}
+.totastcont{
+  height: 88rpx;
+  border-radius: 8rpx;
+  padding: 0 30rpx;
+  background: rgba(0,0,0,.7);
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:row;
+}
+.totastcont text{
+  color: #fff;
+  font-size: 32rpx;
+}

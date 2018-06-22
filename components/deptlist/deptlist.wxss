@@ -1,0 +1,58 @@
+.dept-container{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color:rgba(0,0,0,.5) ;
+  z-index: 500  
+}
+.deptwrap{
+  background-color:#fff;
+  position:fixed;
+  top: 0;
+  bottom: 0;
+  right:0;
+  width:500rpx;
+  overflow-y: auto;
+}
+.dept-lable{
+  width:100%;
+  text-align: center;
+  background-color:#f3f3f5;
+  color:#c6c6c7;
+  font-size:30rpx;
+  line-height:40px;     
+}
+.dept-item{
+  padding-left:20rpx;
+  height:60rpx; 
+  line-height:60rpx;  
+}
+.dept-child{
+  padding-left:40rpx;
+  width:450rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  height:60rpx; 
+  line-height:60rpx;  
+}
+.chooseDeptWrap{
+  font-size:32rpx; 
+  padding:30rpx 0rpx; 
+}
+.chooseDept-item{
+  padding-left:30rpx;
+  height: 60rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+}
+.chooseDept-child{
+  padding-left:60rpx; 
+  height: 60rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

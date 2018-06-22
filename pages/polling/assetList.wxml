@@ -1,0 +1,63 @@
+<!--pages/polling/assetList.wxml-->
+<import src="/components/assetItem/assetItem.wxml" />
+<import src="/components/nolimits/nolimits.wxml" />
+<import src="/components/button/button.wxml" />
+<view wx:if="{{false}}">
+  <template is="nolimit"></template>
+</view>
+<view>
+  <!-- 悬浮按钮 -->
+  <view class='floatScanWrap' hidden="{{tabIndex!=1 || inspectingNum < 1}}">
+    <view class='floatScan' wx:if="{{openHoverBtn}}">
+        <text bindtap='scanAsset'>扫码巡检</text>
+        <image src="/static/images/assetScan.png"></image>
+    </view>
+    <view class='floatScan' wx:if="{{openHoverBtn}}">
+        <text bindtap='muiltyImplement'>批量巡检</text>
+        <image src="/static/images/plxj.png"></image>
+    </view>
+    <view class='floatScan'>
+        <image wx:if='{{!openHoverBtn}}' src="/static/images/root.png" bindtap='disOpenHoverBtn'></image>
+        <image wx:if='{{openHoverBtn}}' src="/static/images/getroot.png" bindtap='disOpenHoverBtn'></image>
+    </view>
+  </view>
+  <!-- <view class='floatSubWrap' hidden="{{tabIndex!=2}}">
+    <view class='floatSubmit' bindtap='submitImp'><text>提交巡检</text></view>
+  </view> -->
+<view class="footer" hidden="{{tabIndex!=2}}" > 
+    <view class="buttom" bindtap='submitImp'>
+       <template is="myBtn" data="{{disabled:fasle,content:'提交'}}"></template>
+    </view>
+</view> 
+  <!-- tabbar -->
+  <view class="tabbar">
+    <view catchtap='changeIndex' data-choose-index="1" class="{{tabIndex==1?'active':''}}">
+      待巡检资产<text>({{inspectingNum}})</text>
+      <view class="btmline" hidden="{{tabIndex!=1}}"></view>
+    </view>
+    <view catchtap='changeIndex' data-choose-index="2" class="{{tabIndex==2?'active':''}}">
+      已巡检资产<text>({{inspectedNum}})</text>
+      <view class="btmline" hidden="{{tabIndex!=2}}"></view>
+    </view>
+  </view>
+  <!-- 搜索框 -->
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="请输入设备编号/名称" placeholder-class="palce-class" bindfocus="search" value="{{searchName}}"/>
+    </view>
+  </view>
+  <!-- 设备列表 -->
+  <view class="cardlist {{tabIndex==2&&nomore?'marginBottom108':''}}">
+    <view wx:for="{{arr2}}" wx:if="{{tabIndex==2}}" wx:key='index' data-asset-id='{{item.id}}' bindtap='assetDetail'>
+      <template is="assetItem" data="{{...item}}" ></template>
+    </view>
+    <view wx:for="{{arr1}}" wx:if="{{tabIndex==1}}" wx:key="index" data-asset-id='{{item.id}}' bindtap='assetDetail'>
+      <template is="assetItem" data="{{...item}}" ></template>
+    </view>
+  </view>
+  <view class="nomore pull marginBottom108" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image src="/static/images/pull.gif"></image></view>
+  <!-- toast -->
+  <view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+</view>

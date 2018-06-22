@@ -1,0 +1,62 @@
+  @import "/components/button/button.wxss";
+  @import "/components/mytotast/mytotast.wxss";
+page {
+  height: 100%;
+  background: #f3f3f5;
+}
+.nav{
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #999;
+  font-size: 26rpx;
+  padding-left: 30rpx;
+  border-bottom: 1rpx solid #dedede;
+}
+.list{
+  background: #fff;
+  border-bottom: 1rpx solid #dedede;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.list text{
+  width: 200rpx;
+  color: #333;
+}
+
+.list image{
+  width: 12rpx;
+  height: 22rpx;
+  
+}
+input{
+  width: 480rpx;
+}
+.navsmall{
+  height: 30rpx;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100;
+  border-top: 1rpx solid #e5e5e5;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+textarea{
+  width: 100%;
+  
+}
+.error{
+  color: red;
+}

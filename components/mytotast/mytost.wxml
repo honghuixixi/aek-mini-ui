@@ -1,0 +1,7 @@
+<template name="mytost">
+    <view class='mytost-mask' wx:if='{{show}}'>
+        <view class='mytost-wrapper'>
+            <view class='mytost-container'>{{content}}</view>
+        </view>
+    </view>
+</template>

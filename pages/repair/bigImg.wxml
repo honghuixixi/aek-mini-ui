@@ -1,0 +1,11 @@
+
+<view class="bigImg">
+
+    <swiper class="post-swiper" circular="true"  indicator-dots="true" current="{{current}}">
+      <swiper-item wx:for="{{msgData.assetsImg}}">
+         
+          <image src="{{PIC_URL+item}}" />
+      </swiper-item>
+     
+  </swiper>
+</view>

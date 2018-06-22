@@ -1,0 +1,133 @@
+/* pages/service/noticedetail.wxss */
+@import "/components/replayitem/replayitem.wxss";
+@import "/components/button/button.wxss";
+@import "/components/mytotast/mytotast.wxss";
+
+page {
+    height: 100%;
+    background: #efeff4;
+}
+
+.detail {
+    padding: 30rpx 35rpx;
+    background: #fff;
+}
+
+.title {
+    font-size: 36rpx;
+    color: #333;
+}
+
+.time {
+    font-size: 24rpx;
+    color: #999;
+    margin-top: 35rpx;
+}
+
+.publishName, .publishOrg {
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.content {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+    white-space: pre-wrap;
+}
+
+.replay {
+    margin-top: 88rpx;
+    margin-bottom: 223rpx;
+}
+
+.nomore {
+    font-size: 28rpx;
+    text-align: center;
+    color: #999;
+    padding-top: 20rpx;
+    background: #efeff4;
+}
+
+.pull image {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.pull {
+    margin-bottom: 60rpx;
+}
+
+.pull {
+    margin-bottom: 60rpx;
+}
+
+.type {
+    color: #6096ef;
+    margin-left: 40rpx;
+}
+
+.isnews {
+    color: #ffae13;
+    margin-left: 20rpx;
+}
+
+.nav {
+    height: 88rpx;
+    color: #999;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    line-height: 88rpx;
+    background: #efeff4;
+}
+
+.announce-show {
+    padding-top: 50rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.announce-show image {
+    width: 135rpx;
+    height: 142rpx;
+}
+
+.announce-show text {
+    font-size: 32rpx;
+    color: #999;
+    margin-top: 40rpx;
+}
+
+.fujian {
+    margin-top: 60rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.fujianli {
+    color: #508cee;
+    font-size: 28rpx;
+    height: 80rpx;
+}
+
+.next {
+    width: 16rpx;
+    height: 25rpx;
+    margin: 0;
+}
+
+.fujianli view {
+    float: left;
+    width: calc(100% - 30rpx);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.fujianli image {
+    float: right;
+    margin-top: 5rpx;
+}

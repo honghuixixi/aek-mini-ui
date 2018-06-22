@@ -1,0 +1,33 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/msglistcard/msglistcard.wxml" />
+<import src="/components/repaircard/repaircard.wxml" />
+<import src="/components/loading/loading.wxml" />
+<import src="/components/nolimits/nolimits.wxml" />
+    <!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<template is="nolimit" wx:if="{{!repairlistLimit && !loading}}"></template>
+<view class="assestlit {{over?'over':''}}" wx:if="{{!loading && repairlistLimit}}">
+  
+    
+  <view class="list">
+      <view wx:for="{{cardList}}" bindtap="repairDetail" wx:key="{{index}}"  data-repair-id="{{item.id}}">
+      <template is="repaircard" data="{{...item}}"></template>
+
+    </view>  
+    
+   
+    <view class="nomore pull" hidden="{{nomore}}">~没有更多了~</view>
+    <view class="nomore pull" hidden="{{pullDown}}"><image src="/static/images/pull.gif"></image></view>
+
+  </view>
+
+ 
+   
+  
+</view>
+
+
+
+
+
+

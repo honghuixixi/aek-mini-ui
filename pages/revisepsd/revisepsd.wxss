@@ -1,0 +1,44 @@
+@import "/components/mytotast/mytotast.wxss";
+@import "/components/button/button.wxss";
+
+page {
+  height: 100%;
+  background: #f3f3f5;
+}
+.revisename{
+   padding-top: 20rpx;
+   
+}
+.inputview{
+  width: 100%;
+   padding: 0rpx 30rpx; 
+background: #fff;  
+height: 86rpx;
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+}
+.inputview>view{
+  width: 100%;
+}
+.first{
+  border-top: 1rpx solid #e5e5e5;
+}
+.last{
+  border-bottom: 1rpx solid #e5e5e5;
+}
+input{
+  width: 100%;
+  font-size: 32rpx;
+    margin-top: 20rpx; 
+    color: #333;
+}
+.btn{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60rpx;
+}
+.place-class{
+  font-size: 32rpx;
+  color: #bebebe;
+}

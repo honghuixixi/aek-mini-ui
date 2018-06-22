@@ -1,0 +1,11 @@
+<template name="pollitem">
+ <view class="card">
+        <view class="num">{{planNo}}</view>
+        <view class="name">{{name}}</view>
+        <view class="icon">
+          <view class="cycle">周期：{{cycle}}</view>
+          <view class="dineline {{attention!='已过期' && attention?'':'red'}}" wx:if="{{attention}}">{{attention}}</view>
+        </view>
+        <view class="nexttime">下次巡检日期：{{nextDate2}}</view>
+      </view>
+</template>

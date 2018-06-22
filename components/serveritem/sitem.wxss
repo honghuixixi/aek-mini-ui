@@ -1,0 +1,38 @@
+.listitem{
+  padding: 35rpx 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid  #eee;
+}
+.itemTitle{
+  font-size: 34rpx;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  word-wrap:break-word;
+}
+.itemCont{
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 34rpx;
+  white-space:pre-wrap;
+
+}
+.itemTime{
+  margin-top: 22rpx;
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.hasnew{
+  position: absolute;
+  top: 10rpx;
+  background: #F12C20;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 50%;
+}

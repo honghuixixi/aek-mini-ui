@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<!-- totast提示 -->
+  <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<view class="container">
+  <!--重置密码  -->
+  <view class="userinfo">
+    <view class="loginName loginWrap">
+      <image src="/static/images/my.png"></image>
+      <input type="text" name='username' class="usrname loginInput" bindinput="getnewPhone" placeholder="手机号" placeholder-class="placeClass" />
+      <image src="/static/images/pass.png" class="showSuccess}" hidden="{{!phonePass}}"></image>
+    </view>
+    <view class="loginpassword loginWrap">
+      <image src="/static/images/yanzhengma.png"></image>
+      <input name='code' class="password loginInput" bindinput="inputnewCode" placeholder="验证码" placeholder-class="placeClass" />
+      <button hidden="{{showNum}}" class="getCode getCodeactive {{phonePass }}" bindtap="getnewCode" disabled="{{!phonePass}}">{{getText}}</button>
+      <text  hidden="{{!showNum}}">{{count + '秒'}}</text>
+    </view>
+     <view class="loginpassword loginWrap">
+      <image src="/static/images/password.png"></image>
+      <input password="{{password}}" name='password' class="password loginInput" bindinput="getnewPassword" placeholder="8~16位新密码(数字、字母及组合)" placeholder-class="placeClass"/>
+      <!-- 明暗文切换 -->
+      <!-- <image src="/static/images/hidepwd.png" class="showPass" bindtap="hidePassword" hidden="{{!password}}"></image>
+      <image src="/static/images/showpwd.png" class="showPass" bindtap="showPassword" hidden="{{password}}"></image> -->
+    </view>
+    <view style="height:60rpx;"></view>
+     <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+  </view>
+</view>

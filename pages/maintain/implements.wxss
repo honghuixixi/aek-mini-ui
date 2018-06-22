@@ -1,0 +1,113 @@
+/* pages/PM/assetsList.wxss */
+@import "/components/PM/list.wxss";
+@import "/components/loading/loading.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5; 
+}
+.height88 {
+  height: 88rpx;
+}
+.background {
+  background-color: #f3f3f5;
+}
+.search {
+  height: 88rpx;
+  background: #508cee;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.input {
+  height: 64rpx;
+  width: 100%;
+  border-radius: 32rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+
+.input image {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+}
+
+.nomore {
+  font-size: 28rpx;
+  text-align: center;
+  color: #999;
+  padding-top: 20rpx;
+}
+
+.pull image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.pull {
+  margin-bottom: 60rpx;
+}
+/* float scan btn */
+.floatScanWrap {
+  position: fixed;
+  right: 60rpx;
+  z-index: 1;
+  bottom: 60rpx;
+}
+.floatScanWrap .floatScan image {
+  width: 102rpx;
+  height: 102rpx;
+}
+.floatSubWrap {
+  position: fixed;
+  height: 100rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 1;
+  right: 0rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.floatSubWrap .floatSubmit {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #fff;
+  background-color: #6096EF;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+}
+.marginBottom108 {
+  padding-bottom: 108rpx;
+}
+/* toaster */
+.toaster {
+  background-color: rgba(0, 0, 0, 0.7);
+  line-height: 40rpx;
+  color: #fff;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  font-size: 30rpx;
+  width: 180rpx;
+  padding: 20rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-left: -90rpx;
+  top: 50%;
+  margin-top: -30rpx;
+  overflow: hidden;
+}

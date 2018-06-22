@@ -1,0 +1,13 @@
+<import src="/components/mytotast/mytotast.wxml" />
+<import src="/components/button/button.wxml" />
+<view class="revisename">
+  <view class="inputview first"><view class="last"><input value="{{oldpsd}}" bindinput="bindold"    placeholder="当前密码" placeholder-class="place-class"/></view></view>
+  <view class="inputview last"> <view><input value="{{newpsd}}" bindinput="bindnew"   placeholder="8~16位新密码(数字、字母及组合)" placeholder-class="place-class"/></view></view>
+
+   <!-- totast提示 -->
+  <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+  <view class="btn">
+  <!-- 按钮组件 -->
+   <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+  </view>  
+</view>

@@ -1,0 +1,437 @@
+@import "/components/loading/loading.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page{
+  height: 100%;
+   background: #f3f3f5; 
+}
+.loading{
+  height: 100%;
+   display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.repaircontent{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+  align-items: flex-start;
+ 
+}
+.repairLeft{
+  width: 186rpx;
+  background: #f3f3f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+.repairLeft>view{
+  width: 100%;
+  line-height: 88rpx;
+  height: 87rpx;
+  font-size: 32rpx;
+  color: #333;
+  border-bottom: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.repairLeft .active{
+  background: #fff;
+}
+.repairRight{
+  width: 564rpx;
+  background: #fff;
+  /* height: 100%; */
+}
+.repair-rtop{
+  height: 88rpx;
+  background: #f5f8fc;
+  font-size: 26rpx;
+  color: #666;
+  padding-left: 30rpx;
+  line-height: 88rpx;
+}
+.repair-rbot{
+  border-bottom: 1rpx solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
+  padding-left: 30rpx;
+  margin-bottom: 200rpx;
+  background: #fff;
+  height: 100%;
+}
+.repair-rbot>view{
+  height: 87rpx;
+  border-bottom:  1rpx solid #e5e5e5;
+  line-height: 87rpx;
+}
+.repair-rbot view:last-child{
+  border: 0
+}
+.repair-rbot image{
+  width: 32rpx;
+  height: 32rpx;
+  float: right
+}
+.repair-rbot text{
+  font-size: 32rpx;
+  color: #666;
+  float: left
+}
+.repair-rbot .clickcurrent{
+  color: #508cee
+}
+.write-repair-unit{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.write-repair-unit text{
+  width: 40%;
+}
+.write-repair-unit textarea{
+  width: 70%;
+  font-size: 32rpx;
+  height: 87rpx;
+  line-height: 40rpx;
+  margin-top: 40rpx;
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  height: 87rpx;
+  border-bottom:  1rpx solid #e5e5e5;
+  align-items: center;
+}
+.checkbox text{
+  width: 85%;
+  font-size: 32rpx;
+  color: #666;
+  padding-left: 30rpx;
+}
+.checkbox checkbox{
+  width: 15%
+}
+checkbox .wx-checkbox-input {
+  width: 32rpx;
+  height: 32rpx;
+
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  background-color: #508cee;
+}
+.repair-rtop image{
+   width: 32rpx;
+  height: 32rpx;
+
+  float: right
+}
+/* 添加故障现象弹窗 */
+.add{
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.addcontent{
+  height:532rpx;
+  width: 690rpx; 
+  background: #fff;
+  border-radius: 8rpx;
+  position: absolute;
+  z-index: 201;
+}
+.addtop{
+  background: #508cee;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 30rpx
+}
+.addtop text{
+  color: #fff;
+  font-size: 26rpx;
+  float: left
+}
+.addtop image{
+     width: 26rpx;
+  height: 26rpx;
+
+  float: right
+}
+.addbtn{
+  margin: 30rpx;
+}
+.addcontent textarea{
+  border: 1rpx solid #e5e5e5;
+  height:260rpx;
+  font-size: 32rpx;
+  padding: 30rpx;
+  width: 570rpx;
+}
+.btncancle text{
+font-size: 32rpx;
+}
+.btncancle{
+  margin-top: 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.btncancle text:first-child{
+  color: #999
+}
+.btncancle text:last-child{
+  color: #508cee;
+  margin-left: 100rpx;
+}
+ .reason{
+  height: 20rpx ;
+} 
+/* 添加配件弹窗
+ */
+ .part{
+   height: 746rpx;
+ }
+ textarea.parttextarea{
+   height: 68rpx;
+   width: 60%;
+   padding: 0;
+   border: 0;
+  padding-top: 20rpx;
+   line-height: 40rpx;
+ }
+ .partul{
+     border:  1rpx solid #e5e5e5;
+     
+ }
+ .partli{
+   line-height: 87rpx;
+    min-height: 87rpx; 
+  border-bottom:  1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+ }
+  .partul .partli:last-child{
+    border: 0
+  }
+  .partli>text{
+    font-size: 32rpx;
+    color: #333;
+    width: 40%;
+    padding-left: 30rpx;
+  }
+   .partli image{
+     width: 25rpx;
+     height: 16rpx;
+   }
+   .partli>view view{
+     color: #999;
+     font-size: 32rpx;
+   }
+    .partliposition  view.show{
+      color: #333;
+       font-size: 32rpx;
+   }
+   .partliposition{
+     position: relative;
+   }
+   .unitposition{
+     position: absolute;
+     left: 0;
+     right: 0;
+     width: 95%;
+     top: 88rpx;
+     padding-left: 30rpx;
+     color: #333;
+     background: #fff;
+     border-left: 1rpx solid #e5e5e5;
+       border-right: 1rpx solid #e5e5e5;
+       z-index: 300;
+   }
+   .unitposition view{
+     border-bottom: 1rpx solid #e5e5e5;
+   }
+    .unitposition>view text{
+      width: 89%;
+      display: inline-block;
+      color: #333;
+    }
+    .unitposition>view image{
+     width: 32rpx;
+     height: 32rpx;
+    }
+    .unitposition>view text.clickcurrent{
+       color: #508cee
+    }
+    .partliposition>view{
+      color: #999;
+      font-size: 32rpx;
+    }
+    .partcancle{
+      padding-right: 30rpx;
+    }
+    .nopart{
+      margin: 0 auto;
+      font-size: 32rpx;
+      color: #999;
+      text-align: center;
+      margin-top: 40rpx;
+    }
+    .haspart{
+      background: #fff;
+    }
+.haspartli{
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.haspartli>view{
+  width: 87%;
+  padding-left: 30rpx;
+}
+.haspartli>image{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.partName{
+        font-size: 32rpx;
+      color: #333;
+        width: 87%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.partline{
+  margin-top: 20rpx;
+    font-size: 28rpx;
+      color: #666;
+      display: flex;
+       flex-direction: row;
+  justify-content: flex-start;
+}
+.partline view{
+  width: 33.3%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reasultbtn{
+  height: 87rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30rpx;
+}
+.reasultbtnm{
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30rpx;
+}
+.labal{
+   font-size: 32rpx;
+      color: #666;
+      width: 40%;
+}
+.reasultbtn image{
+   width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.palceClass{
+  font-size: 32rpx;
+  color: #666;
+}
+.resulttextarea{
+  padding: 30rpx;
+  padding-bottom: 200rpx;
+  background: #fff;
+  width: 504rpx;
+  color: #333;
+}
+input{
+  width: 80%;
+  color: #333;
+}
+.fujian{
+  width: 24rpx;
+  height: 32rpx;
+  margin: 0;
+}
+.fujianimg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 28rpx;
+}
+.assestli> view {
+    display: flex;
+    flex-direction: srow;
+    width: 100%;
+    align-items: center;
+}
+
+.assestli>view {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* justify-content: center; */
+}
+ .next{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.assestli{
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx;
+  background: #fff;
+}
+.viewimg{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.viewimg>view{
+  position: relative;
+}
+view image{
+  width: 150rpx;
+  height: 150rpx;
+   margin:30rpx;
+   margin-left:0;
+   margin-bottom: 0;
+}
+.pm-files {
+    margin: 0 0 50rpx 20rpx;
+    overflow: hidden;
+}
+.pm-files-item {
+    position: relative;
+    float: left;
+    width: calc(33.33% - 20rpx);
+    height: 180rpx;
+    padding: 0 20rpx 20rpx 0;
+}
+.pm-files-img {
+    width: 100%;
+    height: 100%;
+}

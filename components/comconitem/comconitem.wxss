@@ -1,0 +1,64 @@
+/* 列表 */
+.listitem{
+  padding: 35rpx 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid  #eee;
+  padding-top: 16rpx;
+}
+.itemTitle{
+  font-size: 34rpx;
+  color: #333;
+  position: relative;
+  word-wrap:break-word;
+}
+.itemTitle image{
+  width: 122rpx;
+  align-items: center;
+  position: relative;
+  word-wrap:break-word;
+}
+.itemTitle image{
+  width: 122rpx;
+  height: 96rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.itemCont{
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 34rpx;
+  white-space:pre-wrap;
+}
+.itemTime{
+  margin-top: 22rpx;
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.hasnew{
+  position: absolute;
+  top: 30rpx;
+  background: #F12C20;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 50%;
+}
+.tag{
+  border: 1rpx solid #6096EF;
+  border-radius: 4rpx;
+  color:#6096EF;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+  width: 108rpx;
+  height: 36rpx;
+  float: left;
+  text-align: center;
+  margin-top: 4rpx;
+  
+}
+.tagactive{
+  margin-left: 40rpx;
+}

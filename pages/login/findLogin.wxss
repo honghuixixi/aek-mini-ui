@@ -1,0 +1,89 @@
+/**index.wxss**/
+@import "/components/button/button.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page {
+  min-height: 100%;
+  background-color: #f3f3f5;
+}
+.container{
+  padding: 0;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+  width: 80%;
+}
+
+.loginWrap {
+  width: 100%;
+  margin-bottom: 40rpx;
+  border-bottom: 1rpx solid #bebebe;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+}
+
+.loginWrap image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.loginWrap image.showPass {
+  width: 36rpx;
+  height: 17rpx;
+}
+.showSuccess{
+  width:30rpx;
+  height:30rpx;
+
+}
+.placeClass {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.loginWrap input {
+  margin-left: 30rpx;
+  width: 560rpx;
+  color: #333;
+}
+.loginWrap input[name="code"]{
+  width: 340rpx;
+}
+.loginWrap text{
+  font-size: 32rpx;
+  color: #999;
+  margin-left: 130rpx;
+}
+.messageLogin{
+  color: #508cee;
+  font-size: 32rpx;
+  margin-top: 160rpx;
+  width: 100%;
+  text-align: right;
+}
+.getCode{
+  height:1.4rem; 
+  background:  #f3f3f5;
+  border: 1px  solid  #f3f3f5;
+  color: #999;
+  font-size: 32rpx;
+  line-height: 1.4rem;
+  padding-right: 0;
+   width: 366rpx;
+  text-align: right;
+}
+.getCode::after{
+  border:0
+}
+button[disabled][type="default"].getCode, wx-button[disabled]:not([type]).getCode{
+background:  #f3f3f5;
+ padding-right: 0
+}
+.getCodeactive{
+  color: #508cee;
+}

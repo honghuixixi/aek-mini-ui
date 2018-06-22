@@ -1,0 +1,33 @@
+
+.replayItem{
+  padding: 35rpx 30rpx;
+  background: #fff;
+   border-bottom: 1rpx solid  #eee;
+}
+.replayname{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; 
+}
+.replayname>view:first-child{
+  font-size: 28rpx;
+  color: #333;
+}
+.replayname>view:last-child{
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 20rpx
+}
+.replaycontent{
+  margin-top: 26rpx;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: #333;
+  white-space: pre-wrap;
+}
+.replaytime{
+ font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx
+}

@@ -1,0 +1,138 @@
+<import src="/components/mytotast/mytotast.wxml" />
+<!-- haed -->
+<view class="head">
+    <!-- <image src='../../static/images/back.png' class="headerback"></image> -->
+    <view class="userName">
+        <text>{{realName}}  {{deptName}}</text>
+    </view>
+    <view class="partname">
+        <image src="/static/images/mount.png"></image>
+        <text>{{partName}}</text>
+    </view>
+    <view class="statistics">
+        <navigator url='../assestbook/assestlist' hover-class='bkground2'>
+            <text class="statistics-num">{{assetCount}}</text>
+            <text>设备资产</text>
+        </navigator>
+        <navigator url='../repair/repairlist' hover-class='bkground2'>
+            <text class="statistics-num">{{repairCount}}</text>
+            <text>维修中</text>
+        </navigator>
+        <view>
+            <text class="statistics-num">{{userCount}}</text>
+            <text>成员用户</text>
+        </view>
+    </view>
+</view>
+
+<!-- module -->
+<view class="module">
+    <view class="module-row">
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="scanCode">
+            <image src="/static/images/1_new.png"></image>
+            <text>一键报修</text>
+        </view>
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="equipmentInput">
+            <image src="/static/images/2.png"></image>
+            <text>设备录入</text>
+        </view>
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/assestlist'>
+            <image src="/static/images/5.png"></image>
+            <text>设备档案</text>
+        </navigator>
+    </view>
+    <view class="module-row">
+        <navigator class="module-row-item" hover-class='bkground' url='../repair/repairlist'>
+            <image src="/static/images/4.png"></image>
+            <text>维修管理</text>
+        </navigator>
+        <!-- <navigator class="module-row-item" hover-class='bkground' url='../polling/managelist' wx:if="{{suserInfo.part==2 || !suserInfo.part}}">
+            <image src="/static/images/6.png" style='width:66rpx;height:66rpx;'></image>
+            <text>巡检管理</text>
+        </navigator>
+        <navigator class="module-row-item" hover-class='bkground' url='../PM/assetsList' wx:if="{{suserInfo.part==2 || !suserInfo.part}}">
+            <image src="/static/images/pm.png" style='width:66rpx;height:66rpx;'></image>
+            <text>PM管理</text>
+        </navigator> -->
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="inspection" wx:if="{{suserInfo.part==2 || !suserInfo.part}}">
+            <image src="/static/images/6.png"></image>
+            <text>巡检管理</text>
+        </view>
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="pm" wx:if="{{suserInfo.part==2 || !suserInfo.part}}">
+            <image src="/static/images/pm.png"></image>
+            <text>PM管理</text>
+        </view>
+        <view class="module-row-item" wx:if="{{!(suserInfo.part==2 || !suserInfo.part)}}"></view>
+        <view class="module-row-item" wx:if="{{!(suserInfo.part==2 || !suserInfo.part)}}"></view>
+    </view>
+    <view class="module-row" wx:if="{{suserInfo.part==2 || !suserInfo.part}}">
+        <navigator class="module-row-item" hover-class='bkground' url='../maintain/implements'>
+            <image src="/static/images/mt-14.png" style='width:66rpx;height:66rpx;'></image>
+            <text>保养管理</text>
+        </navigator>
+        <view class="module-row-item"></view>
+        <view class="module-row-item"></view>
+        <!-- <view class="module-row-item"></view> -->
+    </view>
+</view>
+
+<!-- modal 扫码 -->
+<view class="modal" hidden="{{!modalState.scanCode}}" bindtap="hideModal" data-key="scanCode">
+    <view class="module-row" hidden="{{!modalState.scanCode}}">
+        <view class="module-row-item" hover-class='bkground' bindtap="scanRepair">
+            <image src="/static/images/1_1_new.png"></image>
+            <text>扫码报修</text>
+        </view>
+        <view class="module-row-item" hover-class='bkground' bindtap="scanSearch">
+            <image src="/static/images/1_2_new.png"></image>
+            <text>人工报修</text>
+        </view>
+    </view>
+</view>
+
+<!-- modal 设备录入 -->
+<view class="modal" hidden="{{!modalState.equipmentInput}}" bindtap="hideModal" data-key="equipmentInput">
+    <view class="module-row" hidden="{{!modalState.equipmentInput}}">
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/newassest?assetsSource=2' bindtap="hideModal" data-key="equipmentInput">
+            <image src="/static/images/accepticon.png"></image>
+            <text>验收录入</text>
+        </navigator>
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/newassest?assetsSource=3' bindtap="hideModal" data-key="equipmentInput">
+            <image src="/static/images/qingdan.png"></image>
+            <text>清查录入</text>
+        </navigator>
+    </view>
+</view>
+
+<!-- modal 巡检 -->
+<view class="modal" hidden="{{!modalState.inspection}}" bindtap="hideModal" data-key="inspection">
+    <view class="module-row" hidden="{{!modalState.inspection}}">
+        <navigator class="module-row-item" hover-class='bkground' url='../polling/managelist' bindtap="hideModal" data-key="inspection">
+            <image src="/static/images/polling_implement.png"></image>
+            <text>巡检实施</text>
+        </navigator>
+        <navigator class="module-row-item" hover-class='bkground' url='../polling/accept' bindtap="hideModal" data-key="inspection">
+            <image src="/static/images/polling_accept.png"></image>
+            <text>巡检验收</text>
+        </navigator>
+    </view>
+</view>
+
+<!-- modal PM -->
+<view class="modal" hidden="{{!modalState.pm}}" bindtap="hideModal" data-key="pm">
+    <view class="module-row" hidden="{{!modalState.pm}}">
+        <navigator class="module-row-item" hover-class='bkground' url='../PM/assetsList' bindtap="hideModal" data-key="pm">
+            <image src="/static/images/pm_implement.png"></image>
+            <text>PM实施</text>
+        </navigator>
+        <navigator class="module-row-item" hover-class='bkground' url='../PM/accept' bindtap="hideModal" data-key="pm">
+            <image src="/static/images/pm_accept.png"></image>
+            <text>PM验收</text>
+        </navigator>
+    </view>
+</view>
+
+<!-- totast提示 -->
+<template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<!-- totast提示 -->
+<template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>

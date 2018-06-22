@@ -1,0 +1,178 @@
+/* pages/polling/assetList.wxss */
+@import "/components/assetItem/assetItem.wxss";
+@import "/components/nolimits/nolimits.wxss";
+@import "/components/button/button.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5;
+}
+.tabbar{
+  padding: 0 30rpx;
+  height: 88rpx;
+  background: #fff;
+  font-size: 30rpx;
+  color: #333 ;
+  position: fixed;
+  top:0;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}
+.tabbar>view{
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center
+}
+.btmline{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: 3rpx solid #6096EF;
+}
+.tabbar view.active{
+  color: #6096EF;
+}
+/* 搜索 */
+.search{
+  z-index: 1;
+  height: 130rpx;
+  background:#f3f3f5;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 88rpx;
+  left: 0;
+  right: 0;
+}
+.input{
+  height: 64rpx;
+  width: 600rpx;
+  border-radius: 32rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+.palce-class{
+  font-size: 28rpx;
+  color: #bebebe;
+}
+.input image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+  }
+.choose image{
+  width: 27rpx;
+  height:25rpx;
+}
+.choose text{
+  font-size: 32rpx;
+  color: #fff;
+  margin-right: 12rpx;
+  margin-left: 22rpx;
+}
+.nomore{
+   font-size: 28rpx;
+   text-align: center;
+   color: #999;
+   padding-top: 20rpx;
+   background-color: #f3f3f5;
+}
+.pull image{
+  width: 42rpx;
+  height: 42rpx;
+}
+.pull{
+  margin-bottom: 60rpx;
+}
+.cardlist{
+  padding-top: 220rpx;
+}
+.tabbar text {
+  color: #CC0202;
+}
+/* float scan btn */
+.floatScanWrap {
+  position: fixed;
+  right: 60rpx;
+  z-index: 1;
+  bottom: 60rpx;
+}
+.floatScanWrap .floatScan {
+    overflow: hidden;
+}
+.floatScanWrap .floatScan text {
+    float: left;
+    margin-top: 20rpx;
+    padding:10rpx 20rpx;    
+    font-size:28rpx;
+    border-radius:6rpx;
+    color:#fff;
+    background:rgba(97,151,240,.8);
+ }
+.floatScanWrap .floatScan image {
+    float: right;
+    width: 102rpx;
+    height: 102rpx;
+    vertical-align: middle;
+}
+.floatSubWrap {
+  position: fixed;
+  height: 100rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 1;
+  right: 0rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.floatSubWrap .floatSubmit {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #fff;
+  background-color: #6096EF;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+}
+.marginBottom108 {
+  padding-bottom: 108rpx;
+}
+/* toaster */
+.toaster {
+  background-color: rgba(0, 0, 0, 0.7);
+  line-height: 30rpx;
+  color: #fff;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  font-size: 30rpx;
+  width: 180rpx;
+  padding: 20rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-left: -90rpx;
+  top: 50%;
+  margin-top: -30rpx;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100;
+  border-top: 1rpx solid #e5e5e5;
+}

@@ -1,0 +1,344 @@
+<view class='repair-tab'>
+    <view class='item active'>维修中</view>
+    <view class='item' bindtap='showOperators'>操作记录</view>
+</view>
+<!-- 维修 -->
+<view class='repair-tab-op'>
+    <!-- side -->
+    <view class='repair-tab-op-side'>
+        <view class='{{sideIndex === item.id ? "item active" : "item"}}' wx:for="{{repairLocal.sideList}}" wx:key="{{index}}" wx:if="{{item.display}}" bindtap='changeTab' data-id='{{item.id}}' data-field='sideIndex'>
+            <text style='color:#f00;' wx:if="{{item.require}}">*</text> {{item.name}}
+        </view>
+    </view>
+    <!-- content -->
+    <view class='repair-tab-op-swrap'>
+        <!-- 接单类型 -->
+        <view wx:if="{{sideIndex === 1}}">
+            <view class='group'>接单类型</view>
+            <view class='group-swrap'>
+                <view class='{{repairLocal.reportStatus === item.id ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.reportStatusList}}" wx:key="{{index}}" bindtap='changeTab' data-id='{{item.id}}' data-field='repairLocal.reportStatus'>
+                    <text>{{item.name}}</text>
+                    <image class='single' wx:if='{{repairLocal.reportStatus === item.id}}' src='/static/images/hostchoose.png'></image>
+                </view>
+                <view wx:if="{{repairLocal.reportStatus == 1}}" class="repair-tab-op-swrap">
+                    <view class="row-input ">
+                        <text>送修人</text>
+                        <input placeholder='请输入' value='{{repairLocal.sendPerson}}' bindinput='getInputField' data-field='repairLocal.sendPerson'></input>
+                    </view>
+                    <view class="row-input ">
+                        <text>联系方式</text>
+                        <input placeholder='请输入' value='{{repairLocal.sendPhone}}' bindinput='getInputField' data-field='repairLocal.sendPhone'></input>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+        <!-- 工作方式  -->
+        <view wx:if="{{sideIndex === 2}}">
+            <view class='group'>选择维修方式</view>
+            <view class='{{repairLocal.modeStatus === item.id ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.repairTypeList}}" wx:key="{{index}}" bindtap='changeTab' data-id="{{item.id}}" data-field='repairLocal.modeStatus' data-fun='changeWorkType'>
+                <text>{{item.name}}</text>
+                <image class='single' wx:if='{{repairLocal.modeStatus === item.id}}' src='/static/images/hostchoose.png'></image>
+            </view>
+            <view class='group' wx:if="{{repairLocal.modeStatus !== 3}}">选择故障类型</view>
+            <view class='group-swrap' wx:if="{{repairLocal.modeStatus === 1}}">
+                <view class='{{repairLocal.faultType === item.id ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.selfRepairList}}" wx:key="{{index}}" bindtap='changeTab' data-id="{{item.id}}" data-field='repairLocal.faultType'>
+                    <text>{{item.name}}</text>
+                    <image class='single' wx:if='{{repairLocal.faultType === item.id}}' src='/static/images/hostchoose.png'></image>
+                </view>
+            </view>
+            <view class='group-swrap' wx:if="{{repairLocal.modeStatus === 2}}">
+                <view class='{{repairLocal.faultTypeOut === item.id ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.outRepairList}}" wx:key="{{index}}" bindtap='changeTab' data-id="{{item.id}}" data-field='repairLocal.faultTypeOut'>
+                    <text>{{item.name}}</text>
+                    <image class='single' wx:if='{{repairLocal.faultTypeOut === item.id}}' src='/static/images/hostchoose.png'></image>
+                </view>
+                <view class='row-input'>
+                    <text>外修单位</text>
+                    <input placeholder='请输入' value='{{repairLocal.outsideCompany}}' bindinput='getInputField' data-field='repairLocal.outsideCompany'></input>
+                </view>
+                <view class='row-input'>
+                    <text>外修电话</text>
+                    <input type='number' placeholder='请输入' value='{{repairLocal.outsidePhone}}' bindinput='getInputField' data-field='repairLocal.outsidePhone'></input>
+                </view>
+                <view class='row-input'>
+                    <text>工程师姓名</text>
+                    <input placeholder='请输入' value='{{repairLocal.engineerName}}' bindinput='getInputField' data-field='repairLocal.engineerName'></input>
+                </view>
+                <view class='row-input'>
+                    <text>工程师工号</text>
+                    <input placeholder='请输入' value='{{repairLocal.engineerNum}}' bindinput='getInputField' data-field='repairLocal.engineerNum'></input>
+                </view>
+            </view>
+            <view class='group-swrap' wx:if="{{repairLocal.modeStatus === 3}}">
+                <textarea class='remark' placeholder='请输入备注内容（非必填）' value='{{repairLocal.workRemarks}}' bindinput='getInputField' data-field='repairLocal.workRemarks'></textarea>
+            </view>
+        </view>
+        <!-- 故障现象  -->
+        <view wx:if="{{sideIndex === 3}}">
+            <view class='group'>
+                <text>选择故障现象</text>
+                <image class='single' src='/static/images/addmodal.png' bindtap='showFaultPhenomenonDialog'></image>
+            </view>
+            <checkbox-group class='group-swrap' bindchange="checkboxChange" data-field='FAULT_PHENOMENON'>
+                <view class='single-item' wx:for='{{repairLocal.dic.FAULT_PHENOMENON}}' wx:key='{{index}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+            </checkbox-group>
+        </view>
+        <!-- 故障代码  -->
+        <view wx:if="{{sideIndex === 4}}">
+            <view class='group'>
+                <text>故障代码</text>
+            </view>
+            <view class='group-swrap' style='padding: 20rpx'>
+                <input placeholder='请输入' value='{{repairLocal.troubleCode}}' bindinput='getInputField' data-field='repairLocal.troubleCode' style='width:auto' maxlength='40'></input>
+            </view>
+        </view>
+        <!-- 故障原因  -->
+        <view wx:if="{{sideIndex === 5}}">
+            <view class='group'>
+                <text>选择故障原因</text>
+                <image class='single add' src='/static/images/addmodal.png' wx:if='{{repairLocal.faultReason > 3}}' bindtap='showFaultReasonDialog'></image>
+            </view>
+            <view class='group-swrap' style='padding-bottom: 0; margin-bottom: 10rpx;'>
+                <view class='{{repairLocal.faultReason === item.id ? "single-item active" : "single-item"}}' wx:for='{{repairLocal.faultReasonList}}' wx:key='{{index}}' bindtap='changeTab' data-id='{{item.id}}' data-field='repairLocal.faultReason'>
+                    <text>{{item.name}}</text>
+                    <image class='single' wx:if='{{repairLocal.faultReason === item.id}}' src='/static/images/hostchoose.png'></image>
+                </view>
+            </view>
+            <checkbox-group class='group-swrap' bindchange="checkboxChange" data-field='{{repairLocal.faultReason === 1 ? "HUMAN_FACTOR" : repairLocal.faultReason === 2 ? "EQUIPMENT_FAILURE" : repairLocal.faultReason === 3 ? "EXTERNAL_FACTORS" : "OTHER_FACTOR" }}'>
+                <view class='single-item' wx:for='{{repairLocal.dic.HUMAN_FACTOR}}' wx:key='{{index}}' wx:if='{{repairLocal.faultReason === 1}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+                <view class='single-item' wx:for='{{repairLocal.dic.EQUIPMENT_FAILURE}}' wx:key='{{index}}' wx:if='{{repairLocal.faultReason === 2}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+                <view class='single-item' wx:for='{{repairLocal.dic.EXTERNAL_FACTORS}}' wx:key='{{index}}' wx:if='{{repairLocal.faultReason === 3}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+                <view class='single-item' wx:for='{{repairLocal.dic.OTHER_FACTOR}}' wx:key='{{index}}' wx:if='{{repairLocal.faultReason === 4}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+            </checkbox-group>
+        </view>
+        <!-- 工作内容  -->
+        <view wx:if="{{sideIndex === 6}}">
+            <view class='group'>
+                <text>选择工作内容</text>
+                <image class='single' src='/static/images/addmodal.png' bindtap='showWorkContentDialog'></image>
+            </view>
+            <checkbox-group class='group-swrap' bindchange="checkboxChange" data-field='JOB_CONTENT'>
+                <view class='single-item' wx:for='{{repairLocal.dic.JOB_CONTENT}}' wx:key='{{index}}'>
+                    <text>{{item.name}}</text>
+                    <checkbox value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+                </view>
+            </checkbox-group>
+        </view>
+        <!-- 配件信息  -->
+        <view wx:if="{{sideIndex === 7}}">
+            <view class='group'>
+                <text>添加配件</text>
+                <image class='single' src='/static/images/addmodal.png' bindtap='showPartsDialog'></image>
+            </view>
+            <view class='group-swrap'>
+                <view class='parts-empty' wx:if='{{repairLocal.list.length < 1}}'>您还没有添加配件~</view>
+                <view class='parts' wx:for='{{repairLocal.list}}' wx:key='{{index}}' bindtap='editParts' bindlongpress="removePart" data-parts='{{item}}' data-addpart-index="{{index}}">
+                    <view style='flex: 1;'>
+                        <view class='name'>
+                            <image src='/static/images/{{item.status === 1 ? "ling" : "gou"}}.png'></image>
+                            <text>{{item.partName}}</text>
+                        </view>
+                        <view class='line'>
+                            <text>{{item.partSpec || ''}}</text>
+                            <text>{{item.num}}{{item.unitName}}</text>
+                            <text>{{item.partPrice || ''}}</text>
+                        </view>
+                    </view>
+                    <image class='next' src='/static/images/next.png'></image>
+                </view>
+            </view>
+        </view>
+        <!-- 维修结果  -->
+        <view wx:if="{{sideIndex === 8}}">
+            <view class='group'>维修结果</view>
+            <view class='{{repairLocal.repairResult === item.id ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.repairResultList}}" wx:key="{{index}}" bindtap='changeTab' data-id="{{item.id}}" data-field='repairLocal.repairResult'>
+                <text>{{item.name}}</text>
+                <image class='single' wx:if='{{repairLocal.repairResult === item.id}}' src='/static/images/hostchoose.png'></image>
+            </view>
+            <view class='group-swrap' style='margin-top: 10rpx;'>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 1}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>维修日期</text>
+                    <picker mode='date' value='{{repairLocal.actualEndDate}}' bindchange='getInputField' data-field='repairLocal.actualEndDate'>
+                        <input placeholder='请输入' value='{{repairLocal.actualEndDate}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 1}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>维修时间</text>
+                    <picker mode='time' value='{{repairLocal.actualEndTime}}' bindchange='getInputField' data-field='repairLocal.actualEndTime'>
+                        <input placeholder='请输入' value='{{repairLocal.actualEndTime}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 1}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>完修日期</text>
+                    <picker mode='date' value='{{repairLocal.repairEndDate}}' bindchange='getInputField' data-field='repairLocal.repairEndDate'>
+                        <input placeholder='请输入' value='{{repairLocal.repairEndDate}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 1}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>完修时间</text>
+                    <picker mode='time' value='{{repairLocal.repairEndTime}}' bindchange='getInputField' data-field='repairLocal.repairEndTime'>
+                        <input placeholder='请输入' value='{{repairLocal.repairEndTime}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>叫修日期</text>
+                    <picker mode='date' value='{{repairLocal.callRepairDate}}' bindchange='getInputField' data-field='repairLocal.callRepairDate'>
+                        <input placeholder='请输入' value='{{repairLocal.callRepairDate}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>叫修时间</text>
+                    <picker mode='time' value='{{repairLocal.callRepairTime}}' bindchange='getInputField' data-field='repairLocal.callRepairTime'>
+                        <input placeholder='请输入' value='{{repairLocal.callRepairTime}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>到达日期</text>
+                    <picker mode='date' value='{{repairLocal.arrivalDate}}' bindchange='getInputField' data-field='repairLocal.arrivalDate'>
+                        <input placeholder='请输入' value='{{repairLocal.arrivalDate}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>到达时间</text>
+                    <picker mode='time' value='{{repairLocal.arrivalTime}}' bindchange='getInputField' data-field='repairLocal.arrivalTime'>
+                        <input placeholder='请输入' value='{{repairLocal.arrivalTime}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>离开日期</text>
+                    <picker mode='date' value='{{repairLocal.leaveDate}}' bindchange='getInputField' data-field='repairLocal.leaveDate'>
+                        <input placeholder='请输入' value='{{repairLocal.leaveDate}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text><text style="float:none;width:auto;margin:0;color:#f00;">*</text>离开时间</text>
+                    <picker mode='time' value='{{repairLocal.leaveTime}}' bindchange='getInputField' data-field='repairLocal.leaveTime'>
+                        <input placeholder='请输入' value='{{repairLocal.leaveTime}}' disabled='true'></input>
+                    </picker>
+                </view>
+                <view class='row-input' wx:if='{{repairLocal.modeStatus === 2}}'>
+                    <text>维修工时</text>
+                    <input type='digit' placeholder='请输入' value='{{repairLocal.repairHours}}' bindinput='getInputField' data-field='repairLocal.repairHours'></input>
+                </view>
+                <view class='row-input'>
+                    <text>维修费</text>
+                    <input type='digit' placeholder='0.00' value='{{repairLocal.repairCost}}' bindinput='getInputField' data-field='repairLocal.repairCost'></input>
+                </view>
+                <view class='row-input'>
+                    <text>材料费</text>
+                    <input type='digit' placeholder='0.00' value='{{repairLocal.partsCost}}' bindinput='getPartsCostInputField' data-field='repairLocal.partsCost'></input>
+                </view>
+                <view class='row-input'>
+                    <text>发票号码</text>
+                    <input placeholder='多张发票用分号隔开' value='{{repairLocal.repairInvoice}}' bindinput='getInputField' data-field='repairLocal.repairInvoice'></input>
+                </view>
+                <input placeholder='请输入备注内容（非必填）' style='width:auto; padding: 20rpx 30rpx;' value='{{repairLocal.remarks}}' bindinput='getInputField' data-field='repairLocal.remarks'></input>
+            </view>
+        </view>
+    </view>
+    <view class='footer' wx:if="{{writeRepaotLimit && isSelf}}">
+        <view class='savetemp' bindtap='saveTemp'>暂存</view>
+        <button class='saved' disabled='{{!canSubmit}}' bindtap='submit'>完修提交</button>
+    </view>
+</view>
+<!-- 操作记录 -->
+
+<!-- 添加故障现象/故障原因/工作内容对话框 -->
+<view class='dialog-dic' wx:if="{{dialog.show}}">
+    <view class='dialog-dic-main'>
+        <view class='title'>
+            <text>{{dialog.title}}</text>
+            <image src='/static/images/addcount.png' bindtap='closeDicDialog'></image>
+        </view>
+        <textarea class='textarea' placeholder='{{dialog.holder}}' bindinput='getInputField' data-field='dialog.val'></textarea>
+        <view class='bottom'>
+            <text class='cancle' bindtap='closeDicDialog'>取消</text>
+            <text class='ok' bindtap='sureDicDialog'>确定</text>
+        </view>
+    </view>
+</view>
+
+<!-- 添加/修改配件 -->
+<view class='dialog-dic' wx:if="{{showParts}}">
+    <view class='dialog-dic-main parts'>
+        <view class='title'>
+            <text>添加配件</text>
+            <image src='/static/images/addcount.png' bindtap='closePartsDialog'></image>
+        </view>
+        <view class='parts-main'>
+            <view class='row'>
+                <text>配件名称<text class='require'>*</text></text>
+                <input placeholder='请输入' value='{{parts.partName}}' bindinput='getPartsInputField' data-field='partName'></input>
+            </view>
+            <view class='row'>
+                <text>规格型号</text>
+                <input placeholder='请输入' value='{{parts.partSpec}}' bindinput='getPartsInputField' data-field='partSpec'></input>
+            </view>
+            <view class='row'>
+                <text>生产商</text>
+                <input placeholder='请输入' value='{{parts.partProduce}}' bindinput='getPartsInputField' data-field='partProduce'></input>
+            </view>
+            <view class='row'>
+                <text>来源<text class='require'>*</text></text>
+                <view bindtap='showPartsOrigin'>
+                    <text style='padding-left: 0;'>{{parts.status === 1 ? '领用' : parts.status === 2 ? '购买' : ''}}</text>
+                    <image src='/static/images/xiala.png'></image>
+                </view>
+            </view>
+            <view class='select' wx:if='{{showOrigin}}'>
+                <view class='select-swrap'>
+                    <view class='{{parts.status === 1 ? "single-item active" : "single-item"}}' bindtap='choosePartsOrigin' data-id='1'>
+                        <text>领用</text>
+                        <image class='single' src='/static/images/hostchoose.png' wx:if='{{parts.status === 1}}'></image>
+                    </view>
+                    <view class='{{parts.status === 2 ? "single-item active" : "single-item"}}' bindtap='choosePartsOrigin' data-id='2'>
+                        <text>购买</text>
+                        <image class='single' src='/static/images/hostchoose.png' wx:if='{{parts.status === 2}}'></image>
+                    </view>
+                </view>
+            </view>
+            <view class='row'>
+                <text>单价</text>
+                <input type='digit' placeholder='0.00' value='{{parts.partPrice}}' bindinput='getPartsInputField' data-field='partPrice'></input>
+            </view>
+            <view class='row'>
+                <text>数量<text class='require'>*</text></text>
+                <input type='number' placeholder='请输入' value='{{parts.num}}' bindinput='getPartsInputField' data-field='num'></input>
+            </view>
+            <view class='row'>
+                <text>单位<text class='require'>*</text></text>
+                <view bindtap='showPartsUnits'>
+                    <text style='padding-left: 0;'>{{parts.unitName}}</text>
+                    <image src='/static/images/xiala.png'></image>
+                </view>
+            </view>
+            <view class='select' wx:if='{{showUnit}}'>
+                <view class='select-swrap'>
+                    <view class='{{parts.unit === item.keyId ? "single-item active" : "single-item"}}' wx:for="{{repairLocal.dic.PARTS_UNIT}}" wx:key="{{index}}" bindtap='choosePartsUnits' data-id='{{item.keyId}}' data-name='{{item.name}}'>
+                        <text>{{item.name}}</text>
+                        <image class='single' src='/static/images/hostchoose.png' wx:if='{{parts.unit === item.keyId}}'></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='bottom'>
+            <text class='cancle' bindtap='closePartsDialog'>取消</text>
+            <text class='ok' bindtap='addParts'>确定</text>
+        </view>
+    </view>
+</view>

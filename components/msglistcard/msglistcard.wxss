@@ -1,0 +1,84 @@
+/* 卡片组件样式 */
+.card{
+  /* min-height: 219rpx; */
+  /* border-bottom: 1rpx solid #e5e5e5; */
+  padding: 30rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items:center;
+  position: relative;
+}
+.name{
+    font-size: 32rpx;
+  color: #333;
+   max-width: 525rpx; 
+  margin-bottom: 15rpx;
+}
+.producter,.size,.depart{
+  font-size: 28rpx;
+  color: #999;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+   margin-bottom: 5rpx; 
+  
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  width: 75%;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.bottom-left{
+  width: 60%;
+}
+
+.image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.status{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+  text-align: right;
+}
+.icon{
+  color: #f3941d;
+  min-width: 90rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #f3941d;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   float: right;
+}
+.time{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  color: #999;
+  float: right
+}
+.settop{
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  top: 0;
+  left: 0
+}
+.read{
+  background: #ebebeb;
+  color: #999;
+}
+.read .name{
+  color: #999;
+}

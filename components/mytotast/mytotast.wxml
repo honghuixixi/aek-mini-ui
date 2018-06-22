@@ -1,0 +1,5 @@
+<template name="myTotast">
+   <view class="mytotast" hidden="{{totastHide}}">
+      <view class="totastcont"><text>{{totastContent}}</text></view>
+    </view>
+</template>

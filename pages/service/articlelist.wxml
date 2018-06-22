@@ -1,0 +1,19 @@
+<import src="/components/serveritem/sitem.wxml" />
+<view>
+<!-- 搜索框 -->
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="请输入关键字/监管机构名称查询" placeholder-class="palce-class" bindfocus="search" value="{{searchName}}"/>
+    </view>
+  </view>
+  <!-- 表格 -->
+  <view style='margin-top:118rpx'>
+  
+    <view wx:for="{{list}}" wx:key="{{index}}" bindtap='goDetail' data-infoId="{{item.id}}">
+     <template is="sitem" data="{{...item}}" ></template>
+    </view>
+  <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image   src="/static/images/pull.gif"></image></view>
+    </view>
+</view>

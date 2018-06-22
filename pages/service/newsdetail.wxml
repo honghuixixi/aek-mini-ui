@@ -1,0 +1,23 @@
+<import src="/components/mytotast/mytotast.wxml" />
+<view class="detail">
+    <view class="title">{{list.title}}</view>
+    <view class="time">{{list.publishTime}}</view>
+    <view class="publishName">{{list.publisher}}</view>
+    <view class="publishOrg">{{list.org}}</view>
+    <!-- <view class="content">{{list.content}}</view> -->
+    <view class="content">
+        <view wx:for="{{contents}}" wx:key="{{index}}">
+            <text wx:if="{{!item.isImg}}" decode="{{true}}">{{item.txt}}</text>
+            <image class="content-image" wx:if="{{item.isImg}}" src="{{item.txt}}"></image>
+        </view>
+    </view>
+    <view class="fujian" wx:if="{{files.length!=0}}">
+        <view style='font-size:36rpx;margin-bottom:20rpx'>附件</view>
+        <view wx:for="{{files}}" wx:key="{{index}}" class="fujianli" bindtap="lookBig" data-files-url="{{item.uploadUrl}}">
+            <view>{{item.fileName}}</view>
+            <image src='/static/images/next.png' class="next"></image>
+        </view>
+    </view>
+</view>
+<template is="myTotast" data="{{totastHide:totastHide1,totastContent:totastContent1}}"></template>
+<template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>

@@ -1,0 +1,11 @@
+<template name="assetItem">
+  <view class='assetInfo'>
+    <view class='assetInfoDetail'><image src='/static/images/next.png'></image></view>
+    <view class='assetInfoImg'><image src='{{imgUrl}}'></image></view>
+    <view class='assetInfoTxt'>
+      <view class='font_size_30'><text>{{name}}</text></view>
+      <view class='font_size_26'><text class='minWidth'>设备编号：</text><text>{{assetNo}}</text></view>
+      <view class='font_size_22'><text class='minWidth'>所在部门：</text><text>{{deptName}}</text></view>
+    </view>
+  </view>
+</template>

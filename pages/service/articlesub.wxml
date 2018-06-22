@@ -1,0 +1,23 @@
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<view>
+ <!-- 弹窗 -->
+     <template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>
+
+    <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<!-- <view class="title">
+<text>发表回复</text>
+</view> -->
+<view style='padding:20rpx;background:#fff'>
+<textarea placeholder="请输入回复内容" placeholder-style="color:#bebebe;font-size:28rpx" maxlength="300" bindinput='changenum' value="{{content}}" >
+<view class="num">{{sum}}/300</view>
+</textarea>
+</view>
+<view class="footer">
+    <view class="buttom">
+          <template is="myBtn" data="{{content:'发表回复',disabled:disabled}}"></template>
+      </view>
+    </view>
+</view>
+
+

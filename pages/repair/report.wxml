@@ -1,0 +1,293 @@
+<import src="/components/loading/loading.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<template is="myTotast" data="{{totastHide:totastHide1,totastContent:totastContent1}}"></template>
+
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}" class="loading"></template>
+<view class="repaircontent" wx:if="{{!loading}}">
+    <view class="repairLeft">
+        <view wx:for="{{leftList}}" wx:key="one_{{index}}" data-repair-index="{{index}}" bindtap='repairChange' class="{{repairIndex==index?'active':''}}" wx:if="{{reportData.modeStatus ==3?(index==0 || index==1?true:false):true}}">{{item}}</view>
+    </view>
+    <view class="repairRight">
+        <!-- 选择类型 -->
+        <view hidden="{{repairIndex!=0}}">
+            <view class="repair-rtop">接单类型</view>
+            <view class="repair-rbot" style='margin-bottom:0'>
+
+                <view>
+
+                    <text>{{reportData.reportStatus ==2?'现场维修':'送修'}}</text>
+                </view>
+            </view>
+            <view style='margin-bottom:0' wx:if="{{reportData.reportStatus ==1 && reportData.sendPerson}}">
+                <view class='reasultbtnm' style='min-height:87rpx'>
+                    <text class="labal">送修人</text>
+                    <text class="palceClass" style='width:58%'>{{reportData.sendPerson}}</text>
+                </view>
+            </view>
+            <view style='margin-bottom:0' wx:if="{{reportData.reportStatus ==1 && reportData.sendPhone}}">
+                <view class='reasultbtnm' style='min-height:87rpx'>
+                    <text class="labal">联系电话</text>
+                    <text class="palceClass" style='width:58%'>{{reportData.sendPhone}}</text>
+                </view>
+            </view>
+        </view>
+        <!-- 工作方式对应的右边 -->
+        <view hidden="{{repairIndex!=1}}">
+            <view class="repair-rtop">维修方式</view>
+            <view class="repair-rbot" style='margin-bottom:10rpx;'>
+                <view>
+                    <text wx:if="{{reportData.modeStatus ==1}}">自主维修</text>
+                    <text wx:if="{{reportData.modeStatus ==2}}">外修</text>
+                    <text wx:if="{{reportData.modeStatus ==3}}">现场解决</text>
+                </view>
+            </view>
+            <!-- <textarea wx:if="{{reportData.modeStatus ==3}}" placeholder='暂无备注' placeholder-class='palceClass ' class="resulttextarea"  value="{{reportData.remarks}}" disabled='true' style="padding-bottom:30rpx;"></textarea> -->
+            <view style='padding: 0 30rpx; font-size: 32rpx; line-height: 50rpx; color: #333;' wx:if="{{reportData.modeStatus ==3}}">{{reportData.remarks || '暂无备注'}}</view>
+            <!-- 附件 -->
+            <view wx:if="{{reportData.modeStatus ==3}}">
+                <view class=" assestli" style='border-top:1rpx solid #dedede;background:#f5f8fc;padding:0 20rpx;height:88rpx;line-height:88rpx;border-bottom:1rpx solid #dedede;'>
+                    <view>
+                        <view>
+                            <image src="../../static/images/fujian2.png" class="fujian"></image>
+                        </view>
+                        <view style='padding-left:1%;color:#666;font-size:28rpx;width:95%'>
+                            附件
+                            <text style="color:#999;font-size:26rpx;">*仅支持图片(jpg、jpeg、png)查看</text>
+                        </view>
+                    </view>
+                </view>
+                <!-- 附件循环 -->
+                <!-- <view class="assestli" bindtap="lookBignew" wx:for="{{newFiles}}" data-files-url="{{item.uploadUrl}}" wx:key="{{index}}" style='border-bottom:1rpx solid #dedede;'>
+                    <view>
+                        <view class="label" style='width:97%;color:#508cee;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:28rpx'>
+                            <text>{{item.fileName}}</text>
+                        </view>
+                        <image src="/static/images/next.png" class="next"></image>
+                    </view>
+                </view> -->
+                <view class='pm-files'>
+                    <view class="pm-files-item" wx:for="{{newFiles}}"  wx:key="{{index}}" bindtap="lookBignew" data-files-url="{{item.uploadUrl}}">
+                        <image src="{{baseImgUrl + item.uploadUrl}}" class="pm-files-img" wx:if="{{item.isImg}}"></image>
+                        <image src="/static/images/noimg.png" class="pm-files-img" wx:if="{{!item.isImg}}"></image>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 选择自主维修的下边 -->
+            <view wx:if="{{reportData.modeStatus !=3}}">
+                <view class="repair-rtop" wx:if="{{reportData.modeStatus !=3}}">故障类型</view>
+
+                <view class="repair-rbot">
+                    <view wx:if="{{reportData.modeStatus !=3}}">
+                        <!-- (1，故障维修2，预防性维修3，计量检测性维修 4，质保期内维修 5，厂家合同维修 6，第三方合同维修 7，临时叫修 -->
+                        <text wx:if="{{reportData.faultType ==1}}">故障维修</text>
+                        <text wx:if="{{reportData.faultType ==2}}">预防性维修</text>
+                        <text wx:if="{{reportData.faultType ==3}}">计量、检测后维修</text>
+                        <text wx:if="{{reportData.faultType ==4}}">质保期内维修</text>
+                        <text wx:if="{{reportData.faultType ==5}}">厂家合同维修</text>
+                        <text wx:if="{{reportData.faultType ==6}}">第三方合同维修</text>
+                        <text wx:if="{{reportData.faultType ==7}}">临时叫修</text>
+
+
+
+                    </view>
+
+                    <view class="write-repair-unit" wx:if="{{reportData.modeStatus ==2}}">
+                        <text>外修单位</text>
+                        <textarea value="{{reportData.outsideCompany}}" disabled='true' placeholder='暂无'></textarea>
+                    </view>
+                    <view class="write-repair-unit" wx:if="{{reportData.modeStatus ==2}}">
+                        <text>联系电话</text>
+                        <textarea disabled='true' value="{{reportData.outsidePhone}}" placeholder='暂无' wx:if="{{reportData.modeStatus ==2}}"></textarea>
+                    </view>
+                    <view class="write-repair-unit" wx:if="{{reportData.modeStatus ==2}}">
+                        <text>工程师姓名</text>
+                        <textarea disabled='true' value="{{reportData.engineerName}}" placeholder='暂无' wx:if="{{reportData.modeStatus ==2}}"></textarea>
+                    </view>
+                    <view class="write-repair-unit" wx:if="{{reportData.modeStatus ==2}}">
+                        <text>工程师工号</text>
+                        <textarea disabled='true' value="{{reportData.engineerNum}}" placeholder='暂无' wx:if="{{reportData.modeStatus ==2}}"></textarea>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+
+        <!-- 故障现象对应的右边 -->
+        <view hidden="{{repairIndex!=2}}">
+            <view class="repair-rtop">故障现象</view>
+            <view class="repair-rbot">
+                <view wx:for="{{reportData.faultPhenomenonList }}" wx:key="two_{{index}}">
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view hidden="{{repairIndex!=3}}">
+            <view class="repair-rtop">故障代码</view>
+            <view class="repair-rbot">
+                <view wx:if="{{reportData.troubleCode}}">
+                    <text>{{reportData.troubleCode}}</text>
+                </view>
+
+            </view>
+        </view>
+        <!-- 故障原因对应的右边 -->
+        <view hidden="{{repairIndex!=4}}">
+            <view class="repair-rtop">故障原因</view>
+            <view class="repair-rbot" style='margin-bottom:0'>
+                <view wx:for="{{reportData.faultReasonList  }}" wx:key="three_{{index}}">
+
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </view>
+        <!-- 工作内容对应的右边 -->
+        <view hidden="{{repairIndex!=5}}">
+            <view class="repair-rtop">工作内容</view>
+            <view class="repair-rbot" style='margin-bottom:0'>
+                <view wx:for="{{reportData.workContentList   }}" wx:key="four_{{index}}">
+
+                    <text>{{item}}</text>
+                </view>
+            </view>
+
+
+
+
+        </view>
+        <!-- 配件信息对应的右边 -->
+        <view hidden="{{repairIndex!=6}}">
+            <view class="repair-rtop">配件信息</view>
+            <view class="haspart">
+                <view wx:if="{{reportData.list.length==0}}" class="nopart">暂无配件~</view>
+                <view class="haspartul" wx:if="{{reportData.list.lengt!==0}}">
+                    <view wx:for="{{reportData.list}}" wx:key="five_{{index}}">
+                        <view class="haspartli">
+                            <view>
+                                <view class="partName">{{item.partName}}</view>
+                                <view class="partline">
+                                    <view wx:if="{{item.partSpec}}">{{item.partSpec}}</view>
+                                    <view>{{item.num+item.unitName}}</view>
+                                    <view wx:if="{{item.partPrice}}">{{item.partPrice}}</view>
+                                </view>
+                            </view>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 维修结果对应的右边 -->
+
+        </view>
+        <view hidden="{{repairIndex!=7}}">
+            <view class="repair-rtop">维修结果</view>
+            <view class="repair-rbot" style='margin-bottom:0'>
+                <view>
+                    <!--(1,正常工作 2，基本功能正常 3，需进一步修理 4，需外送修理 5，无法修复 6，其他) , -->
+                    <text wx:if="{{reportData.repairResult==1}}">正常工作</text>
+                    <text wx:if="{{reportData.repairResult==2}}">基本功能正常</text>
+                    <text wx:if="{{reportData.repairResult==3}}">需进一步修理</text>
+                    <text wx:if="{{reportData.repairResult==4}}">需外送修理</text>
+                    <text wx:if="{{reportData.repairResult  ==5}}">无法修复</text>
+                    <text wx:if="{{reportData.repairResult  ==6}}">其他</text>
+
+
+
+
+                </view>
+            </view>
+            <view class="repair-rtop reason"></view>
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus !=2}}">
+                <text class="labal" style='width:33%'>申请时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{repairStartDate}}">{{repairStartDate }}</text>
+
+            </view>
+
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus !=2}}">
+                <text class="labal" style='width:33%'>接单时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{actualStartDate}}">{{actualStartDate }}</text>
+
+            </view>
+
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus !=2}}">
+                <text class="labal" style='width:33%'>维修时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{actualEndDate}}">{{actualEndDate }}</text>
+
+            </view>
+
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus !=2}}">
+                <text class="labal" style='width:33%'>完修时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{repairEndDate}}">{{repairEndDate }}</text>
+
+            </view>
+
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus ==2}}">
+                <text class="labal" style='width:33%'>叫修时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{callRepairDate}}">{{callRepairDate }}</text>
+
+            </view>
+
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus ==2}}">
+                <text class="labal" style='width:33%'>到达时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{arrivalDate}}">{{arrivalDate  }}</text>
+
+            </view>
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus ==2}}">
+                <text class="labal" style='width:33%'>离开时间</text>
+                <text class="palceClass" style='width:53%' wx:if="{{leaveDate}}">{{leaveDate  }}</text>
+
+            </view>
+            <view class="reasultbtn" wx:if="{{reportData.modeStatus ==2}}">
+                <text class="labal" style='width:33%'>维修工时</text>
+                <text class="palceClass" style='width:53%' wx:if="{{reportData.repairHours}}">{{reportData.repairHours}}</text>
+
+            </view>
+
+            <view class="reasultbtn">
+                <text class="labal">维修费</text>
+                <input placeholder='￥ 0.00' placeholder-class='palceClass' value="{{reportData.repairCost}}" disabled='true'></input>
+            </view>
+
+            <view class="reasultbtn">
+                <text class="labal">材料费</text>
+                <input placeholder='￥ 0.00' placeholder-class='palceClass' value="{{reportData.partsCost}}" disabled='true'></input>
+            </view>
+            <view class="reasultbtn">
+                <text class="labal">发票号码</text>
+                <input placeholder='暂无发票' placeholder-class='palceClass' value="{{reportData.repairInvoice}}" disabled='true'></input>
+            </view>
+            <textarea placeholder='暂无备注' placeholder-class='palceClass ' class="resulttextarea" value="{{reportData.remarks}}" disabled='true' wx:if="{{repairIndex==6}}"></textarea>
+            <!-- 附件 -->
+            <view wx:if="{{repairIndex==7}}">
+                <view class="assestli" style='border-top:1rpx solid #dedede;padding:0 20rpx;background:#f5f8fc;height:88rpx;line-height:88rpx;border-bottom:1rpx solid #dedede;'>
+                    <view>
+                        <view>
+                            <image src="../../static/images/fujian2.png" class="fujian"></image>
+                        </view>
+                        <view style='padding-left:1%;color:#666;font-size:28rpx;width:95%'>
+                            附件
+                            <text style="color:#999;font-size:26rpx;">*仅支持图片(jpg、jpeg、png)查看</text>
+                        </view>
+                    </view>
+                </view>
+                <!-- 附件循环 -->
+                <!-- <view class="assestli" bindtap="lookBignew" wx:for="{{newFiles}}" data-files-url="{{item.uploadUrl}}" wx:key="{{index}}" style='margin:0;border-bottom:1rpx solid #dedede;'>
+                    <view>
+                        <view class="label" style='width:97%;color:#508cee;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:28rpx'>
+                            <text>{{item.fileName}}</text>
+                        </view>
+                        <image src="/static/images/next.png" class="next"></image>
+                    </view>
+                </view> -->
+                <view class='pm-files'>
+                    <view class="pm-files-item" wx:for="{{newFiles}}"  wx:key="{{index}}">
+                        <image src="{{baseImgUrl + item.uploadUrl}}" class="pm-files-img" wx:if="{{item.isImg}}" bindtap="lookBignew" data-files-url="{{item.uploadUrl}}"></image>
+                        <image src="/static/images/noimg.png" class="pm-files-img" wx:if="{{!item.isImg}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

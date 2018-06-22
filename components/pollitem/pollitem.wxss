@@ -1,0 +1,46 @@
+/* 卡片样式 */
+.card{
+  background: #fff;
+  padding: 35rpx 30rpx;
+   border-bottom: 1rpx solid #dedede;
+    border-top: 1rpx solid #dedede;
+   margin-bottom: 20rpx;
+}
+.num{
+  font-size: 26rpx;
+  color: #333;
+  border-bottom: 1rpx solid #dedede;
+  height: 50rpx;
+}
+.name{
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #333;
+  min-height: 50rpx;
+}
+.icon{
+  margin-top: 10rpx;
+}
+.icon,.nexttime{
+  font-size: 26rpx;
+  height: 50rpx;
+  color: #666;
+}
+.nexttime{
+  height: 35rpx;
+}
+.cycle{
+  
+  float: left;
+}
+.dineline{
+  color: #FFA229;
+  border: 1rpx solid #FFA229;
+  border-radius: 20rpx;
+  float: right;
+  padding: 0 10rpx;
+}
+.card .red{
+    color: #FF3D29;
+  border: 1rpx solid #FF3D29;
+}

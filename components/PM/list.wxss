@@ -1,0 +1,52 @@
+/* 卡片样式 */
+.item{
+  background: #fff;
+  padding-bottom: 30rpx;
+   border-bottom: 1rpx solid #dedede;
+    border-top: 1rpx solid #dedede;
+   margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+.num{
+  font-size: 26rpx;
+  padding-left: 30rpx;
+  line-height: 56rpx;
+  color: #333;
+  border-bottom: 1rpx solid #dedede;
+}
+.name{
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #333;
+  min-height: 50rpx;
+}
+.status{
+  float: right;
+  padding: 10rpx 20rpx;
+  line-height: 32rpx;
+  border-radius: 20rpx;
+  background-color: #f7931e;
+  color: #fff;
+  margin-right: 30rpx;
+}
+.red {
+  background-color: #f3756f;
+}
+.dept {
+  padding-left: 30rpx;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 0rpx;
+  line-height: 32rpx;
+  color: #666;
+}
+.bottom, .title {
+  padding-left: 30rpx;
+}
+.cycle, .date{
+  display: inline-block;
+}
+.cycle {
+  width: 233rpx;
+}

@@ -1,0 +1,17 @@
+/* 没有数据的样式 */
+.nodata{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nodata image{
+  width: 124rpx;
+  height: 160rpx;
+}
+.nodata .text{
+  font-size:36rpx ;
+  color: #999;
+  margin-top: 70rpx;
+}

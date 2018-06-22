@@ -1,0 +1,251 @@
+/* pages/assestbook/newassest.wxss */
+@import "/components/button/button.wxss";
+@import "/components/choosemodal/choosemodal.wxss";
+@import "/components/mycard/mycard.wxss";
+@import "/components/loading/loading.wxss";
+@import "/components/mytotast/mytotast.wxss";
+
+page{
+  height: 100%;
+  background: #f3f3f5;
+  width: 100%;
+  position: relative;
+  z-index: 300;
+}
+.hd_new{
+  width:85%;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.hd_new text{
+   display: block;
+}
+.hd_new text:nth-child(2){
+
+ margin-left: 20rpx
+}
+.hd_new text:nth-child(1){
+ width: 160rpx;
+ text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.repairLi{
+  height: 88rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin: 20rpx 0;
+  line-height: 83rpx;
+}
+.repairLiNew{
+  height: 88rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start
+}
+.repairLiNew .label{
+  width: 23%
+}
+.repairLiNew .moren{
+  color: #666
+}
+.repairLiNew .content{
+  width: 77%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.repairLiNew>text{
+  width: 200rpx;
+}
+.repairLi image{
+  width: 16rpx;
+  height: 25rpx;
+}
+.newassest{
+
+height: 100%;
+}
+.over{
+  overflow: hidden;
+}
+.active{
+  overflow: hidden;
+}
+/* 没有数据的样式 */
+.nodata{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150rpx;
+}
+.nodata image{
+  width: 124rpx;
+  height: 160rpx;
+}
+.nodata .text{
+  font-size:36rpx ;
+  color: #999;
+  margin-top: 70rpx;
+}
+/* 获取数据的页面样式 */
+
+textarea{
+  font-size: 32rpx;
+  color: #666；
+}
+.footer{
+  height: 150rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 60rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+.loginBtn{
+  margin-top: 0
+}
+/* 添加图片的样式 */
+.assestli{
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx;
+  background: #fff;
+}
+.viewimg{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.viewimg>view{
+  position: relative;
+}
+view image{
+  width: 150rpx;
+  height: 150rpx;
+   margin:30rpx;
+   margin-left:0;
+   margin-bottom: 0;
+}
+view .close{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: -1rpx;
+  top: -1rpx;
+}
+.list>view image:nth-child(4){
+  margin-right: 0
+}
+/* 选择故障现象的样式 */
+.phenomenon{
+  background: #fff;
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+}
+.phentop{
+  padding: 30rpx 30rpx 30px 0;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.phentop>view{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 30rpx
+}
+.palceClass{
+  font-size: 32rpx;
+  color: #bebebe;
+}
+.phentop textarea{
+  color: #333;
+  height: 210rpx;
+  width: 100%;
+}
+.phenbon{
+  padding: 30rpx;
+  padding-right: 0;
+  padding-left: 0
+}
+.phenbon>view:first-child{
+   font-size: 32rpx;
+  color: #999;
+  margin-bottom: 30rpx
+}
+.iconlist{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+ 
+}
+.icon,.position{
+  font-size: 32rpx;
+  color: #666;
+  border-radius: 8rpx;
+  height: 86rpx;
+  padding: 0 30rpx;
+  line-height: 86rpx;
+  border: 1rpx solid #35b0e1;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.position{
+ position: relative;
+ display: flex;
+
+}
+.position image{
+  top: -1rpx;
+ right: -1rpx;
+ position: absolute;
+ width: 32rpx;
+ height: 32rpx;
+ margin: 0
+}
+
+/* 在库 */
+.one{
+   border: 1rpx solid #508cee;
+  color: #508cee
+}
+/* 在用 */
+.two{
+  border: 1rpx solid #14a386;
+  color: #14a386
+}
+/* 预登 */
+.three{
+   border: 1rpx solid #e7a505;
+  color: #e7a505
+}
+/* 待报损 */
+.four{
+  border: 1rpx solid #ec5e00;
+  color: #ec5e00
+}
+/* 报损 */
+.five{
+   border: 1rpx solid #e00000;
+  color: #e00000
+}
+/* 退货 */
+.six{
+  border: 1rpx solid #999999;
+  color: #999999
+}

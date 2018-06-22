@@ -1,0 +1,19 @@
+<template name="hoverbtn">
+    <view class="tag">
+        <!-- <view class="small-li"><view class="tagli"  hidden="{{!tag}}" bindtap="print" bindtap="print" >打印标签</view> <image src="/static/images/prient.png" class="small" hidden="{{!tag}}" bindtap="print"></image></view> -->
+        <view class="small-li" wx:if="{{addapplyLimit && (statusLimit!='待报损' && statusLimit!='报损' && statusLimit!='退货') && nameLimit!='维修中'}}">
+            <view class="tagli" hidden="{{!tag}}" bindtap="repair">报修</view>
+            <image src="/static/images/repair.png" class="small" hidden="{{!tag}}" bindtap="repair"></image>
+        </view>
+        <view class="small-li" wx:if="{{editapplyLimit}}">
+            <view class="tagli" hidden="{{!tag}}" bindtap="edit">编辑</view>
+            <image src="/static/images/eadit.png" class="small" hidden="{{!tag}}" bindtap="edit"></image>
+        </view>
+        <view>
+            <image src="/static/images/root.png" class="big" hidden="{{tag}}" bindtap="show"></image>
+        </view>
+        <view>
+            <image src="/static/images/getroot.png" class="big" hidden="{{!tag}}" bindtap="hidden"></image>
+        </view>
+    </view>
+</template>

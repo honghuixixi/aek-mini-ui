@@ -1,0 +1,84 @@
+/* pages/service/index.wxss */
+  @import "/components/serveritem/sitem.wxss";
+  @import "/components/serverhover/serverhover.wxss";
+   page{
+  height: 100%;
+  background: #EFEFF4;
+ 
+}
+.content{
+  padding: 30rpx 0;
+  padding-bottom: 0;
+  background: #EFEFF4;
+}
+.cell{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
+  flex-wrap:wrap;
+  border-top:1rpx solid #D6D6DB;
+  background: #fff;
+}
+.cell>view{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  height: 96rpx;
+  padding-top: 33rpx;
+  padding-left: 40rpx;
+  box-sizing:border-box;
+  border-bottom:1rpx solid #f2f2f2;
+  position: relative;
+}
+.cell>view:nth-child(2n+1){
+  border-right:1rpx solid #f2f2f2;
+}
+.cell image{
+  width: 48rpx;
+  height: 44rpx;
+}
+.cell text{
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+.new{
+  background: #F12C20;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 50%;
+  position: absolute;
+  top:16rpx;
+  left: 84rpx;
+}
+.title{
+  height: 87rpx;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 87rpx;
+  padding: 0 32rpx ;
+  background: #EFEFF4;
+}
+.announce-show{
+  padding-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.announce-show image{
+  width: 135rpx;
+  height: 142rpx;
+}
+.announce-show text{
+  font-size: 32rpx;
+  color: #999;
+  margin-top: 40rpx;
+}
+.tag{
+  z-index: 200;
+}

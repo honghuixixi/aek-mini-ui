@@ -1,0 +1,32 @@
+<template name="myCard">
+    <view class="card">
+    <view style=" position: relative;">
+    <image src="{{assetsImg?assetsImg:'/static/images/position.png'}}" class="image"></image>
+        <view class="tagsamll" wx:if="{{repairStatusName=='维修中'}}">维修中</view>
+    </view>
+        
+        <view class="content">
+            <view class="name">{{assetsName}}</view>
+            <view class="bottom">
+                <view class="bottom-left">
+                    <view class="producter">生 产 商：{{factoryName}}</view>
+                    <view class="size">
+                        <text>规格型号：</text>
+                        <text wx:if="{{assetsSpec}}">{{assetsSpec}}</text>
+                    </view>
+                    <view class="depart">所在部门：{{deptName}}</view>
+                </view>
+                <view wx:if="{{statusName}}" class="status {{statusName=='在库'?'one':''}} {{statusName=='在用'?'two':''}} {{statusName=='预登'?'three':''}} {{statusName=='待报损'?'four':''}} {{statusName=='报损'?'five':''}} {{statusName=='退货'?'six':''}}">
+                    
+                    <view>
+                        {{statusName}}
+                    </view>
+                </view>
+                <view class="status statusZanCun " wx:if="{{verfyStatus==0 }}">暂存</view>
+                <view class="status statusdaiyanshou" wx:if="{{verfyStatus==1}}">待验收</view>
+                <view class="status statusPass" wx:if="{{verfyStatus==2}}">验收通过</view>
+                <view class="status statusNoPass" wx:if="{{verfyStatus==3}}">验收未通过</view>
+            </view>
+        </view>
+    </view>
+</template>

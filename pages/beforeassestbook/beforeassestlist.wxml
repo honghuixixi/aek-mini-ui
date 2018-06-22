@@ -1,0 +1,73 @@
+<import src="/components/mycard/mycard.wxml" />
+<import src="/components/deptlist/deptlist.wxml" />
+<view class="assestlit {{over?'over':''}}">
+  <view class="search ">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="设备名称" value="{{searchName}}" placeholder-class="palce-class" bindfocus="search" />
+      <!-- <image src="/static/images/scans.png" bindtap="scan"></image> -->
+    </view>
+    <view class="choose" bindtap="filter"><text>筛选</text>
+      <image src="/static/images/shaixuan.png"></image>
+    </view>
+  </view>
+  <!-- 列表信息，让data的自定义 数据去传递到详情页面去显示不同的按钮 -->
+  <view class="list">
+    <view wx:for="{{cardList}}" data-id="{{item.id}}" bindtap="beforeassestdetail" wx:key="{{index}}" data-before-status="{{index}}">
+      <template is="myCard" data="{{...item}}"></template>
+    </view>
+    <view class="nomore pull" hidden="{{nomore}}">~没有更多了~</view>
+    <view class="nomore pull" hidden="{{pullDown}}"><image src="/static/images/pull.gif"></image></view>
+  </view>
+  <!-- 悬浮按钮 -->
+  <view class="add" bindtap="addassest">
+  <image src="/static/images/add.png"></image>
+  </view>
+
+ <view  class="dept-container"  hidden="{{showDeptlist}}"  bindtap='hiddendeptlist'> 
+   <view class="deptwrap"  >
+     <view class="dept-lable">请选择部门</view>
+     <template is="deptlist" data="{{...deptList}}"></template>
+   </view>
+
+ </view> 
+
+
+  <view class="filter" hidden="{{filter}}" bindtap="filterClick">
+    <view class="black"></view>
+    <view class="right">
+      <view class="header">
+        筛选
+      </view>
+      <view class="center">
+      <view class="top">
+        <view class="top-title">状态</view>
+       <view class="tag">
+        <view class="statusLi {{active==-1  ?'active':''}}" catchtap="statusClick" data-status="-1">
+          全部
+        </view>
+        <view class="statusLi {{active==0?'active':''}}" catchtap="statusClick" data-status="0">
+          暂存
+        </view>
+        <view class="statusLi {{active==1?'active':''}}" catchtap="statusClick" data-status="1">
+         待验收
+        </view>
+        <view class="statusLi {{active==2?'active':''}}" catchtap="statusClick" data-status="2">
+          验收通过
+        </view>
+        <view class="statusLi {{active==3?'active':''}}" catchtap="statusClick" data-status="3">
+          验收未通过
+        </view>
+      </view>
+      </view>
+      <view class="bootom" bindtap="chooseDeptId">
+        <text>所在部门</text><view ><text>{{dept}}</text><image src="/static/images/next.png"></image></view>
+      </view>
+      <view class="botton">
+      <view bindtap="filterAssestList">确定</view>
+      <view catchtap="reset">重置</view>
+      </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+@import "/components/choosemodal/choosemodal.wxss";
+@import "/components/msglistcard/msglistcard.wxss";
+ @import "/components/repaircard/repaircard.wxss"; 
+ @import "/components/loading/loading.wxss";
+  @import "/components/deptlist/deptlist.wxss";
+  @import "/components/nolimits/nolimits.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5;
+}
+ .nomore{
+   font-size: 28rpx;
+   text-align: center;
+   color: #999;
+   padding-top: 20rpx;
+ }
+.pull image{
+  width: 42rpx;
+  height: 42rpx;
+}
+.pull{
+  margin-bottom: 60rpx;
+}
+.bottom {
+  justify-content: flex-start;
+}
+

@@ -1,0 +1,332 @@
+/* pages/assestbook/assestdetail.wxss */
+@import "/components/hoverbtn/hoverbtn.wxss";
+@import "/components/button/button.wxss";
+@import "/components/choosemodal/choosemodal.wxss";
+
+page{
+  height: 100%;
+   background: #f3f3f5; 
+}
+.header{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  background: #508cee;
+  color: rgba(255,255,255,0.5);
+  font-size: 32rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.header view{
+  height: 96rpx;
+  width: 50%;
+  text-align: center;
+  line-height: 100rpx; 
+}
+.downline{
+    border-bottom: 4rpx solid #fff;
+    color:#fff;
+}
+.basic-msg{
+  margin-top: 100rpx;
+}
+
+.basic-title{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.list{
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+  
+}
+.margin{
+  margin-bottom: 230rpx;
+}
+.list>view{
+  min-height: 50rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  padding: 18rpx 30rpx 18rpx 0
+}
+.list .spailline{
+  border-bottom:0;
+}
+.assest-detail .picture{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.device-img text{
+ width: 100%;
+ font-size:32rpx;
+color:#333;
+
+}
+.viewimg{
+  display: flex;
+  flex-direction: row;
+ flex-wrap:wrap;
+}
+.list>view image{
+  width: 150rpx;
+  height: 150rpx;
+   margin:30rpx;
+   margin-left:0;
+   margin-bottom: 0;
+}
+.list>view image:nth-child(4){
+  margin-right: 0
+}
+.list .label{
+  font-size: 32rpx;
+  color: #333;
+  width: 20%;
+}
+.assestli> view{
+  display: flex;
+  flex-direction: srow;
+  width: 100%;
+  align-items: center
+}
+.assestli>view{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.content{
+  color: #999;
+  font-size: 32rpx;
+  overflow: hidden;
+  width: 68%;
+  padding-left: 12%;
+  text-align: top;
+}
+.choose{
+  color: #bebebe;
+  font-size: 32rpx;
+}
+.chooseed{
+  color: #666;
+  font-size: 32rpx;
+}
+.master{
+  width: 12rpx;
+  height: 12rpx;
+  background: #e00000;
+  border-radius: 50%;
+  margin-left: 15rpx;
+ 
+}
+.footer{
+  height: 150rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 60rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+.loginBtn{
+  margin-top: 0
+}
+.list .assestli:last-child{
+  border-bottom: 0
+}
+.slide-up{
+  height: 106rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.slide-up text{
+  color: #999;
+  font-size: 32rpx;
+  margin-right: 30rpx;
+}
+.slide-up image{
+ width: 20rpx;
+ height: 8rpx;
+}
+.assest-detail .more{
+  display: none;
+}
+.longheight{
+  line-height:75rpx
+}
+.buy{
+  margin-top: 120rpx;
+   margin-bottom: 20rpx; 
+}
+/* 操作记录页面的样式
+ */
+ .operate{
+   padding-top: 120rpx;
+ }
+.operate-top{
+ background: #fff;
+ height: 86rpx;
+ border-top:1rpx solid #e5e5e5;
+ border-bottom:1rpx solid #e5e5e5; 
+ padding: 0  30rpx;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ align-items: center;
+}
+.number{
+  font-size: 32rpx;
+  color: #333;
+  width: 70%;
+}
+.status{
+    width: 30%;
+   text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.status text{
+  margin-top: 5rpx;
+  font-size: 26rpx;
+  color: #f3941d;
+  min-width: 70rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #f3941d;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+  
+}
+.button{
+  height: 154rpx;
+  background: #fff;
+  padding: 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100
+}
+.button view{
+  border-radius: 8rpx;
+  color: #fff;
+  height: 86rpx;
+  text-align: center;
+  line-height: 88rpx;
+}
+.summit{
+  width: 316rpx;
+  background: #508cee;
+  border: 1rpx solid #508cee;
+  
+}
+.button .storage{
+  width: 152rpx;
+   border: 1rpx solid #508cee;
+  
+   color: #508cee
+}
+.button .repeal{
+  width: 152rpx;
+   border: 1rpx solid #508cee;
+  
+ color: #508cee
+}
+.path{
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.pathLi{
+  display: flex;
+  flex-direction: column;
+  height: 134rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin:  0 30rpx;
+ justify-content: center
+  
+}
+.pathLi image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.path .pathLi:last-child{
+  border-bottom: 0
+}
+.top text{
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+.bottom{
+  padding-left: 52rpx;
+}
+.bottom text{
+  font-size: 28rpx;
+  color: #999;
+}
+.reedit{
+  width: 495rpx;
+}
+.list > wx-view .next{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.mast{
+  color: #e00000;
+  position: absolute;
+  right: -20rpx;
+  top: 10rpx;
+}
+.mast-parent{
+  position: relative;
+}
+.list>view .close{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: -18rpx;
+  top: -18rpx;
+}
+.viewimg>view{
+  position: relative;
+}
+picker{
+  height:45rpx;
+  display:inline-block;
+  width:68%;
+  padding-left: 10%;
+  color: #666;
+  font-size:32rpx;  
+}
+picker .picker{
+  padding-left: 0;
+}

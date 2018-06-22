@@ -1,0 +1,109 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/loading/loading.wxml" />
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<view id="PM" wx:if="{{!loading}}">
+    <view class='height30'></view>
+    <view class='block p-t-25 p-b-25'>
+        <view class='content font30 m-t-25'>{{obj.assetsName}}</view>
+        <view class='color666 content font26 m-t-15'>设备编号：{{obj.assetsNum}}</view>
+        <view class='color666 content font22 m-t-15 m-b-25'>所在部门：{{obj.assetsDeptName || ''}}</view>
+    </view>
+
+    <view class='block' wx:for="{{obj.templateItems}}" wx:key="{{item.id}}">
+        <view class='title content font26'>{{item.itemName}}</view>
+        <radio-group bindchange="chooseAnswer" data-id="{{item.id}}">
+            <view class='content font28'>
+                 <radio color='#6096EF' style='transform:scale(.7);' value='1' checked='{{item.answer == 1}}'></radio> 
+                <text>正常</text>
+            </view>
+            <view class='content font28'>
+                 <radio color='#6096EF' style='transform:scale(.7);' value='2' checked='{{item.answer == 2}}'></radio> 
+                <text>不正常</text>
+            </view>
+        </radio-group>
+    </view>
+
+    <view class='block m-t-30 m-b-30'>
+        <view class='content line b-t-999' bindtap='choosestatus' data-type-index="{{obj.live}}">
+            <view class='head font28'>设备现状</view>
+            <view class='body font26'>
+                <text class='color999' hidden='{{obj.live}}'>请选择</text>
+                <text class='color333' hidden='{{!obj.live}}'>{{typeList[obj.live - 1].status}}</text>
+                <image class='next' src='/static/images/next.png'></image>
+            </view>
+        </view>
+    </view>
+    <view class='block b-t-999'>
+        <!-- 附件 -->
+        <view class="assestli content  line">
+            <view>
+                <view>
+                    <image src="../../static/images/fujian.png" class="fujianimg"></image>
+                </view>
+                <view class="content font28" style='padding-left:2%;width:70%;'>
+                    附件
+                    <text style="color:#999;font-size:26rpx;">*最多不超过5个</text>
+                </view>
+                <text style='color:red;font-size:28rpx;height:90rpx;' bindtap='addimg' wx:if="{{obj.files?obj.files.length<5:true}}">附件上传</text>
+            </view>
+
+        </view>
+        <!-- 附件循环 -->
+        <view class="asset-list">
+            <view class='asset-file' wx:for="{{obj.files}}" data-files-url="{{item.url}}" wx:key="{{index}}" data-fujian-list="1" data-fujian-index="{{index}}">
+                <!-- <view class="label" style='width:97%;color:#508cee;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;'>
+                    <text>{{item.name}}</text>
+                </view> -->
+                <image src="{{item.fullUrl}}"></image>
+                <text bindtap='delImg' data-index="{{index}}">X</text>
+                <!-- <image src="/static/images/21.png" class="next fujianimg"></image> -->
+            </view>
+        </view>
+
+    </view>
+    <view class='block'>
+        <view class='title content font26'>备注</view>
+        <view class='content b-b-999 remarksView'>
+            <input class='remarkInput' bindblur='remarksSet' value='{{obj.remarks}}' maxlength='300' placeholder='请输入，300字符以内' placeholder-class="placeRemarks"></input>
+        </view>
+    </view>
+    <view class='height130'></view>
+    <view class='operate'>
+        <view class='btn submit font30 colorfff' bindtap='submitPM' data-type='2'>提交</view>
+    </view>
+    <!-- toast -->
+    <view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+    <template is="choosecont" data="{{iconList,...listShow,pindex,cindex,answerMy,measureMy,remarkMy,errorShow}}" wx:if="{{chooseShow}}"></template>
+    <!-- 选择类型弹窗 -->
+    <template is="myModal" data="{{hide:typeHide,list:typeList,eq:typeeq}}"></template>
+    <!-- 弹框 -->
+    <view class='planConfirmWrap' hidden='{{confirm}}'>
+        <view class='planConfirm'>
+            <view class='planConfirmView'>
+                <text>提交后将不能修改，确定提交吗？</text>
+            </view>
+            <view class='planConfirmCon'>
+                <text>下次实施日期</text>
+            </view>
+            <view class='confirmDate'>
+                <picker mode="date" value="{{nextDate}}" bindchange="bindDateChange">
+                    <view class="picker">
+                        {{nextDate}}
+                    </view>
+                </picker>
+            </view>
+            <view class='planConfirmBtns'>
+                <view class='planConfirmBtn planConfirmBtn0' bindtap='cancelIt'>
+                    <text>取消</text>
+                </view>
+                <view class='planConfirmBtn planConfirmBtn1' bindtap='confirm'>
+                    <text>确定</text>
+                </view>
+                <view class='planConfirmLine'></view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="myModal" data="{{hide:phoneHide,list:phoneList,eq:phoneeq}}"></template>
+<!-- </view>  -->

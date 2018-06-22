@@ -1,0 +1,42 @@
+<import src="/components/mytotast/mytost.wxml" />
+<view class='row first'>
+    <view class='row-txt'>报告编号：</view>
+    <view class='row-con'>{{record.reportNo}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>计划名称：</view>
+    <view class='row-con'>{{record.name}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>类型：</view>
+    <view class='row-con'>{{record.planTypeStr}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>周期：</view>
+    <view class='row-con'>{{record.planCycleStr}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>提交日期：</view>
+    <view class='row-con'>{{record.endDateStr}}</view>
+</view>
+<view class='row'>
+    <view class='row-txt'>负责人：</view>
+    <view class='row-con'>{{record.checkManStr}}</view>
+</view>
+<view class='group'>
+    <view class='group-title'>临床使用情况</view>
+    <view class='group-con'>{{record.condition || ''}}</view>
+</view>
+<view class='group'>
+    <view class='group-title'>存在的问题及分析</view>
+    <view class='group-con'>{{record.analysis || ''}}</view>
+</view>
+<view class='group'>
+    <view class='group-title'>改进的问题及建议</view>
+    <view class='group-con'>{{record.suggestion || ''}}</view>
+</view>
+<view style='height: 140rpx;' wx:if='{{status == 1}}'></view>
+<view class='accept' wx:if='{{status == 1}}'>
+    <view bindtap='accept'>确认验收</view>
+</view>
+<template is="mytost" data='{{show: showMsg, content: msg}}'></template>

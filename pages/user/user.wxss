@@ -1,0 +1,153 @@
+@import "/components/tabbar/tabbar.wxss";
+page {
+  height: 100%;
+  background: #f3f3f5;
+}
+
+.first {
+  background-color: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+   border-top: 1rpx solid #e5e5e5;
+}
+
+.user-li {
+  padding-right: 30rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  height: 87rpx;
+  line-height: 87rpx;
+}
+
+.label {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.label image {
+  width: 24rpx;
+  height: 28rpx;
+  margin-right: 25rpx;
+}
+
+.label text {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.right {
+  float: right;
+  width: 60%;
+  height: 87rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.right image {
+  width: 15rpx;
+  height: 24rpx;
+  margin-left: 25rpx;
+}
+
+.right text {
+  font-size: 32rpx;
+  color: #999;
+ width: 90%;
+ 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.emailLi{
+   font-size: 32rpx;
+  color: #999;
+ width: 140%;
+ 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.phone image {
+  width: 19rpx;
+  height: 29rpx;
+}
+
+.email image {
+  width: 28rpx;
+  height: 24rpx;
+}
+
+.last-li {
+  border-bottom: 0;
+}
+
+.secnd {
+  margin-top: 20rpx;
+}
+
+.jigou image {
+  width: 28rpx;
+  height: 25rpx;
+}
+
+.bumen image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.config image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.fankui image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.kefu image {
+  width: 28rpx;
+  height: 26rpx;
+}
+.loginBtn{
+  width: 80%;
+  margin: 60rpx auto 0;
+  padding-bottom: 60rpx;
+}
+button{
+ color: #508cee;
+ height: 88rpx;
+ line-height: 88rpx;
+  background-color: #fff;
+}
+.submit_login{
+   background-color: #fff;
+   font-size: 36rpx;
+}
+.clickBtn{
+  background-color: #fff;
+  color:rgba(80,140,238,.7)
+}
+.jigoulong{
+  min-height: 87rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: auto;
+ 
+}
+.jigou{
+  width: 40%;
+}
+.jigoutext{
+  width: 65%;
+  text-align: right;
+}
+.jigoutext> text{
+ text-align: right;
+  line-height: 32rpx; 
+}

@@ -1,0 +1,23 @@
+<template name="msgCard">
+    <view class="msgcard" bindtap="goDetail" data-model="{{model}}" data-status="{{status}}"  >
+    <view class="firstimg">
+    <image src="/static/images/homerepair.png" class="left-image"></image>
+    </view>
+      <view class="more-list">
+        <view class="satatus" wx:if="{{status==1}}">维修单-待接单</view>
+          <view class="satatus" wx:if="{{status==2}}">维修单-维修中</view>
+          <view class="satatus" wx:if="{{status==3}}">维修单-待验收</view>
+        
+          <view class="describe" wx:if="{{status==1}}">您有{{total}}个维修单需要进行接单</view>
+          <view class="describe" wx:if="{{status==2}}">您有{{total}}个维修单需要进行维修处理</view>
+          <view class="describe" wx:if="{{status==3}}">您有{{total}}个维修单需要进行验收</view>
+          <view class="orige">
+            <image src="/static/images/weixius.png"></image>
+            <text>维修管理</text>
+          </view>
+      </view>
+      <view class="rage">{{total}}</view>
+      <image src="/static/images/next.png" class="right-image"></image>
+    </view>
+  
+</template>

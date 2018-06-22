@@ -1,0 +1,6 @@
+<template name="nolimit">
+<view class="nodata">
+    <image src="/static/images/nodata.png"></image>
+    <view class="text">对不起，您还没有权限~</view>
+    </view>
+</template>

@@ -1,0 +1,46 @@
+<import src="/components/loading/loading.wxml" />
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<!-- 悬浮按钮 -->
+<view class='floatScanWrap'>
+    <view class='floatScan' bindtap='scanAsset'>
+        <image src="/static/images/assetScan.png"></image>
+    </view>
+</view>
+<!-- toast -->
+<view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+<!-- 搜索框  -->
+<view class='height88'>
+    <view class="search ">
+        <view class="input">
+            <image src="/static/images/search.png"></image>
+            <input placeholder="设备名称/编码" value="{{searchName}}" placeholder-class="palce-class" bindfocus="search" />
+        </view>
+    </view>
+</view>
+<view class='background'>
+    <view wx:for="{{list}}" bindtap="detail" wx:key="{{index}}" data-asset-apply-id="{{item.id}}">
+        <view class="item">
+            <view class="num">{{item.assetsNum}}</view>
+            <view class='title'>
+                <view wx:if='{{item.attention}}' class="status {{item.attention=='已过期' && item.attention?'red':''}}">
+                    <view class=''>{{item.attention}}</view>
+                </view>
+                <view class="name">{{item.assetsName}}</view>
+            </view>
+            <view class='dept'>
+                <view>所在部门：</view>
+                <view>{{item.assetsDeptName || ''}}</view>
+            </view>
+            <view class="bottom">
+                <view class="cycle">保养频率：{{item.rate > 1 ? '每周' : '每天'}}</view>
+                <view class="date">下次实施日期：{{item.nextImplementTime}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}">
+        <image src="/static/images/pull.gif"></image>
+    </view>
+
+</view>

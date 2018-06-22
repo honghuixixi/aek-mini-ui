@@ -1,0 +1,330 @@
+/* pages/assestbook/assestdetail.wxss */
+@import "/components/hoverbtn/hoverbtn.wxss";
+@import "/components/mytotast/mytotast.wxss";
+@import "/components/button/button.wxss";
+@import "/components/choosemodal/choosemodal.wxss";
+page {
+    /* height: 100%; */
+    background: #f3f3f5;
+}
+
+.header {
+    height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    background: #508cee;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 32rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header view {
+    height: 96rpx;
+    width: 50%;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.downline {
+    border-bottom: 4rpx solid #fff;
+    color: #fff;
+}
+
+.basic-msg {
+    margin-top: 100rpx;
+    padding-bottom: 20rpx;
+}
+
+.basic-title {
+    padding: 0 30rpx;
+    font-size: 28rpx;
+    color: #666;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.list {
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+.list>view {
+    min-height: 50rpx;
+    margin-left: 30rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18rpx 30rpx 18rpx 0;
+}
+
+.list .spailline {
+    border-bottom: 0;
+}
+
+.assest-detail .picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.device-img text {
+    width: 100%;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.viewimg {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list>view image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 30rpx;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.list>view image:nth-child(4) {
+    margin-right: 0;
+}
+
+.list .label {
+    font-size: 28rpx;
+    color: #666;
+    width: 22%;
+}
+
+.assestli> view {
+    display: flex;
+    flex-direction: srow;
+    width: 100%;
+    align-items: center;
+}
+
+.assestli>view {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.content {
+    color: #333;
+    font-size: 28rpx;
+    overflow: hidden;
+    width: 68%;
+    padding-left: 12%;
+    text-align: top;
+}
+
+.choose {
+    color: #bebebe;
+    font-size: 32rpx;
+}
+
+.chooseed {
+    color: #666;
+    font-size: 32rpx;
+}
+
+.master {
+    width: 12rpx;
+    height: 12rpx;
+    background: #e00000;
+    border-radius: 50%;
+    margin-left: 15rpx;
+}
+
+.footer {
+    height: 150rpx;
+    background: #fff;
+    width: 100%;
+    padding-top: 60rpx;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
+
+.buttom {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.loginBtn {
+    margin-top: 0;
+}
+
+.list .assestli:last-child {
+    border-bottom: 0;
+}
+
+.slide-up {
+    height: 106rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-up text {
+    color: #999;
+    font-size: 32rpx;
+    margin-right: 30rpx;
+}
+
+.slide-up image {
+    width: 20rpx;
+    height: 8rpx;
+}
+
+.assest-detail .more {
+    display: none;
+}
+
+.longheight {
+    line-height: 75rpx;
+}
+
+.buy {
+    margin-top: 120rpx;
+    margin-bottom: 20rpx;
+}
+
+.repaireList {
+    margin-top: 120rpx;
+}
+
+.repaireList .item {
+    margin-bottom: 25rpx;
+    padding-bottom: 10rpx;
+    background-color: #fff;
+    font-size: 32rpx;
+    color: #333;
+    border-top: 1rpx solid #bbb;
+    border-bottom: 1rpx solid #bbb;
+}
+
+.repaireList .item-title {
+    margin-bottom: 10rpx;
+    padding-left: 20rpx;
+    line-height: 70rpx;
+    border-bottom: 1rpx solid #bbb;
+    background-color: #dedede;
+}
+
+.repaireList .item-title label {
+    display: inline-block;
+    margin-left: 50rpx;
+    padding: 5px 20rpx;
+    background-color: #fff;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+    border: 1rpx solid #bbb;
+}
+
+.repaireList .item-row {
+    display: flex;
+    margin-bottom: 10rpx;
+}
+
+.repaireList .item-row text {
+    display: inline-block;
+    width: 180rpx;
+    text-align: right;
+}
+
+.repaireList .item-row view {
+    flex: 1;
+    margin-right: 10rpx;
+    word-break: break-all;
+}
+
+.nomore {
+    font-size: 28rpx;
+    text-align: center;
+    color: #999;
+    padding-top: 20rpx;
+}
+
+.pull image {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.pull {
+    margin-bottom: 60rpx;
+}
+.footer{
+  height: 110rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 24rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100;
+  border-top: 1rpx solid #e5e5e5;
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+.list > wx-view .next{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+
+picker{
+  height:45rpx;
+  display:inline-block;
+  width:68%;
+  padding-left: 10%;
+  color: #666;
+  font-size:32rpx;  
+}
+picker .picker{
+  padding-left: 0;
+}
+  input.content{
+ width:71%; 
+}
+.exchange{
+  position: absolute;
+  top: 140rpx;
+  right: 40rpx;
+  font-size: 28rpx;
+  color: red;
+}
+.mast{
+  width: 12rpx;
+  color: #e00000;
+  position: absolute;
+  right: -20rpx;
+  top: 10rpx;
+}
+.mast-parent{
+  position: relative;
+}
+.list > wx-view wx-image.fujian{
+  width: 32rpx;
+  height: 36rpx;
+  margin: 0;
+}
+.list > wx-view  .fujianimg{
+  width: 30rpx;
+  height: 30rpx;
+}

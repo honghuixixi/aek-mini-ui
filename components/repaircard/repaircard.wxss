@@ -1,0 +1,110 @@
+/* 卡片样式卡片样式卡片样式卡片样式卡片样式 */
+.repaircard{
+  padding-left: 30rpx;
+  border-top:1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  background: #fff;
+  margin: 25rpx 0;
+}
+.cardtop{
+  border-bottom:1rpx solid #e5e5e5;
+}
+.cardbotm{
+  border-top:1rpx solid #e5e5e5;
+}
+.cardbotm{
+   height: 68rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+}
+.cardtop{
+  height: 68rpx;
+}
+.cardtop .repairNum{
+  width: 50%;
+}
+.repairNum{
+  font-size:28rpx;
+  width: 66%
+}
+.applyname{
+  float: left;
+
+}
+.applyname>text{
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 38rpx;
+  display: inline-block;
+  width: 100%;
+}
+.applytime{
+  font-size:26rpx;
+  color: #999; 
+  
+}
+ .card{ 
+  padding: 30rpx;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items:center;
+}
+.name{
+    font-size: 32rpx;
+  color: #333;
+   max-width: 525rpx; 
+ 
+}
+.producter,.size,.depart{
+  font-size: 28rpx;
+  color: #999;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+   margin-bottom: 5rpx; 
+  
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  width: 75%;
+}
+.image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.repairstatus{
+  float: right;
+  
+  font-size: 26rpx;
+  color: #f7931e;
+  min-width: 70rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #f7931e;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   
+}
+
+.use{
+  border: 1rpx solid #14a386;
+  color: #14a386
+}
+.stater{
+  border: 1rpx solid #508cee;
+  color: #508cee
+}
+.repair{
+  border: 1rpx solid #e00000;
+  color: #e00000
+}

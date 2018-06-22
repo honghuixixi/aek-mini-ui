@@ -1,0 +1,135 @@
+page {
+    height: 100%;
+    background: #f3f3f5;
+}
+
+.tabbar {
+    padding: 0 30rpx;
+    height: 88rpx;
+    background: #fff;
+    font-size: 30rpx;
+    color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    left: 0;
+    right: 0;
+}
+
+.tabbar>view {
+    position: relative;
+    width: 50%;
+    float: left;
+    height: 100%;
+    line-height: 88rpx;
+    text-align: center;
+}
+
+.btmline {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: 3rpx solid #6096ef;
+}
+
+.tabbar view.active {
+    color: #6096ef;
+}
+
+/* 搜索 */
+
+.search {
+    height: 130rpx;
+    background: #f3f3f5;
+    padding: 0 30rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 88rpx;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.input {
+    height: 64rpx;
+    width: 600rpx;
+    border-radius: 32rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+}
+
+.palce-class {
+    font-size: 28rpx;
+    color: #bebebe;
+}
+
+.input image {
+    width: 35rpx;
+    height: 35rpx;
+    margin-right: 20rpx;
+}
+
+.items {
+    padding-top: 220rpx;
+}
+
+.item {
+    margin-bottom: 20rpx;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #fff;
+}
+
+.item-num {
+    padding: 0 20rpx;
+    font-size: 24rpx;
+    line-height: 60rpx;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.item-name {
+    padding: 0 20rpx;
+    font-size: 28rpx;
+    line-height: 60rpx;
+}
+
+.item-dept {
+    padding: 0 20rpx;
+    display: flex;
+    font-size: 24rpx;
+    line-height: 60rpx;
+    color: #666;
+}
+
+.item-dept-txt {
+    width: 120rpx;
+}
+
+.item-dept-con {
+    flex: 1;
+}
+
+.item-time {
+    padding: 0 20rpx;
+    font-size: 24rpx;
+    line-height: 60rpx;
+}
+.loading {
+    font-size: 28rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+.empty {
+    font-size: 28rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color: #999;
+}

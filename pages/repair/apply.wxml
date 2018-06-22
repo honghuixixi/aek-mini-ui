@@ -1,0 +1,121 @@
+<import src="/components/loading/loading.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<template is="myTotast" data="{{totastHide:totastHide1,totastContent:totastContent1}}"></template>
+<view class="apply">
+    <template is="loading" wx:if="{{loading}}"></template>
+    <view wx:if="{{!loading}}">
+
+        <view class="repaircard">
+
+            <view class="cardtop">
+                <view class="repairNum">{{msgData.applyNo}}</view>
+
+            </view>
+            <view class="card">
+                <image src="{{uri?uri:'/static/images/position.png'}}" class="image"></image>
+                <view class="content">
+                    <view class="name">{{msgData.assetsName }}</view>
+                    <view class="bottom">
+                        <view class="bottom-left">
+                            <view class="producter">
+                                <text>规格型号：</text>
+                                <text wx:if="{{msgData.assetsSpec }}">{{msgData.assetsSpec }}</text>
+                            </view>
+                            <view class="size">
+                                <text>设备编号 :</text>
+                                <text wx:if="{{msgData.assetsNum}}">{{msgData.assetsNum}}</text>
+                            </view>
+                            <view class="depart">
+                                <text>所在科室 ：</text>
+                                <text wx:if="{{msgData.assetsDeptName}}">{{msgData.assetsDeptName}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+        <view class="upload">
+            <view class="operate-top">
+                <view>
+                    <view class="first">接单类型</view>
+                    <view class="last">{{msgData.reportStatus ==2?'现场维修':'送修'}}</view>
+                </view>
+                <view wx:if="{{msgData.reportStatus ==1 && msgData.sendPerson}}">
+                    <view class="first">送修人</view>
+                    <view class="last">{{msgData.sendPerson}}</view>
+                </view>
+                <view wx:if="{{msgData.reportStatus ==1 && msgData.sendPhone}}">
+                    <view class="first">联系方式</view>
+                    <view class="last">{{msgData.sendPhone}}</view>
+                </view>
+                <view>
+                    <view class="first">接单人</view>
+                    <view class="last">{{msgData.takeOrderName}}</view>
+                </view>
+
+            </view>
+            <view class="assestli picture">
+                <view class=" device-img">
+                    <text style="font-size:32rpx;color:#333;">故障图片</text>
+                </view>
+                <view class="viewimg">
+                    <view wx:for="{{imageList}}" wx:key="{{index}}" bindtap='lookbigImg' data-current-index="{{index}}">
+                        <image src="{{PIC_URL+item}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 故障现象 -->
+        <view class="phenomenon">
+            <view class="phentop">
+                <view>故障现象</view>
+                <view class="iconlist">
+                </view>
+                <text class="decribe"><text >{{faultDesc}}</text></text>
+            </view>
+        </view>
+        <!-- 附件 -->
+        <view class="assestli" style='border:0;border-bottom:1rpx solid #dedede'>
+            <view>
+                <view>
+                    <image src="../../static/images/fujian2.png" class="fujian"></image>
+                </view>
+                <view style='padding-left:2%;color:#666;font-size:28rpx;width:90%'>
+                    附件
+                    <text style="color:#999;font-size:26rpx;">*仅支持图片(jpg、jpeg、png)查看</text>
+                </view>
+            </view>
+        </view>
+        <!-- 附件循环 -->
+        <!-- <view class="assestli" bindtap="lookBignew" wx:for="{{newFiles}}" data-files-url="{{item.uploadUrl}}" wx:key="{{index}}" style='margin:0;border-bottom:1rpx solid #dedede'>
+            <view>
+                <view class="label" style='width:97%;color:#508cee;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:28rpx'>
+                    <text>{{item.fileName}}</text>
+                </view>
+                <image src="/static/images/next.png" class="next"></image>
+            </view>
+
+        </view> -->
+        <view class='pm-files'>
+            <view class="pm-files-item" wx:for="{{newFiles}}" wx:key="{{index}}" bindtap="lookBignew" data-files-url="{{item.uploadUrl}}">
+                <image src="{{baseImgUrl + item.uploadUrl}}" class="pm-files-img" wx:if="{{item.isImg}}"></image>
+                <image src="/static/images/noimg.png" class="pm-files-img" wx:if="{{!item.isImg}}"></image>
+            </view>
+        </view>
+        <view class="operate-top">
+            <view>
+                <view class="first">申请时间</view>
+                <view class="last">{{reportRepairDate }}</view>
+            </view>
+            <view>
+                <view class="first">申请人</view>
+                <view class="last">{{msgData.reportRepairName }}</view>
+            </view>
+            <view>
+                <view class="first">联系电话</view>
+                <view class="last">{{msgData.reportRepairPhone }}</view>
+            </view>
+        </view>
+    </view>
+</view>

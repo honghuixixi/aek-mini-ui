@@ -1,0 +1,24 @@
+/* pages/repair/bigImg.wxss */
+page{
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .8)
+}
+/* index.css */
+.post-swiper{
+      width: 750rpx;
+      height:750rpx;
+}
+image{
+      width: 750rpx;
+      height:750rpx;
+}
+/*关于post-item的样式设计只是为了让大家清晰看到是不同的view分割，可先不设定*/
+.post-item{
+    margin-top: 20rpx; 
+    background-color:aquamarine;
+    border: 1px solid red; 
+}
+.bigImg{
+  padding-top:200rpx;
+}

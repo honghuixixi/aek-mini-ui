@@ -1,0 +1,28 @@
+<template name="choosecont">
+    <view class="chooseContent" catchtap='cancel' data-type='1'>
+        <view>
+            <view class="chooseIcon">
+                <view wx:for="{{iconList}}" class="{{answerMy==index+1?'active':''}}" catchtap='chooseIcon' data-my-index="{{index}}" wx:key="{{index}}">{{item.name}}</view>
+            </view>
+            <view class="chooseInput">
+                <text>设定值：</text>
+                <input placeholder='请输入' value="{{setnum}}" bindinput='clickSetnum' maxlength='40'></input>
+            </view>
+            <view class="chooseInput">
+                <text>实测值：</text>
+                <input placeholder='请输入' value="{{measureMy}}" bindinput='clickMeasure' maxlength='40'></input>
+            </view>
+            <view class="chooseInput">
+                <text>备注：</text>
+                <input placeholder='请输入备注，40个字符以内' maxlength='40' value="{{remarkMy}}" bindinput='clickRemark'></input>
+            </view>
+            <view class="btm">
+                <view class="error" wx:if="{{errorShow}}">* 请选择检查维护结果</view>
+                <view class="btnmodel">
+                    <view catchtap='cancel' data-type='1'>取消</view>
+                    <view class="sure" catchtap='sure' data-parent-index="{{pindex}}" data-chriden-index="{{cindex}}">确定</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

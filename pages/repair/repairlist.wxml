@@ -1,0 +1,101 @@
+<import src="/components/repaircard/repaircard.wxml" />
+<import src="/components/loading/loading.wxml" />
+<import src="/components/deptlist/deptlist.wxml" />
+<import src="/components/nolimits/nolimits.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>
+<!-- 选择部门 -->
+<view hidden="{{showDeptlist}}"  class="dept-container" catchtap='hiddendeptlist'>
+   <view class="deptwrap">
+     <view class="dept-lable">请选择部门</view>
+     <!-- <template is="deptlist" data="{{...deptList}}"></template> -->
+     <view class="chooseDeptWrap">
+    <view wx:for="{{deptList}}" wx:key="{{item.id}}" class="chooseDept-item" catchtap="chooseDeptId" data-name="{{item.name}}" data-id="{{item.id}}" style="padding-left:{{item.level * 30}}rpx">{{item.name}}</view>
+</view> 
+   </view>
+</view>
+<!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<template is="nolimit" wx:if="{{!repairlistLimit && !loading}}"></template>
+  <view class="search">
+    <view class="input">
+      <image src="/static/images/search.png"></image>
+      <input placeholder="设备名称/编码/院内编码/出厂编号" placeholder-class="palce-class" bindfocus="search" value="{{searchName}}"/>
+      <!-- <image src="/static/images/scans.png" bindtap="scan"></image> -->
+    </view>
+    <view class="choose" bindtap="filters"><text>筛选</text>
+      <image src="/static/images/shaixuan.png"></image>
+    </view>
+  </view>
+<view class="assestlit {{over?'over':''}}" wx:if="{{!loading && repairlistLimit}}">
+
+  <view class="list">
+      <view wx:for="{{cardList}}" bindtap="repairDetail" wx:key="{{index}}"  data-repair-id="{{item.id}}" data-repair-status="{{item.status}}">
+      <template is="repaircard" data="{{...item}}"></template>
+
+    </view>  
+    
+   
+    <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image src="/static/images/pull.gif"></image></view>
+
+  </view>
+  <view  wx:if="{{addapplyLimit}}">
+  <!-- 悬浮按钮 -->
+<view class="tagh">
+        <view class="small-li">
+            <view class="tagli" hidden="{{!tag}}" bindtap="complat">人工报修</view>
+            <image src="/static/images/rengong.png" class="small" hidden="{{!tag}}" bindtap="repair"></image>
+        </view>
+        <view class="small-li">
+            <view class="tagli" hidden="{{!tag}}" bindtap="addrepair">扫码报修</view>
+            <image src="/static/images/assetScan.png" class="small" hidden="{{!tag}}" bindtap="edit"></image>
+        </view>
+        <view>
+            <image src="/static/images/add.png" class="big" hidden="{{tag}}" bindtap="show"></image>
+        </view>
+        <view>
+            <image src="/static/images/chahao.png" class="big" hidden="{{!tag}}" bindtap="hidden"></image>
+        </view>
+    </view>
+  </view>
+  <view class="filter" hidden="{{filter}}" >
+  <view class="contentfilter">
+    <view class="black"></view>
+    <view class="right">
+      <view class="header">
+        筛选
+      </view>
+      <view class="center">
+      <view class="top">
+        <view class="top-title">状态</view>
+       <view class="tag">
+        <view class="statusLi {{active==''?'active':''}}" bindtap="statusClick" data-status="">
+          全部
+        </view>
+        <view class="statusLi {{active==1?'active':''}}" bindtap="statusClick" data-status="1">
+          待接单
+        </view>
+        <view class="statusLi {{active==2?'active':''}}" bindtap="statusClick" data-status="2">
+          维修中
+        </view>
+        <view class="statusLi {{active==3?'active':''}}" bindtap="statusClick" data-status="3">
+          待验收
+        </view>
+        <view class="statusLi {{active==4?'active':''}}" bindtap="statusClick" data-status="4">
+          已完成
+        </view>
+      </view>
+      </view>
+      <view class="bootom" bindtap="chooseDept">
+        <text>所在部门</text><view ><text>{{dept}}</text><image src="/static/images/next.png"></image></view>
+      </view>
+      <view class="botton">
+      <view bindtap="sure">确定</view>
+      <view bindtap="reset">重置</view>
+      </view>
+</view>
+      </view>
+    </view>
+  </view>
+</view>

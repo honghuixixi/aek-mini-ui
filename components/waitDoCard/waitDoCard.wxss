@@ -1,0 +1,61 @@
+/* 消息卡片的样式 */
+.msgcard{
+  background-color: #fff;
+  height: 180rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.left-image{
+  width:60rpx;
+height:58rpx;
+
+}
+.right-image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.orige image{
+  width: 25rpx;
+  height: 26rpx;
+}
+.rage{
+  background-color: #f12c20;
+  width: 36rpx;
+  height: 36rpx;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+.satatus{
+  font-size: 34rpx;
+  color: #333;
+}
+.describe,.orige text{
+  font-size: 28rpx;
+  color: #999;
+}
+.more-list{
+  width: 70%;
+}
+.more-list>view{
+  margin-top: 15rpx;
+}
+.orige{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.orige>image{
+  margin-right: 10rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+.firstimg{
+  width: 12%;
+}

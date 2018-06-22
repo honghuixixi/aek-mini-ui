@@ -1,0 +1,5 @@
+<template name="myBtn">
+  <view class="loginBtn">
+       <button bindtap="btnClick" class="{{disabled?'diabledBtn':'submit_login'}}"  hover-class="clickBtn" disabled="{{disabled}}" hover-stay-time="1000">{{content}}</button> 
+    </view>
+</template>

@@ -1,0 +1,140 @@
+
+<import src="/components/mycard/mycard.wxml" />
+<import src="/components/button/button.wxml" />
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/loading/loading.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<template is="myModalnew" data="{{hide:peopleHide,list:peopleList,eq:peopleeq}}"></template>
+<!-- 成功的totast -->
+  <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+  <template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>
+   <template is="myTotast" data="{{totastHide:totastHide3,totastContent:totastContent3}}"></template>
+ <!-- 选择拍照的弹窗 -->
+    <template is="myModal" data="{{hide:phoneHide,list:phoneList,eq:phoneeq}}"></template>
+      <template is="myModal" data="{{hide:repairHide,list:reportList,eq:repaireq}}"></template>
+<!-- 有数据 -->
+  <view class="list">
+   <view class="assestli " >
+                <view>
+                    <view class="label">
+                        <text>设备编号</text>
+                    </view>
+                    <input bindinput="numInput"  placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assetsNum}}" maxlength="40" />
+                </view>
+            </view>
+   
+     <view class="assestli">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">设备名称
+              <text class="mast">*</text>
+                        </text>
+                    </view>
+                    <input bindinput="nameInput"  placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assetsName}}" maxlength="40" />
+                </view>
+            </view>
+   <view class="assestli" bindtap="choosedepart">
+                <view>
+                    <view class="label">
+                        <text >所在部门
+             </text>
+                    </view>
+                    <text class="choose {{deptName!='请选择'?'chooseed':'choose'}}" style='margin-left:30rpx'>{{deptName}}</text>
+                </view>
+                <image src="/static/images/next.png"></image>
+    </view>
+    <view class="assestli">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">所在位置
+              <text class="mast">*</text>
+                        </text>
+                    </view>
+                    <input bindinput="partInput" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assetsLocal}}" maxlength="40" />
+                </view>
+            </view>
+            <view class="assestli ">
+                <view>
+                    <view class="label">
+                        <text>规格型号</text>
+                    </view>
+                    <input bindinput="sizeInput" placeholder="请输入" auto-height placeholder-class="choose" class="content"  value="{{assetsSpec}}" maxlength="40" />
+                </view>
+            </view>
+
+  </view>
+<view class="newassest {{active?'over':''}}" >
+  <view style='height:20rpx'></view> 
+       <view class="repairLi" bindtap='chooseType'>
+
+  <text>接单类型</text>
+  <text style='display:inline-block;margin-left:130rpx;font-size:32rpx;color:#333;'>{{reportStatus==1?'送修':'现场维修'}}</text>
+  <image src='/static/images/next.png' style='float:right'></image>
+  </view>
+  <!-- 选择送修人 -->
+<!-- <view  wx:if="{{reportStatus==1}}"> -->
+  <view class="repairLiNew repairLi" wx:if="{{reportStatus==1}}" >
+    <text>送修人</text>
+    <input placeholder='请输入' bindinput='saveInput' data-key="sendPerson" value="{{sendPerson}}" maxlength='40'></input>
+  </view>
+  <view class="repairLiNew repairLi" wx:if="{{reportStatus==1}}">
+    <text>联系方式</text>
+    <input placeholder='请输入' bindinput='saveInput' data-key="sendPhone" value="{{sendPhone}}" maxlength='40'></input>
+  </view>
+  <view class="repairLiNew repairLi" bindtap='choosePeople'>
+       <view class="label">接单人<view style='color:red;display:inline-block;margin-left:20rpx'>*</view></view>
+       <view class="content" >
+       <view class="{{people=='请选择'?'moren':''}} hd_new"><text>{{people}}</text><text>{{newphone}}</text></view>
+       <image src="/static/images/next.png" style='float:right;margin:0;margin-right:34rpx'></image>
+        </view>
+  </view>
+
+  <!-- </view> -->
+  <!-- 添加图片 -->
+  <view class="upload">
+     <view class="assestli picture">
+          <view class=" device-img"><text style="font-size:28rpx;">故障图片</text></view>
+          <view class="viewimg">
+            <view wx:for="{{imageList}}" wx:key="{{index}}">
+              <image src="{{PIC_URL+item}}"></image>
+              <image src="/static/images/del.png" class="close" bindtap="deltimg" data-img-index="{{index}}"></image>
+            </view>
+            <image src="/static/images/addimage.png" hidden="{{imageList.length>=5}}" bindtap="addimg"></image>
+          </view>
+        </view>
+  </view>
+
+  <!-- 故障现象 -->
+  <view class="phenomenon">
+ 
+    <view class="phentop">
+      <view>故障现象</view>
+      <view class="iconlist" >
+      <view wx:for="{{topList}}" class="position"  bindtap="delicon" data-del-iconeq="{{index}}">
+        <view >{{item.name}}</view>
+      
+      <image src="/static/images/del.png"></image>
+      </view>
+      
+    </view>
+
+      <!-- <textarea  placeholder="请输入故障现象" placeholder-class="palceClass" maxlength="300" bindinput="decribe" /> -->
+             <input  placeholder="请输入故障现象" placeholder-class="palceClass" maxlength="300" bindinput="decribe" />
+    </view>
+    <view class="phenbon">
+    <view>常见现象</view>
+    <view class="iconlist">
+      <view wx:for="{{phenomenonList}}" class="icon" bindtap="addphen"  data-icon-index="{{index}}">{{item.name}}</view>
+    </view>
+    </view>
+  </view>
+  <view style="height:230rpx"></view>
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <!-- 按钮组件 -->
+    <view class="buttom">
+      <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+    </view>
+  </view>
+</view>
+

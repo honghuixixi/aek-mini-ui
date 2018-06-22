@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<!-- totast提示 -->
+  <template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<view class="container">
+  <view class="logo">
+    <!-- <image src="/static/images/logo.png"></image>
+    <text>爱医康 <text>|</text> 设备管理服务平台</text> -->
+    <text style='font-size:50rpx;color:#f7931e;'> 设备管理服务平台</text>
+  </view>
+  <!--短信登录  -->
+  <view class="userinfo">
+    <view class="loginName loginWrap">
+      <image src="/static/images/my.png"></image>
+      <input type="text" name='username' class="usrname loginInput" bindinput="getPhone" placeholder="手机号" placeholder-class="placeClass" />
+      <image src="/static/images/pass.png" class="showSuccess}" hidden="{{!phonePass}}"></image>
+    </view>
+    <view class="loginpassword loginWrap">
+      <image src="/static/images/yanzhengma.png"></image>
+      <input password="{{password}}" name='password' class="password loginInput" bindinput="inputCode" placeholder="验证码" placeholder-class="placeClass" />
+      <button hidden="{{showNum}}" class="getCode getCodeactive {{phonePass }}" bindtap="getCode" disabled="{{!phonePass}}">{{getText}}</button>
+      <text  hidden="{{!showNum}}">{{count + '秒'}}</text>
+    </view>
+    <view style="height:101rpx;"></view>
+    <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+    <view class="messageLogin" bindtap="passwordLogin"><text>密码登录</text></view>
+  </view>
+</view>

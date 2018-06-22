@@ -1,0 +1,86 @@
+.chooseContent{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1000000000;
+}
+
+.chooseContent>view{
+  width: 80%;
+  background: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  height: 420rpx;
+}
+.chooseIcon{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:center;
+}
+.chooseIcon>view{
+  display: flex;
+  font-size: 28rpx;
+  color: #333;
+  border: 1rpx solid #dedede;
+  padding: 10rpx 20rpx;
+  border-radius: 4rpx;
+}
+.chooseContent .active{
+  background: #508cee;
+  color: #fff;
+}
+.chooseContent .matextarea{
+  border: 1rpx solid #dedede;
+  padding: 20rpx;
+  width: 92%;
+  margin-top: 40rpx;
+  height: 165rpx;
+}
+.btm{
+  /* display: flex;
+  flex-direction: row;
+  justify-content:space-between; */
+  font-size: 26rpx;
+  margin-top: 40rpx;
+  
+}
+.chooseContent .btnmodel{
+  float: right
+}
+.chooseContent .btnmodel>view{
+  margin-left: 40rpx;
+  display: inline-block
+}
+.error{
+  color: red;
+  float: left
+}
+.sure{
+  color:#508cee;
+}
+.chooseInput{
+  border: 1rpx solid #dedede;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 62rpx;
+  padding: 0 20rpx;
+}
+.chooseInput input{
+  display: inline-block;
+  font-size: 28rpx;
+  width: 70%;
+  margin-top: 7rpx;
+}

@@ -1,0 +1,119 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/button/button.wxml" />
+<view class="newassest">
+    <form>
+        <view class="list">
+            <view class="assestli" bindtap="choosedepart">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">所在部门
+             <text class="mast">*</text></text>
+                    </view>
+                    <text class="choose {{deptName!='请选择'?'chooseed':'choose'}}">{{deptName}}</text>
+                </view>
+                <image src="/static/images/next.png"></image>
+            </view>
+            <view class="assestli" bindtap="choosestatus">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">状态<text class="mast" style='right:46rpx;'>*</text></text>
+                    </view>
+                    <text class="chooseed" data-assestStatusNum="{{assestStatusNum}}">{{assestStatus}}</text>
+                </view>
+                <image src="/static/images/next.png"></image>
+            </view>
+            <view class="assestli">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">设备名称
+              <text class="mast">*</text>
+                        </text>
+                    </view>
+                    <input bindinput="fillField" data-key="devicename" data-check="true" name="devicename" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{devicename}}" maxlength="40" />
+                </view>
+            </view>
+            <view class="assestli">
+                <view>
+                    <view class="label">
+                        <text class="mast-parent">生产商
+              <text class="mast" style='right:14rpx;'>*</text>
+                        </text>
+                    </view>
+                    <input bindinput="fillField" data-key="producer" data-check="true" placeholder="请输入" auto-height placeholder-class="choose" name="producer" class="content" value="{{producer}}" maxlength="40" />
+                </view>
+            </view>
+            <view class="assestli ">
+                <view>
+                    <view class="label">
+                        <text>规格型号</text>
+                    </view>
+                    <input bindinput="fillField" data-key="size" placeholder="请输入" auto-height placeholder-class="choose" class="content" name="size" value="{{size}}" maxlength="40" />
+                </view>
+            </view>
+          
+            <view class="assestli">
+                <view>
+                    <view class="label">
+                        <text>出厂编号(SN)</text>
+                    </view>
+                    <input bindinput="fillField" data-key="leavefactoryNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" name="leavefactoryNum" value="{{leavefactoryNum}}" maxlength="40" />
+
+                </view>
+            </view>
+            <view class="assestli " style='border:0'>
+                <view>
+                    <view class="label">
+                        <text>供应商</text>
+                    </view>
+                    <input bindinput="fillField" data-key="provider" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{provider}}" maxlength="40" />
+                </view>
+            </view>
+            <view style='height:20rpx;margin:0;padding:0;background: #f3f3f5;min-height:20rpx;border-top:1rpx solid #e5e5e5'></view>
+             <view class="assestli " >
+                <view>
+                    <view class="label">
+                        <text>院内编码</text>
+                    </view>
+                    <input bindinput="fillField" data-key="serialNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{serialNum}}" maxlength="40" />
+                </view>
+            </view>
+             <view class="assestli ">
+                <view style='width:90%;'>
+                    <view class="label">
+                        <text>启用日期</text>
+                    </view>
+                    <picker mode="date" class="pickerDate" value="{{startUseDate}}" bindchange="bindDateChange">
+                        <view class="picker"> {{startUseDate}} </view>
+                    </picker>                    
+                </view>
+                <image src="/static/images/next.png"></image>
+            </view>
+       
+        </view>
+           <view class="beizhu">
+        此页面仅录入资产基本信息，详细信息请到资产验收模块或者PC端资产管理进行补录。
+          </view> 
+        <!-- <view class="slide-up" bindtap="more" hidden="{{!moreList}}">
+            <text>更多</text>
+            <image src="/static/images/more.png"></image>
+        </view>
+        <view class="slide-up margin-bottom" bindtap="slidup" hidden="{{moreList}}">
+            <text>收起</text>
+            <image src="/static/images/slideup.png"></image>
+        </view> -->
+    </form>
+    <view class="footer">
+        <!-- 按钮组件 -->
+        <view class="buttom">
+            <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+        </view>
+        <!-- 选择状态的弹窗 -->
+        <template is="myModal" data="{{hide:statusHide,list:assestStatusList,eq:statuseq}}"></template>
+        <!-- 核算类别的弹窗 -->
+        <template is="accountList" data="{{hide:accountHide,list:accountList,eq:accounteq}}"></template>
+        <!-- 管理级别的弹窗 -->
+        <template is="accountList" data="{{hide:manageHide,list:manage_level,eq:manageeq}}"></template>
+        <!-- 资金来源的弹窗 -->
+        <template is="accountList" data="{{hide:moneyHide,list:fund_sources,eq:moneyeq}}"></template>
+    </view>
+</view>

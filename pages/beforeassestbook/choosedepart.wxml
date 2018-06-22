@@ -1,0 +1,7 @@
+<template name="chooseDeptlist">
+<view class="chooseDeptWrap">
+    <view class="chooseDept-item" bindtap="chooseDeptId" data-name="{{name}}" data-id="{{id}}">{{name}}</view>
+    <view class='chooseDept-child'  bindtap="chooseDeptId" wx:for="{{subDepts}}" data-id="{{item.id}}" wx:key="{{index}}" data-name="{{item.name}}" >{{item.name}}</view>
+ </view>   
+</template>
+<template is="chooseDeptlist" data="{{...deptList}}"></template>

@@ -1,0 +1,132 @@
+/* pages/assestbook/newassest.wxss */
+@import "/components/button/button.wxss";
+@import "/components/choosemodal/choosemodal.wxss";
+
+page{
+  height: 100%;
+  background: #f3f3f5;
+  width: 100%;
+}
+.newassest{
+padding-top: 20rpx;
+padding-bottom: 180rpx;
+/* height: 100%;
+position: relative;   */
+}
+.list{
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+}
+.list>view{
+  min-height: 50rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  padding: 18rpx 30rpx 18rpx 0
+}
+.list .spailline{
+  border-bottom:0;
+}
+.list>view image{
+  width: 16rpx;
+  height: 25rpx;
+}
+.list .label{
+  font-size: 32rpx;
+  color: #333;
+  width: 32%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+.list .label>text{
+  width: 128rpx;
+}
+.assestli> view{
+  display: flex;
+  flex-direction: srow;
+  width: 100%;
+  align-items: center
+}
+.content{
+  color: #666;
+  font-size: 32rpx;
+  overflow: hidden;
+  width: 68%;
+ 
+  text-align: top;
+}
+.choose{
+  color: #bebebe;
+  font-size: 32rpx;
+}
+.chooseed{
+  color: #666;
+  font-size: 32rpx;
+}
+.mast{
+  color: #e00000;
+  position: absolute;
+  right: -20rpx;
+  top: 10rpx;
+}
+.mast-parent{
+  position: relative;
+}
+.footer{
+  height: 150rpx;
+  background: #fff;
+  width: 100%; 
+  padding-top: 60rpx;
+   position: fixed;
+  bottom: 0; 
+  z-index: 100
+}
+.buttom{
+  width: 80%;
+  margin: 0 auto;  
+}
+.loginBtn{
+  margin-top: 0
+}
+.list .assestli:last-child{
+  border-bottom: 0
+}
+.slide-up{
+  height: 106rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.slide-up text{
+  color: #999;
+  font-size: 32rpx;
+  margin-right: 30rpx;
+}
+.slide-up image{
+ width: 20rpx;
+ height: 8rpx;
+}
+ .list .more{
+  display: none;
+}
+.margin-bottom{
+  margin-bottom: 40rpx;
+}
+input {
+height:1.3rem;
+min-height:1.3rem;
+
+}
+.choosestatus .havechoose{
+  color: #666;
+}
+  textarea{
+  height: 38rpx;
+}  

@@ -1,0 +1,10 @@
+<template name="sitem">             
+   <view class="listitem">
+          <view class="itemTitle"><view class="hasnew" wx:if="{{!isRead}}"></view><view style='height:20rpx;width:40rpx' wx:if="{{!isRead}}"></view>{{title2}}</view>
+          <text class="itemCont" decode="{{true}}"> {{content2}} </text>
+          <view class="itemTime"> 
+            <text>{{org}}</text>
+            <text>{{publishTime2}}</text>
+          </view>
+      </view>
+</template>

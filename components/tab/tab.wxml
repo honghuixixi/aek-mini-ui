@@ -1,0 +1,29 @@
+ <template name="tab-bar">
+<view class="tab-bar">
+    <view class="tab-item"
+        wx:for="{{ dataForTabbar }}"
+        wx:for-item="tabItem"
+        wx:for-index="index"
+        wx:key="sTitle">
+      <template is="tab-item" data="{{ tabItem,index ,indexeq}}"></template>
+    </view>
+  </view>
+</template>
+<template name="tab-item">
+<!--绑定一个onTabItemTap方法-->
+  <view class="tab-content" bindtap="onTabItemTap" data-url="{{tabItem.url}}" data-index="{{index}}">
+    <!--tabBar图标-->
+     <view class="tab-icon">
+        <image src="{{ tabItem.sIconUrl}}"></image>
+    </view>
+    <!--tabBar标题-->
+     <view class="tab-title {{indexeq==index?'tab-click':''}}">
+      <text>{{ tabItem.sTitle }}</text>
+    </view> 
+    <!--未读信息气泡-->
+     <view class="tab-bubble" hidden="{{tabItem.sTitle!='消息'}}">
+        <text class="tab-count"></text>
+    </view>
+  </view>
+</template> 
+<!-- <navigator url="../workplat/workplat" open-type="redirect"></navigator> -->

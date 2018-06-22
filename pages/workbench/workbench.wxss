@@ -1,0 +1,118 @@
+@import "/components/mytotast/mytotast.wxss";
+
+.head {
+    height: 308rpx;
+    padding: 40rpx 30rpx;
+    background-color: #508cee;
+    color: #fff;
+    overflow: hidden;
+}
+
+.head .partname {
+    margin-top: 30rpx;
+    font-size: 34rpx;
+}
+
+.head .partname image {
+    width: 31rpx;
+    height: 31rpx;
+    margin-right: 15rpx;
+}
+
+.head .statistics {
+    display: flex;
+    margin-top: 150rpx;
+    font-size: 26rpx;
+}
+
+.head .statistics view {
+    flex: 1;
+    position: relative;
+}
+
+.head .statistics view + view::before {
+    content: "";
+    position: absolute;
+    top: 16rpx;
+    left: 0;
+    width: 0;
+    height: 50rpx;
+    border-left: 1px solid #fff;
+}
+
+.head .statistics text {
+    display: block;
+    text-align: center;
+}
+
+.head .statistics-num {
+    font-size: 40rpx;
+}
+
+.module {
+    margin-top: 40rpx;
+    overflow: hidden;
+}
+
+.module-row {
+    display: flex;
+}
+
+.module-row-item {
+    flex: 1;
+    text-align: center;
+}
+
+.module-row-item image {
+    width: 53rpx;
+    height: 64rpx;
+    margin: 40rpx auto;
+}
+
+.module-row-item text {
+    display: block;
+    margin-bottom: 40rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.bkground {
+    background: #f7f7fa;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .module-row {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 240rpx;
+    background-color: #fff;
+}
+
+.modal .module-row image {
+    margin: 60rpx auto 20rpx auto;
+}
+
+.modal .module-row-item {
+    position: relative;
+}
+
+.modal .module-row-item + .module-row-item::before{
+    content: '';
+    position: absolute;
+    top: 60rpx;
+    left: 0;
+    width: 0;
+    height: 120rpx;
+    border-left: 1rpx solid #e5e5e5;
+}

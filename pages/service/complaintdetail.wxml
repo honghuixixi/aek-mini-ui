@@ -1,0 +1,56 @@
+<import src="/components/replayitem/replayitem.wxml" />
+<import src="/components/button/button.wxml" />
+<import src="/components/mytotast/mytotast.wxml" />
+<view>
+
+<view class="detail">
+  <view class="title">{{list.title}}</view>
+  <view class="time">{{list.publishTime}}
+      <text  wx:if="{{list.type==1}}" class="type">售后服务</text>
+      <text  wx:if="{{list.type==2}}" class="type">质量缺陷</text>
+      <text  wx:if="{{list.type==3}}" class="type">操作使用</text>
+      <text  wx:if="{{list.type==4}}" class="type">产品配置</text>
+      <text  wx:if="{{list.type==5}}" class="type">其它</text>
+      <text wx:if="{{list.isNews}}" class="isnews">已回复</text>
+      <text wx:if="{{!list.isNews}}" class="isnews">待回复</text>
+  </view>
+  <view class="publishName" >申请人：{{list.publisher}}-{{list.phone}}</view>
+  <view class="publishOrg" wx:if="{{list.email}}">邮箱：{{list.email}}</view>
+  <view class="publishOrg" wx:if="{{list.wx}}">微信号：{{list.wx}}</view>
+  <view class="publishOrg" wx:if="{{list.productor}}">产品：{{list.productor}}</view>
+  <view class="publishOrg" wx:if="{{list.manufacturer}}">厂商：{{list.manufacturer}}</view>
+
+  <view class="content">{{list.content}}</view>
+  <view class="fujian" wx:if="{{files.length!=0}}">
+    <view style='font-size:36rpx;margin-bottom:20rpx'>附件</view>
+
+     <view wx:for="{{files}}" wx:key="{{index}}" class="fujianli" bindtap="lookBig" data-files-url="{{item.uploadUrl}}">
+      <view >{{item.fileName}}</view>
+      <image src='/static/images/next.png' class="next"></image>
+    </view> 
+
+  </view>
+</view>
+<view >
+  <view class="nav">回复</view>
+     <view wx:if="{{repalylist.length==0}}">
+        <view class="announce-show">
+          <image src="../../static/images/nomsg.png"></image>
+          <text>还没有任何数据哦~</text>
+        </view>
+      </view> 
+    <view wx:for="{{repalylist}}" wx:key="{{index}}">
+       <template is="replayitem" data="{{...item}}" ></template> 
+    </view>
+    <view wx:if="{{repalylist.length}}">
+      <view class="nomore pull" wx:if="{{!nomore}}">~没有更多了~</view>
+    <view class="nomore pull" wx:if="{{!pullDown}}"><image   src="/static/images/pull.gif"></image></view>
+    </view>
+  
+  </view>
+ 
+
+  
+  </view>
+  <template is="myTotast" data="{{totastHide:totastHide1,totastContent:totastContent1}}"></template>
+  <template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>

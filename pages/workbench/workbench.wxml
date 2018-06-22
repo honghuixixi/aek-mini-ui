@@ -1,0 +1,81 @@
+<import src="/components/mytotast/mytotast.wxml" />
+<!-- haed -->
+<view class="head">
+    <view class="partname">
+        <image src="/static/images/mount.png"></image>
+        <text>{{partName}}</text>
+    </view>
+    <view class="statistics">
+        <view>
+            <text class="statistics-num">{{assetCount}}</text>
+            <text>设备资产</text>
+        </view>
+        <view>
+            <text class="statistics-num">{{repairCount}}</text>
+            <text>维修中</text>
+        </view>
+        <view>
+            <text class="statistics-num">{{userCount}}</text>
+            <text>成员用户</text>
+        </view>
+    </view>
+</view>
+
+<!-- module -->
+<view class="module">
+    <view class="module-row">
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="scanCode">
+            <image src="/static/images/scan.png"></image>
+            <text>扫码</text>
+        </view>
+        <view class="module-row-item" hover-class='bkground' bindtap="showModal" data-key="equipmentInput">
+            <image src="/static/images/enter.png"></image>
+            <text>设备录入</text>
+        </view>
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/assestlist'>
+            <image src="/static/images/zichan.png"></image>
+            <text>资产台账</text>
+        </navigator>
+    </view>
+    <view class="module-row">
+        <!-- <navigator  class="module-row-item" hover-class='bkground' url='../beforeassestbook/beforeassestlist'>
+            <image src="/static/images/yutaizhang.png"></image>
+            <text>预台账</text>
+        </navigator > -->
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/assestlist'>
+            <image src="/static/images/homerepair.png" style='width:60rpx;'></image>
+            <text>维修</text>
+        </navigator>
+        <view class="module-row-item"></view>
+        <view class="module-row-item"></view>
+    </view>
+</view>
+
+<!-- modal 扫码 -->
+<view class="modal" hidden="{{!modalState.scanCode}}" bindtap="hideModal" data-key="scanCode">
+    <view class="module-row" hidden="{{!modalState.scanCode}}">
+        <view class="module-row-item" hover-class='bkground' bindtap="scanSearch">
+            <image src="/static/images/scansearch.png"></image>
+            <text>扫码查询</text>
+        </view>
+        <view class="module-row-item" hover-class='bkground' bindtap="scanRepair">
+            <image src="/static/images/scanrepair.png"></image>
+            <text>扫码保修</text>
+        </view>
+    </view>
+</view>
+
+<!-- modal 设备录入 -->
+<view class="modal" hidden="{{!modalState.equipmentInput}}" bindtap="hideModal" data-key="equipmentInput">
+    <view class="module-row" hidden="{{!modalState.equipmentInput}}">
+        <navigator class="module-row-item" hover-class='bkground' url='../assestbook/newassest'>
+            <image src="/static/images/zichansmall.png"></image>
+            <text>资产台账</text>
+        </navigator>
+    </view>
+</view>
+
+<!-- totast提示 -->
+<template is="myTotast" data="{{totastHide:totastHide,totastContent:totastContent}}"></template>
+<!-- totast提示 -->
+<template is="myTotast" data="{{totastHide:totastHide2,totastContent:totastContent2}}"></template>

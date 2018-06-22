@@ -1,0 +1,4 @@
+<view class='row' wx:for='{{list}}' wx:key='{{index}}' bindtap='chooseUser' data-user='{{item}}'>
+    <view class='row-name'>{{item.realName}}</view>
+    <view class='row-mobile'>{{item.mobile}}</view>
+</view>

@@ -1,0 +1,23 @@
+<template name="msglistcard">
+ <view class="card {{readed?'read':''}} " bindlongtap="longtap">
+      <image src="/static/images/angular.png" class="settop" hidden=""></image>
+      <image src="/static/images/position.png" class="image"></image>
+      <view class="content">
+      <view class="name">哈哈哈哈哈哈哈哈哈哈哈</view>
+      <view class="bottom">
+      <view class="bottom-left">
+      <view class="producter">生 产 商：哈哈哈哈哈哈哈哈哈哈哈</view>
+      <view class="size">规格型号：TH7989</view>
+      <view class="depart"><text class="depetName"> 所在部门：呼吸科呼吸科呼吸科呼吸科</text></view>
+  </view>
+      <view class="status">
+      <view class="icon">
+     待验收
+      </view>
+      <view class="time">
+    2017 08-90 17:56</view> 
+    </view>
+  </view>
+    </view>
+  </view>
+</template>

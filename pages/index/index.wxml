@@ -1,0 +1,9 @@
+<import src="/components/tab/tab"/>
+
+<!--index.wxml-->
+<view class="container">
+   <navigator url="{{uri}}" open-type="redirect"></navigator>
+</view>
+<view class="footer">
+    <template is="tab-bar" data="{{ dataForTabbar ,indexeq}}"/>
+</view>

@@ -1,0 +1,358 @@
+<import src="/components/choosemodal/choosemodal.wxml" />
+<import src="/components/button/button.wxml" />
+<view class="assest-detail">
+  <view class="header">
+    <view class="{{index==0?'downline':''}}" bindtap="changeMsg" data-set-index="0">
+    基本信息</view>
+    <view class="{{index==1?'downline':''}}" bindtap="changeMsg" data-set-index="1">
+    采购信息</view>
+  </view>
+  <!-- 基本信息的表格 -->
+  <view class="basic-msg" hidden="{{index==1}}">
+    <view class="basic-title">
+      基本信息
+    </view>
+    <view class="basic-list">
+      <view class="list">
+        <view class="assestli picture">
+          <view class=" device-img"><text>设备图片</text></view>
+          <view class="viewimg">
+            <view wx:for="{{imageList}}" wx:key="{{index}}">
+              <image src="{{item}}"></image>
+              <image src="/static/images/del.png" class="close" bindtap="deltimg" data-img-index="{{index}}"></image>
+            </view>
+            <image src="/static/images/addimage.png"    hidden="{{imageList.length>=5}}" bindtap="addimg"></image>
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text class="mast-parent">设备名称 <text class="mast">*</text></text>
+            </view>
+            <input bindinput="fillField" data-key="assetsName" data-check="true" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.assetsName || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>设备编号</text>
+            </view>
+            <input bindinput="fillField" data-key="assetsNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.assetsNum || ''}}" maxlength="40" />
+          </view>
+        </view>
+                <view class="assestli">
+          <view>
+            <view class="label"><text>院内编码</text>
+            </view>
+            <input bindinput="fillField" data-key="serialNum" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.serialNum || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli" >
+          <view>
+            <view class="label">
+            <text>状态</text>
+            </view>
+              <text class="content">{{assestInfo.statusName || ''}}</text></view>
+              <!-- <image src="/static/images/next.png" class="next"></image> -->
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text class="mast-parent">生产商 <text class="mast">*</text></text>
+            </view>
+            <input bindinput="fillField" data-key="factoryName" data-check="true" placeholder="请输入"  auto-height placeholder-class="choose" class="content" value="{{assestInfo.factoryName || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label "><text>规格型号</text></view>
+            <input bindinput="fillField" data-key="assetsSpec" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.assetsSpec || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>注册证号</text></view>
+            <input bindinput="fillField" data-key="regNo" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.regNo || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli ">
+          <view>
+            <view class="label"><text>出厂编号(SN)</text></view>
+            <input bindinput="fillField" data-key="factoryNum" placeholder="请输入" auto-height placeholder-class="choose" class="content longheight" value="{{assestInfo.factoryNum || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>三级分类代码</text></view>
+            <input bindinput="fillField" data-key="threeLevelCode" placeholder="请输入" auto-height placeholder-class="choose" class="content longheight" value="{{assestInfo.threeLevelCode || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>品牌</text></view>
+            <input bindinput="fillField" data-key="assetsBrand" placeholder="请输入" auto-height placeholder-class="choose" class="content" value="{{assestInfo.assetsBrand || ''}}" maxlength="40" />
+          </view>
+        </view>
+
+        <view class="assestli">
+          <view>
+            <view class="label"><text>产地</text></view>
+            <!-- <text class="content">{{assestInfo.prodPlace}}</text> -->
+            <picker mode="region" bindchange="bindRegionChange" value="{{region || ''}}" >
+              <view class="picker">
+                {{assestInfo.prodPlace || ''}}
+              </view>
+            </picker>
+            <image src="/static/images/next.png" class="next"></image>               
+          </view>                                    
+        </view>
+
+        <view class="assestli">
+          <view>
+            <view class="label"><text>注册证名称</text></view>
+          <input bindinput="fillField" data-key="regName" placeholder="请输入" auto-height placeholder-class="choose" class="content longheight" value="{{assestInfo.regName || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli" bindtap="chooseunit">
+          <view>
+            <view class="label"><text>单位</text></view>
+            <text class="content">{{assestInfo.unitName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="chooseaccount">
+          <view>
+            <view class="label"><text>账簿类型</text></view>
+            <text class="content">{{assestInfo.assetsTypeName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="choosecomputed">
+          <view>
+            <view class="label"><text>核算类别</text></view>
+            <text class="content">{{assestInfo.assetsClassName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="choosemanage">
+          <view>
+            <view class="label"><text>管理级别</text></view>
+            <text class="content">{{assestInfo.manageLevelName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="choosemeasure">
+          <view>
+            <view class="label"><text>计量类别</text></view>
+            <text class="content">{{assestInfo.measureTypeName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="chooseport">
+          <view>
+            <view class="label"><text>国产/进口</text></view>
+            <text class="content">{{assestInfo.madeIn ? assestInfo.madeIn > 1 ? "进口" : "国产" : ""}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+      </view>
+    </view>
+    <view class="basic-title {{moreList?'more':''}}">
+      使用信息
+    </view>
+    <view class="basic-list {{moreList?'more':''}}">
+      <view class="list">
+        <view class="assestli" bindtap="choosesubscribe">
+          <view>
+            <view class="label"><text>申购部门</text></view>
+            <text class="content">{{assestInfo.applyDeptName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="choosedepart">
+          <view>
+            <view class="label"><text>所在部门</text></view>
+            <text class="content">{{assestInfo.deptName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="choosemanagedepart">
+          <view>
+            <view class="label"><text>管理部门</text></view>
+            <text class="content">{{assestInfo.manageDeptName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>启用日期</text></view>
+            <picker mode="date" class="pickerDate" value="{{assestInfo.startUseDate}}" bindchange="bindDateChange">  
+    <view class="picker"> {{ assestInfo.startUseDate || ''}} </view>  
+  </picker> 
+            </view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>保修期至</text></view>
+            <picker mode="date" class="pickerDate" value="{{assestInfo.warrantyDate}}" bindchange="warrantyDateChange">  
+              <view class="picker"> {{assestInfo.warrantyDate || ''}} </view>  
+            </picker>
+          </view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli" bindtap="chooseuse">
+          <view>
+            <view class="label"><text>用途</text></view>
+            <text class="content">{{assestInfo.purposeName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+      </view>
+    </view>
+    <view class="basic-title {{moreList?'more':''}}">
+      折旧信息
+    </view>
+    <view class="basic-list {{moreList?'more':''}}">
+      <view class="list">
+        <view class="assestli">
+          <view>
+            <view class="label"><text>折旧年限</text></view>
+            <!-- <input bindinput="fillField" data-key="assetsClassVal" type="number" class="classVal" value="{{assestInfo.assetsClassVal || ''}}"></input> -->
+             <text class="content">{{assestInfo.assetsClassId ? assestInfo.assetsClassId < 2 ? 5 : assestInfo.assetsClassId < 4 ? 7 : 10 : ''}}</text> 
+           </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>设备原值</text></view>
+             <text class="content">{{assestInfo.priceStr || ""}}</text> 
+            </view>
+        </view>
+        <!-- <view class="assestli">
+          <view>
+            <view class="label"><text>折旧残值</text></view>
+            <input bindinput="fillField" data-key="lessPrice"  type="digit" class="priceStr" value="{{assestInfo.lessPrice || ''}}"></input>
+            </view>
+        </view> -->
+      </view>
+
+    </view>
+    <view class="slide-up" bindtap="more" hidden="{{!moreList}}"><text>更多</text>
+      <image src="/static/images/more.png"></image>
+    </view>
+    <view class="slide-up margin-bottom" bindtap="slidup" hidden="{{moreList}}"><text>收起</text>
+      <image src="/static/images/slideup.png"></image>
+    </view>
+  </view>
+  <!-- 采购信息的表格 -->
+  <view class="basic-msg buy" hidden="{{index==0}}">
+
+    <view class="basic-list buy-list">
+      <view class="list">
+        <view class="assestli" bindtap="choosedeptsource">
+          <view>
+            <view class="label"><text>设备来源</text></view>
+            <text class="content">{{assestInfo.purchaseTypeName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>购入日期</text></view>
+            <picker mode="date" class="pickerDate" value="{{assestInfo.purchaseDate || ''}}" bindchange="purchaseDateChange">  
+              <view class="picker"> {{assestInfo.purchaseDate || ''}} </view>  
+            </picker> 
+            </view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>供应商</text></view>
+            <input bindinput="fillField" data-key="splName" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.splName  || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>设备单价</text></view>
+            <input bindinput="fillField" data-key="price" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.price || ''}}" maxlength="40" />
+          </view>
+        </view>
+
+        <view class="assestli" bindtap="choosecapitalsource">
+          <view>
+            <view class="label"><text>资金来源</text></view>
+            <text class="content">{{assestInfo.fundSourcesName || ''}}</text></view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>到货日期</text></view>
+            <picker mode="date" class="pickerDate" value="{{assestInfo.arrivalDate}}" bindchange="arrivalDateChange">  
+              <view class="picker"> {{assestInfo.arrivalDate || ''}} </view>  
+            </picker>             
+          </view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>合同编号</text></view>
+            <input bindinput="fillField" data-key="contractNo" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.contractNo || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>合同名称</text></view>
+            <input bindinput="fillField" data-key="contractName" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.contractName || ''}}" maxlength="40" />
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>乙方单位</text></view>
+             <input bindinput="fillField" data-key="supplierName" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.supplierName || ''}}" maxlength="40" /> 
+          </view>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>签订日期</text></view>
+            <picker mode="date" class="pickerDate" value="{{assestInfo.startDate || ''}}" bindchange="startDateChange">  
+              <view class="picker"> {{assestInfo.startDate || ''}} </view>  
+            </picker>
+            </view>
+          <image src="/static/images/next.png" class="next"></image>
+        </view>
+        <view class="assestli">
+          <view>
+            <view class="label"><text>合同金额</text></view>
+            <input bindinput="fillField" data-key="contractPrice" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.contractPrice || ''}}" maxlength="40" />
+          </view>
+        </view>
+                <view class="assestli">
+          <view>
+            <view class="label"><text>档案编号</text></view>
+            <input bindinput="fillField" data-key="archivesCode" placeholder="请输入" auto-height placeholder-class="choose" class="content " value="{{assestInfo.archivesCode || ''}}" maxlength="40" />
+          </view>
+        </view>
+                      <view class="assestli">
+          <view>
+            <view class="label"><text>发票号</text></view>
+            <input bindinput="fillField" data-key="invoiceNos" placeholder="请输入" auto-height placeholder-class="choose"      class="content " value="{{assestInfo.invoiceNos || ''}}" maxlength="40" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+   <view class="footer"> 
+    <!-- 按钮组件 -->
+     <view class="buttom">
+      <template is="myBtn" data="{{disabled:disabled,content:content}}"></template>
+    </view>
+    </view> 
+    <!-- 选择拍照的弹窗 -->
+    <template is="myModal" data="{{hide:phoneHide,list:phoneList,eq:phoneeq}}"></template>
+    <!-- 选择状态的弹窗  -->
+    <template is="myModal" data="{{hide:statusHide,list:statusList,eq:statuseq}}"></template>
+    <!-- 选择单位的弹窗  -->
+    <template is="accountList" data="{{hide:unitHide,list:unitList,eq:uniteq}}"></template>
+    <!-- 选择账簿类型的弹窗  -->
+    <template is="accountList" data="{{hide:accountHide,list:accountList,eq:accounteq}}"></template>
+    <!-- 核算类别的弹窗 -->
+    <template is="accountList" data="{{hide:computedHide,list:computedList,eq:computedeq}}"></template>
+    <!-- 管理级别的弹窗 -->
+    <template is="accountList" data="{{hide:manageHide,list:manageList,eq:manageeq}}"></template>
+    <!-- 计量类别的弹窗 -->
+    <template is="accountList" data="{{hide:measureHide,list:measureList,eq:measureeq}}"></template>
+    <!-- 用途的弹窗 -->
+    <template is="accountList" data="{{hide:useHide,list:useList,eq:useeq}}"></template>
+    <!-- 设备来源弹窗 -->
+    <template is="accountList" data="{{hide:deptsourceHide,list:deptsourceList,eq:deptsourceeq}}"></template>
+    <!-- 资金来源弹窗 -->
+    <template is="accountList" data="{{hide:capitalsourceHide,list:capitalsourceList,eq:capitalsourceeq}}"></template> 
+    <!-- 国产、进口 -->
+    <template is="accountList" data="{{hide:portHide, list:portList, eq:porteq}}"></template>
+</view>

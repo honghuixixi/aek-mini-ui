@@ -1,0 +1,24 @@
+<import src="/components/loading/loading.wxml" />
+<view class="order">
+ <!-- 动画加载 -->
+<template is="loading" wx:if="{{loading}}"></template>
+<view wx:if="{{!loading}}">
+ <view style="height:20rpx;background:#f3f3f5"></view>
+ <view class="ordertime" >
+<view class="label">维修人</view>
+      <view class="content"><text>{{msgData.repairName}}</text></view>
+ </view>
+<view class="ordertime" >
+      <view class="label">预计到达科室时间</view>
+      <view class="content"><text >{{msgData.predictReachDate }}</text></view>
+      </view>
+      <view class="write">
+      <textarea disabled="true" placeholder="暂无备注" placeholder-class="placeClass" value="{{msgData.remarks }}"/> 
+            <!-- <input disabled="true" placeholder="暂无备注" placeholder-class="placeClass" value="{{msgData.remarks }}"/>  -->
+      </view>
+</view>
+</view>
+
+
+
+

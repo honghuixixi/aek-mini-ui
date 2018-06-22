@@ -1,0 +1,89 @@
+<import src="/components/button/button.wxml" />
+<import src="/components/loading/loading.wxml" />
+ <template is="loading" wx:if="{{loading}}"></template>
+<view class="plan-detail">
+  <!-- 动画加载 -->
+ 
+    <!-- 基本信息的表格 -->
+    <view wx:if='{{!loading}}'>
+        <view class="basic-list m-t-lg">
+                <view class="planLi">
+                        <view class="label">
+                            <text>巡检名称</text>
+                        </view>
+                        <text class="content">{{planInfo.name}}</text>
+                    </view>
+                <view class="planLi b-r-sm">
+                        <view class="label">
+                            <text>计划编号</text>
+                        </view>
+                        <text class="content">{{planInfo.planNo}}</text>
+                    </view>
+                <view class="planLi">
+                        <view class="label">
+                            <text>类型</text>
+                        </view>
+                        <text class="content">{{planInfo.type?planInfo.type:''}}</text>
+                    </view>
+                <view class="planLi b-r-sm">
+                        <view class="label">
+                            <text>周期</text>
+                        </view>
+                        <text class="content">{{planInfo.cycle?planInfo.cycle:''}}</text>
+                    </view>
+                <view class="planLi b-b-sm m-b-lg">
+                        <view class="label">
+                            <text>负责人</text>
+                        </view>
+                        <text class="content">{{planInfo.director?planInfo.director:''}}</text>
+                    </view>
+                <view class="planLi b-l-sm">
+                        <view class="label ">
+                            <text>上次巡检日期</text>
+                        </view>
+                        <text class="content">{{planInfo.preDate?planInfo.preDate:''}}</text>
+                    </view>
+                <view class="planLi">
+                        <view class="label">
+                            <text>下次巡检日期</text>
+                        </view>
+                        <text class="content">{{planInfo.nextDate?planInfo.nextDate:''}}</text>
+                    </view>
+                <view class="planLi b-b-sm b-l-sm">
+                        <view class="label">
+                            <text>创建时间</text>
+                        </view>
+                        <text class="content longheight">{{planInfo.createTime?planInfo.createTime:''}}</text>
+                </view>
+        </view>
+        <view class="basic-title">
+            巡检范围
+        </view>
+        <view class="basic-list">
+            <view class="planScope">
+              <text class="content longheight">{{planInfo.scope?planInfo.scope:''}}</text>
+            </view>
+        </view>
+
+
+    </view>
+</view>
+<!-- toast -->
+<view class='toaster' wx:if='{{toasterShow}}'>{{toasterTxt}}</view>
+<!-- 弹框 -->
+<view class='planConfirmWrap' hidden='{{confirm}}'>
+  <view class='planConfirm'>
+    <view class='planConfirmView'><image src='/static/images/attention.png'></image></view>
+    <view class='planConfirmCon'><text>确定要开始巡检吗？</text></view>
+    <view class='planConfirmBtns'>
+      <view class='planConfirmBtn planConfirmBtn0' bindtap='cancel'><text>取消</text></view>
+      <view class='planConfirmBtn planConfirmBtn1' bindtap='confirm'><text>确定</text></view>
+      <view class='planConfirmLine'></view>
+    </view>
+  </view>
+</view>
+<view class="footer"> 
+    <view class="buttom">
+       <template is="myBtn" data="{{...btn}}"></template>
+    </view>
+</view> 

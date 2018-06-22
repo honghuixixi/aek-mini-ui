@@ -1,0 +1,66 @@
+ @import "/components/serveritem/sitem.wxss";
+page {
+  height: 100%;
+  background: #f3f3f5;
+}
+.search{
+  height: 88rpx;
+  background: #508cee;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100
+}
+input{
+  width: 500rpx;
+}
+.input{
+  height: 64rpx;
+  width: 600rpx;
+  border-radius: 32rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+.palce-class{
+  font-size: 28rpx;
+  color: #bebebe;
+}
+.input image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+  }
+.choose image{
+  width: 27rpx;
+  height:25rpx;
+}
+.choose text{
+  font-size: 32rpx;
+  color: #fff;
+  margin-right: 12rpx;
+  margin-left: 22rpx;
+}
+ .nomore{
+   font-size: 28rpx;
+   text-align: center;
+   color: #999;
+   padding-top: 20rpx;
+ }
+.pull image{
+  width: 42rpx;
+  height: 42rpx;
+}
+.pull{
+  margin-bottom: 60rpx;
+}

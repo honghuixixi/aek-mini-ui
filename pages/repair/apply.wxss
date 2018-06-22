@@ -1,0 +1,246 @@
+@import "/components/loading/loading.wxss";
+@import "/components/mytotast/mytotast.wxss";
+page{
+  height: 100%;
+  background: #f3f3f5;
+  width: 100%;  
+}
+.apply{
+ 
+  height: 100%;
+}
+/* 卡片样式卡片样式卡片样式卡片样式卡片样式 */
+.repaircard{
+  padding-left:30rpx;
+  border-top:1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  background: #fff;
+  margin-top: 20rpx;
+  
+}
+.cardtop{
+  border-bottom:1rpx solid #e5e5e5;
+}
+.cardbotm{
+  border-top:1rpx solid #e5e5e5;
+}
+.cardtop,.cardbotm{
+   height: 68rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+}
+.cardtop .repairNum{
+  width: 80%;
+}
+.repairNum{
+  font-size:28rpx;
+  width: 65%
+}
+.applyname{
+  float: left;
+}
+.applytime{
+  font-size:26rpx;
+  color: #999; 
+  
+}
+.card{
+  padding: 30rpx;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items:center;
+}
+.name{
+    font-size: 32rpx;
+  color: #333;
+   max-width: 525rpx; 
+ 
+}
+.producter,.size,.depart{
+  font-size: 28rpx;
+  color: #999;
+    overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+   margin-bottom: 5rpx; 
+  
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  width: 75%;
+}
+.image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.repairstatus{
+  float: right;
+  
+  font-size: 26rpx;
+  color: #f7931e;
+  min-width: 70rpx;  
+  height: 40rpx;
+  border-radius: 36rpx;
+  border: 1rpx solid #f7931e;
+  text-align: center;
+   line-height: 40rpx; 
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   
+}
+
+.use{
+  border: 1rpx solid #14a386;
+  color: #14a386
+}
+.stater{
+  border: 1rpx solid #508cee;
+  color: #508cee
+}
+.repair{
+  border: 1rpx solid #e00000;
+  color: #e00000
+}
+/* 添加图片的样式 */
+.assestli{
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx;
+  background: #fff;
+}
+.viewimg{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.viewimg>view{
+  position: relative;
+}
+view image{
+  width: 150rpx;
+  height: 150rpx;
+   margin:30rpx;
+   margin-left:0;
+   margin-bottom: 0;
+}
+view .close{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: -1rpx;
+  top: -1rpx;
+}
+.phenomenon{
+  background: #fff;
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+}
+.phentop{
+  padding: 30rpx 30rpx 30px 0;
+  border-bottom: 1rpx solid #e5e5e5;
+ 
+}
+.phentop text{
+ color: #666;
+  font-size: 28rpx;
+  word-break:break-all;
+  width: 100%;
+}
+.phentop>view{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 30rpx
+}
+.palceClass{
+  font-size: 32rpx;
+  color: #bebebe;
+}
+.operate-top{
+  margin-top: 20rpx;
+  background: #fff;
+  border-top:1rpx solid #e5e5e5;
+  border-bottom:1rpx solid #e5e5e5;
+  padding-left: 30rpx; 
+}
+.operate-top>view{
+  display: flex;
+  flex-direction: row;
+  height: 87rpx;
+  align-items: center;
+  border-bottom:1rpx solid #e5e5e5;
+
+}
+.operate-top > view:last-child{
+  border: 0;
+}
+.operate-top .last{
+  font-size: 32rpx;
+  color: #999;
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.operate-top .first{
+  font-size: 32rpx;
+  color: #333;
+  width: 30%;
+}
+.mast{
+  width: 12rpx;
+  color: #e00000;
+  position: absolute;
+  right: -20rpx;
+  top: 10rpx;
+}
+.mast-parent{
+  position: relative;
+}
+.fujian{
+  width: 32rpx;
+  height: 36rpx;
+  margin: 0;
+}
+.fujianimg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 28rpx;
+}
+.assestli> view {
+    display: flex;
+    flex-direction: srow;
+    width: 100%;
+    align-items: center;
+}
+
+.assestli>view {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* justify-content: center; */
+}
+ .next{
+  width: 16rpx;
+  height: 25rpx;
+  margin: 0
+}
+.pm-files {
+    margin: 0 0 50rpx 20rpx;
+    overflow: hidden;
+}
+.pm-files-item {
+    position: relative;
+    float: left;
+    width: calc(33.33% - 20rpx);
+    height: 180rpx;
+    padding: 0 20rpx 20rpx 0;
+}
+.pm-files-img {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,27 @@
+<view class="tabbar">
+    <view catchtap='changeIndex' data-choose-index="1" class="{{tabIndex == 1 ? 'active' : ''}}">
+        <text>待我验收</text>
+        <view class="btmline" wx:if="{{tabIndex == 1}}"></view>
+    </view>
+    <view catchtap='changeIndex' data-choose-index="2" class="{{tabIndex == 2 ? 'active' : ''}}">
+        <text>我已验收</text>
+        <view class="btmline" wx:if="{{tabIndex == 2}}"></view>
+    </view>
+</view>
+<!-- 搜索框 -->
+<view class="search">
+    <view class="input">
+        <image src="/static/images/search.png"></image>
+        <input placeholder="请输入设备名称/设备编号" placeholder-class="palce-class" bindtap="search" value="{{searchName}}" />
+    </view>
+</view>
+<view class='items'>
+    <view class='item' wx:for='{{list}}' wx:key='{{index}}' bindtap='detail' data-id='{{item.id}}' data-status='{{item.status}}'>
+        <view class='item-num'>{{item.reportNo}}</view>
+        <view class='item-name'>{{item.name}}</view>
+        <view class='item-dept'>所在部门：{{item.departmentName}}</view>
+        <view class='item-time'>提交时间：{{item.submitDateStr}}</view>
+    </view>
+</view>
+<view class='loading' wx:if='{{showLoading}}'>数据加载中</view>
+<view class='empty' wx:if='{{showEmpty}}'>~没有更多了~</view>

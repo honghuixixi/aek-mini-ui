@@ -1,0 +1,31 @@
+<template name="repaircard">
+<view class="repaircard" >
+    <view class="cardtop">
+    <view class="repairNum" style='display:inline-block'>{{applyNo}}</view>
+   
+    <view class="repairStatus repairstatus {{status==1?'stater':status==2?'repair':status==3?'':'use'}}" style='margin-top:12rpx;margin-left:30rpx;margin-right:30rpx'>
+    {{status==1?'待接单':(status==2?'维修中':(status==3?'待验收':'已完成'))}}
+  </view>
+   <view class="repairStatus repairstatus" style='margin-right:30rpx' style='margin-top:12rpx'>
+    {{reportStatus ==2?'现场维修':'送修'}}
+    </view>
+    </view>
+    <view class="card">
+     <image src="{{assetsImg?assetsImg:'/static/images/position.png'}}" class="image"></image>
+       <view class="content">
+        <view class="name">{{assetsName }}</view>
+        <view class="bottom">
+          <view class="bottom-left">
+            <view class="producter"><text>规格型号：</text><text wx:if="{{assetsSpec}}">{{assetsSpec }}</text></view>
+            <view class="size" ><text>设备编号：</text><text wx:if="{{assetsNum}}">{{assetsNum}}</text></view>
+            <view class="depart"><text>所在科室：</text><text wx:if="{{assetsDeptName}}">{{assetsDeptName }}</text></view>
+          </view>
+        </view>
+      </view>
+      </view>
+ <view class="cardbotm">
+    <view class="applyname repairNum"><text>申请人：{{reportRepairName }}</text></view>
+    <view class="applytime repairStatus">{{reportRepairDateStr }}</view>
+    </view>
+    </view>
+</template>

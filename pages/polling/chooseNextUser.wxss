@@ -1,0 +1,17 @@
+.row {
+    display: flex;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    border-bottom: 2rpx solid #dcdcdc;
+}
+.row-name {
+    flex: 1;
+    margin-left: 20rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.row-mobile {
+    width: 200rpx;
+    text-align: center;
+}
